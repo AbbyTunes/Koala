@@ -114,18 +114,4 @@ router.get('/:user_id/questions', (req, res) => {
 		);
 });
 
-// show currentUser's questions
-// NOT working yet
-
-// router.get('current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-// 	Question.find({ authorId: req.user.id })
-// 		.populate("questions")
-// 		.then(questions => res.json(questions))
-// 		.catch(err =>
-// 			res.status(404).json({ question: "You have no questions yet" })
-// 		);
-// });
-
-
-
 module.exports = router;

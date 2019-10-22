@@ -31,10 +31,10 @@ router.get("/:question_id", (req, res) => {
 // show currentUser's own questions
 // Not working, showing "null"
 
-// router.get('/my-questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-// 	Question.find({ authorId: req.user._id })
-// 		.populate("question")
-// 		.then(questions => res.json(questions))
+// router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) => {
+// 	Question.find({ authorId: req.user.id })
+// 		.populate("questions")
+// 		.then(questions => res.json(user.questions))
 // 		.catch(err =>
 // 			res.status(404).json({ question: "You have no questions yet" })
 // 		);
@@ -52,7 +52,7 @@ router.post('/',
 			.save()
 			.then(question => res.json(question))
 			.catch(err => {
-				err.status(400).send('adding new question failed');
+				res.status(400).json({ question: "adding new question failed" });
 			});
 	});
 
@@ -68,7 +68,8 @@ router.patch("/:question_id", passport.authenticate('jwt', { session: false }), 
 			}
 		}).then(question => res.json(question))
 		.catch(err => {
-			err.status(400).send('updating question failed');
+			// err.status(400).send('updating question failed');
+			res.status(400).json({ question: "updating question failed" })
 		});
 });
 

@@ -28,7 +28,7 @@ Raymond
 Abby
 Ryan
 
-### Day 1 -ALL
+### Day 1 - ALL
 * MongoDb Setup
 * Express Route Setup 
 * User Auth (sign up, log in, log out) 
