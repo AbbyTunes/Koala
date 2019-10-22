@@ -31,14 +31,14 @@ router.get("/:question_id", (req, res) => {
 // show currentUser's own questions
 // Not working, showing "null"
 
-router.get('/my-questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-	Question.find({ authorId: req.user._id })
-		.populate("question")
-		.then(questions => res.json(questions))
-		.catch(err =>
-			res.status(404).json({ question: "You have no questions yet" })
-		);
-});
+// router.get('/my-questions', passport.authenticate('jwt', { session: false }), (req, res) => {
+// 	Question.find({ authorId: req.user._id })
+// 		.populate("question")
+// 		.then(questions => res.json(questions))
+// 		.catch(err =>
+// 			res.status(404).json({ question: "You have no questions yet" })
+// 		);
+// });
 
 // post a question
 router.post('/',
