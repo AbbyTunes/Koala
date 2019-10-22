@@ -10,14 +10,10 @@ const QuestionSchema = new Schema({
 		type: String,
 		required: true
 	},
-	body: {
+	description: {
 		type: String,
 		required: true
 	},
-	topics: [{ 
-		type: Schema.Types.ObjectId, 
-		ref: 'Topic' 
-	}],
 	date: {
 		type: Date,
 		default: Date.now
@@ -25,3 +21,8 @@ const QuestionSchema = new Schema({
 })
 
 module.exports = Question = mongoose.model('Question', QuestionSchema);
+
+	// topics: [{ 
+	// 	type: Schema.Types.ObjectId, 
+	// 	ref: 'Topic' 
+	// }],
