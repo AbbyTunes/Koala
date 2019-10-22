@@ -110,20 +110,22 @@ router.get('/:user_id/questions', (req, res) => {
 	Question.find({ authorId: req.params.user_id })
 		.then(questions => res.json(questions))
 		.catch(err =>
-			res.status(404).json({ noQuestionsFound: 'This user has no questions' }
-			)
+			res.status(404).json({ question: 'This user has no questions' })
 		);
 });
 
-// show answers by :user_id
+// show currentUser's questions
+// NOT working yet
 
-router.get('/:user_id/answers', (req, res) => {
-	Answer.find({ authorId: req.params.user_id })
-		.then(answers => res.json(answers))
-		.catch(err =>
-			res.status(404).json({ noAnswersFound: 'This user has no answers' }
-			)
-		);
-});
+// router.get('current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
+// 	Question.find({ authorId: req.user.id })
+// 		.populate("questions")
+// 		.then(questions => res.json(questions))
+// 		.catch(err =>
+// 			res.status(404).json({ question: "You have no questions yet" })
+// 		);
+// });
+
+
 
 module.exports = router;

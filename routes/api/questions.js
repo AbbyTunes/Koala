@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 const passport = require('passport');
 
 const Question = require('../../models/Question');
@@ -28,8 +29,10 @@ router.get("/:question_id", (req, res) => {
 
 
 // show currentUser's own questions
+// Not working, showing "null"
+
 router.get('/my-questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-	Question.find({ authorId: req.user.id })
+	Question.find({ authorId: req.user._id })
 		.populate("question")
 		.then(questions => res.json(questions))
 		.catch(err =>
@@ -49,13 +52,13 @@ router.post('/',
 			.save()
 			.then(question => res.json(question))
 			.catch(err => {
-				res.status(400).send('adding new question failed');
+				err.status(400).send('adding new question failed');
 			});
 	});
 
 // edit a question
 
-router.patch("/:question_id", (req, res) => {
+router.patch("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
 	Question.findOneAndUpdate({ _id: req.params.question_id },
 		{
 			$set:
@@ -63,7 +66,10 @@ router.patch("/:question_id", (req, res) => {
 				title: req.body.title,
 				description: req.body.description
 			}
-		}).then(question => console.log(question))
+		}).then(question => res.json(question))
+		.catch(err => {
+			err.status(400).send('updating question failed');
+		});
 });
 
 
