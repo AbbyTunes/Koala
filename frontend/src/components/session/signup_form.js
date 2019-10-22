@@ -9,11 +9,15 @@ class SignupForm extends React.Component {
 			lastName: '',
 			email: '',
 			password: '',
-			errors: {}
+            errors: {},
+            form: true
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.clearedErrors = false;
+        this.clearedErrors = false;
+        this.toggleForm = this.toggleForm.bind(this);
+        this.handleDemoOne = this.handleDemoOne.bind(this);
+        this.handleDemoTwo = this.handleDemoTwo.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -52,12 +56,44 @@ class SignupForm extends React.Component {
 				))}
 			</ul>
 		);
-	}
+    }
+    
+    toggleForm() {
+        if (this.state.form) {
+            this.setState({'form': false});
+        } else {
+            this.setState({'form': true});
+        }
+    }
+
+    handleDemoOne() {
+        this.props.demoLogin1();
+    }
+
+    handleDemoTwo() {
+        this.props.demoLogin2();
+    }
 
 	render() {
 		return (<div className='signup-form-container'>
+            <div className='demo-btn-container'
+                hidden={!this.state.form}>
+                <button className='demo-btn one'
+                    onClick={this.handleDemoOne}>
+                    Log On Demo User 1
+                </button>
+                <button className='demo-btn two'
+                    onClick={this.handleDemoTwo}>
+                    Log On Demo User 2
+                </button>
+                <div className='sign-up-txt'
+                    onClick={this.toggleForm}>
+                    Sign Up With Email
+                </div>
+            </div>
             <form className='signup-form'
-                onSubmit={this.handleSubmit}>
+                onSubmit={this.handleSubmit}
+                hidden={this.state.form}>
                 <div className='form-title'>
                     Sign Up
                 </div>
@@ -88,10 +124,10 @@ class SignupForm extends React.Component {
                         onChange={this.update('password')} />
                 </label>
                 <div className='input-column'>
-                    <a className='cancel'
-                        href='#'>
+                    <div className='cancel'
+                        onClick={this.toggleForm}>
                         Cancel
-                    </a>
+                    </div>
                     <input className='input-submit'
                         type='submit'
                         value='Sign Up' />

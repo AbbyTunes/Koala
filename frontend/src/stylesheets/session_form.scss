@@ -1,3 +1,8 @@
+*::-moz-focus-inner {
+  outline: none;
+  border: 0;
+}
+
 .session-form-container {
     display: flex;
     flex-direction: column;
@@ -8,6 +13,7 @@
     line-height: 1.4;
     width: 650px;
     background: white;
+    margin: auto;
 
     .network-logo {
         width: 224px;
@@ -30,10 +36,14 @@
         display: flex;
         padding: 32px;
 
+        .form-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
         .form-divider {
-            box-sizing: border-box;
-            width: 2px;
-            height: 100%;
+            box-sizing: content-box;
+            width: 1.5px;
             padding: 32px 0px;
             background: #e6e6e6;
             margin: 0px 32px;
@@ -43,6 +53,45 @@
     .input-column {
         display: flex;
         justify-content: flex-end;
+        margin-top: 8px;
+    }
+
+    .demo-btn {
+        box-sizing: border-box;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: center;
+        width: 100%;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+        outline: 0;
+        margin-bottom: 16px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &.one {
+            background: #df4930;
+        }
+    
+        &.two {
+            background: #507cc0;
+        }
+    }
+
+    .sign-up-txt {
+        color: #2b6dad;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
 
@@ -67,36 +116,59 @@
     }
 
     input[type=text], input[type=password] {
-            box-sizing: border-box;
-            color: #bebebe;
-            font-size: 15px;
-            width: 100%;
-            height: 27px;
-            min-height: 27px;
-            padding: 3px 5px;
-            background: #fafafa;
-            border: 1px solid #e2e2e2;
-            border-radius: 3px;
-            box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
-            outline: none;
+        box-sizing: border-box;
+        color: #bebebe;
+        font-size: 15px;
+        width: 100%;
+        height: 27px;
+        min-height: 27px;
+        padding: 3px 5px;
+        background: #fafafa;
+        border: 1px solid #e2e2e2;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+        outline: none;
 
-            transition: border-color 0.2s;
+        transition: border-color 0.2s;
 
-            &:focus {
-                border-color: #ccc;
-            }
+        &:focus {
+            border-color: #ccc;
         }
+    }
 
-    
+    .cancel {
+        color: #2b6dad;
+        line-height: 27px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .input-submit {
+        color: white;
+        font-size: 13px;
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none;
+        height: 27px;
+        min-height: 27px;
+        padding: 3px 7px 4px 7px;
+        background: #3e78ad;
+        border: 1px solid #3a66ad;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
+        outline: none;
+        margin-left: 8px;
+        cursor: pointer;
+
+        &:active {
+            opacity: 0.6;
+            box-shadow: none;
+        }
+    }
 }
 
 .login-form-container {
     width: 50%;
-
-    .form-title {
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
 
     input[type=text], input[type=password] {
         box-sizing: border-box;
@@ -112,6 +184,8 @@
         box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
         outline: none;
 
+        transition: border-color 0.2s;
+
         &:focus {
             border-color: #ccc;
         }
@@ -122,7 +196,7 @@
     }
 
     .input-password {
-        margin-bottom: 8px;
+        
     }
 
     .input-submit {
@@ -139,5 +213,11 @@
         border-radius: 3px;
         box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
         outline: none;
+        cursor: pointer;
+
+        &:active {
+            opacity: 0.6;
+            box-shadow: none;
+        }
     }
 }
