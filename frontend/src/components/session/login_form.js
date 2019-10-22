@@ -20,18 +20,15 @@ class LoginForm extends React.Component {
 			this.props.history.push('/koalas');
 		}
 
-		// Set or clear errors
 		this.setState({ errors: nextProps.errors })
 	}
 
-	// Handle field updates (called in the render method)
 	update(field) {
 		return e => this.setState({
 			[field]: e.currentTarget.value
 		});
 	}
 
-	// Handle form submission
 	handleSubmit(e) {
 		e.preventDefault();
 
@@ -43,7 +40,6 @@ class LoginForm extends React.Component {
 		this.props.login(user);
 	}
 
-	// Render the session errors if there are any
 	renderErrors() {
 		return (
 			<ul>
@@ -57,28 +53,30 @@ class LoginForm extends React.Component {
 	}
 
 	render() {
-		return (
-			<div>
-				<form onSubmit={this.handleSubmit}>
-					<div>
-						<input type="text"
-							value={this.state.email}
-							onChange={this.update('email')}
-							placeholder="Email"
-						/>
-						<br />
-						<input type="password"
-							value={this.state.password}
-							onChange={this.update('password')}
-							placeholder="Password"
-						/>
-						<br />
-						<input type="submit" value="Submit" />
-						{this.renderErrors()}
-					</div>
-				</form>
-			</div>
-		);
+		return (<div className='login-form-container'>
+            <form className='login-form'
+                onSubmit={this.handleSubmit}>
+                <div className='form-title'>
+                    Login
+                </div>
+                <input className='input-email'
+                    type='text'
+                    value={this.state.email}
+                    onChange={this.update('email')}
+                    placeholder='Email' />
+                <input className='input-password'
+                    type='password'
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    placeholder='Password' />
+                <div className='input-column'>
+                    <input className='input-submit'
+                        type='submit'
+                        value='Login' />
+                </div>
+                {this.renderErrors()}
+            </form>
+		</div>);
 	}
 }
 
