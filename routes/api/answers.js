@@ -23,9 +23,10 @@ router.patch('/:answer_id',
         {
             $set:
             {
-            description: req.body.description
+                description: req.body.description
             }
-        }
+        },
+        { new: true }
         ).then(answer => res.json(answer))
         .catch(err => {
             res.status(400).json({ answer: 'failed to update answer' })

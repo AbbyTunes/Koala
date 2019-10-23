@@ -57,7 +57,9 @@ router.patch("/:question_id", passport.authenticate('jwt', { session: false }), 
 				title: req.body.title,
 				description: req.body.description
 			}
-		}).then(question => res.json(question))
+        },
+        { new: true }
+        ).then(question => res.json(question))
 		.catch(err => {
 			// err.status(400).send('updating question failed');
 			res.status(400).json({ question: "updating question failed" })
