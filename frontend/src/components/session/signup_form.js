@@ -20,13 +20,13 @@ class SignupForm extends React.Component {
         this.handleDemoTwo = this.handleDemoTwo.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.signedIn === true) {
-			this.props.history.push('/login');
-		}
+	// componentWillReceiveProps(nextProps) {
+	// 	if (nextProps.signedIn === true) {
+	// 		this.props.history.push('/login');
+	// 	}
 
-		this.setState({ errors: nextProps.errors })
-	}
+	// 	this.setState({ errors: nextProps.errors })
+	// }
 
 	update(field) {
 		return e => this.setState({

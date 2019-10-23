@@ -11,12 +11,12 @@ const AnswerSchema = new Schema({
 		ref: 'Question'
 	},
 	upvote: {
-		type: Integer
+		type: Number
 	},
 	downvote: {
-		type: Integer
+		type: Number
 	},
-	body: {
+	description: {
 		type: String,
 		required: true
 	},
