@@ -25,11 +25,11 @@
     margin: auto;
 
     .network-logo {
-        width: 270px;
-        min-width: 224px;
+        width: 289px;
+        min-width: 289px;
         height: 82px;
         background-image: url('../images/Koala-logo-final.png');
-        background-size: cover;
+        background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
         margin: auto;
