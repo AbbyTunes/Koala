@@ -84,7 +84,7 @@
  background-color:#fafafa;
 }
 
-#nav-item-link{
+.nav-item-link{
     position: relative;
     display: flex;
     align-items: center;
@@ -97,6 +97,12 @@
     background-position: 10px center;
     box-sizing: border-box;
     border-bottom: 2px solid transparent;
+}
+
+.red{
+  border-color: #b92b27;
+  color: #b92b27;
+  opacity: 1;
 }
 
 .nav-item-link-inner{
@@ -112,6 +118,10 @@
 
 .nav-item-link-icon-svg-g{
   fill: #666;
+}
+
+.red-fill{
+  fill: #b92b27;
 }
 
 .navbar-right-contents{
@@ -252,4 +262,177 @@
   border: 1px solid #ccc;
   box-shadow: 0 1px 3px rgba(200,200,200,0.7);
   padding: 0;
+}
+
+.nav-profile-dropdown-overflow{
+  overflow-y: auto;
+  max-height: calc(100vh - 61px)!important;
+}
+
+.nav-profile-dropdown-inner-style{
+    display: flex!important;
+    flex-direction: column!important;
+    background-color: #fff!important;
+}
+
+.nav-profile-dropdown-header-container{
+  top: 0!important;
+  left: 0!important;
+  width: 100%!important;
+  z-index: 2!important;
+  border-width: 1px;
+  border-color: #e2e2e2;
+  border-radius: 0;
+  border-bottom-style: solid;
+  background-color: #fff!important;
+}
+
+.nav-profile-dropdown-links-container{
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+  border-width: 1px;
+  border-color: #e2e2e2;
+  border-radius: 0;
+  border-bottom-style: solid;
+}
+
+.nav-profile-dropdown-settings-links-container{
+  border-width: 1px;
+  border-color: #e2e2e2;
+  border-radius: 0;
+  border-bottom-style: solid;
+}
+
+.nav-profile-dropdown-official-links-container{
+  flex: 1 1 auto!important;
+  min-width: 0!important;
+  min-height: 0!important;
+  background-color: #fafafa!important;
+}
+
+.nav-profile-dropdown-header-icon-container{
+    align-items: flex-start!important;
+    display: flex!important;
+    padding-top: 16px!important;
+    padding-left: 16px!important;
+    padding-right: 16px!important;
+}
+
+.dropdown-link-to-profile{
+    display: block!important;
+    margin-top: 4px!important;
+    margin-bottom: 8px!important;
+    padding-left: 16px!important;
+    padding-right: 16px!important;
+    padding-top: 8px!important;
+    padding-bottom: 8px!important;
+    color: #333!important;
+    text-decoration: none!important;
+    background-color: rgba(255,255,255,0.8);
+    transition: background-color .1s ease-in-out 0s;
+    
+}
+
+
+.dropdown-link-to-profile:hover{
+  background-color: #fafafa;
+}
+
+.dropdown-icon-link-to-profile{
+  position: relative!important;
+  display: inline-flex!important;
+}
+
+.margin-left{
+  margin-left: auto!important;
+}
+
+.dropdown-icon-content-container{
+  display: inline-flex!important;
+}
+
+.dropdown-icon-content-wrapper{
+  display: inline-flex!important;
+  flex: none!important;
+  position: relative;
+}
+
+.profile-photo-img-dropdown{
+ border-radius: 50%;
+ height: 48px;
+ box-shadow: inset 0 1px 0 rgba(0,0,0,0.25), inset 0 -1px 0 rgba(0,0,0,0.25), inset 1px 0 0 rgba(0,0,0,0.25), inset -1px 0 0 rgba(0,0,0,0.25);
+}
+
+.dropdown-link-to-profile-flex-center{
+  align-items: center!important;
+  display: flex!important;
+}
+
+.dropdown-link-to-profile-username-container{
+  flex: 1 1 auto!important;
+  min-width: 0!important;
+  min-height: 0!important;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  font-size: 17px!important;
+  font-weight: bold!important;
+}
+
+.dropdown-link-to-profile-arrow-container{
+  margin-left: auto!important;
+}
+
+.dropdown-link-to-profile-arrow{
+    display: inline-block;
+    line-height: 0;
+    vertical-align: text-bottom;
+}
+
+.nav-profile-dropdown-links-link, .nav-profile-dropdown-settings-link{
+  padding-left: 16px!important;
+  padding-right: 16px!important;
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+  display: flex!important;
+  align-items: center!important;
+  text-decoration: none!important;
+  background-color: rgba(255,255,255,0.8);
+  transition: background-color .1s ease-in-out 0s;
+}
+
+.nav-profile-dropdown-settings-link{
+  padding-top: 6px!important;
+  padding-bottom: 6px!important;
+}
+
+.nav-profile-dropdown-links-link:hover, .nav-profile-dropdown-settings-link:hover{
+  background-color: #fafafa;
+}
+
+.nav-profile-dropdown-links-link-content{
+  color: #333!important;
+  font-size: 14px!important;
+}
+
+.nav-profile-dropdown-settings-link-content{
+  color: #333!important;
+  font-size: 14px!important;
+}
+
+.nav-profile-dropdown-official-links-wrapper{
+  padding-left: 16px!important;
+  padding-right: 16px!important;
+  padding-top: 8px!important;
+  padding-bottom: 8px!important;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.nav-profile-dropdown-official-links-link{
+  color: #949494!important;
+  text-decoration: none;
+}
+
+.bullet{
+  color: #949494;
 }
