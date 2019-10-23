@@ -29,3 +29,5 @@ const QuestionIndexItem = ({ question, deleteQuestion }) => {
 		</li>
 	)
 }
+
+export default QuestionIndexItem;

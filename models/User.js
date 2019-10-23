@@ -18,14 +18,17 @@ const UserSchema = new Schema ({
 		type: String,
 		required: true
 	},
-	questions: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Question'
-	}],
+
 	date: {
 		type: Date,
 		default: Date.now
 	}
 })
 
-module.exports = User = mongoose.model('User', UserSchema);
+module.exports = User = mongoose.model('User', UserSchema);	
+
+// Don't need this
+// questions: [{
+	// 	type: Schema.Types.ObjectId,
+	// 	ref: 'Question'
+	// }],

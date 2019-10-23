@@ -107,8 +107,9 @@ router.post('/login', (req, res) => {
 
 // show questions by currentUser
 
+// correct
 router.get('/current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-	User.findById( req.user._id )
+	Question.find({ authorId: req.user._id})
 		.populate("questions")
 		.then(questions => res.json(questions))
 		.catch(err =>
@@ -116,6 +117,15 @@ router.get('/current/questions', passport.authenticate('jwt', { session: false }
 		);
 });
 
+// not correct
+// router.get('/current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
+// 	User.findById( req.user._id )
+// 		.populate("questions")
+// 		.then(questions => res.json(questions))
+// 		.catch(err =>
+// 			res.status(404).json({ question: "You have no questions yet" })
+// 		);
+// });
 // show questions by a specific user
 
 router.get('/:user_id/questions', (req, res) => {
