@@ -7,16 +7,15 @@ import QuestionIndexContainer from "../question/question_index_container";
 import QuestionShowContainer from "../question/question_show_container";
 
 class MainPage extends React.Component {
-
+// props to pass down pathname
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
-		debugger;
 		return (
 			<div className='main-page-container'>
-				<NavBarContainer pathname={props.location.pathname}/>
+				<NavBarContainer pathname={this.props.location.pathname}/>
 				<div className='main-page-content'>
 					<Switch>
 						<Route exact path="/questions" component={QuestionIndexContainer} />
