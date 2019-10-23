@@ -32,7 +32,6 @@ class NavBar extends React.Component {
 		let gHomeClass = "nav-item-link-icon-svg-g";
 		let answerClass = "nav-item-link";
 		let gAnswerClass = "nav-item-link-icon-svg-g";
-		debugger;
 		switch (this.props.pathname) {
 			case "/":
 				homeClass += " red";
@@ -41,6 +40,8 @@ class NavBar extends React.Component {
 			case "/answer":
 				answerClass += " red";
 				gAnswerClass += " red-fill";
+				break;
+			default:
 				break;
 		}
 	
