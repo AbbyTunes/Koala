@@ -27,19 +27,6 @@ router.get("/:question_id", (req, res) => {
 		);
 });
 
-
-// show currentUser's own questions
-// Not working, showing "null"
-
-// router.get('/my-questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-// 	Question.find({ authorId: req.user._id })
-// 		.populate("question")
-// 		.then(questions => res.json(questions))
-// 		.catch(err =>
-// 			res.status(404).json({ question: "You have no questions yet" })
-// 		);
-// });
-
 // post a question
 router.post('/',
 	passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -47,12 +34,13 @@ router.post('/',
 			authorId: req.user.id,
 			title: req.body.title,
 			description: req.body.description
+			// topics: 
 		});
 		newQuestion
 			.save()
 			.then(question => res.json(question))
 			.catch(err => {
-				err.status(400).send('adding new question failed');
+				res.status(400).json({ question: "adding new question failed" });
 			});
 	});
 
@@ -68,7 +56,8 @@ router.patch("/:question_id", passport.authenticate('jwt', { session: false }), 
 			}
 		}).then(question => res.json(question))
 		.catch(err => {
-			err.status(400).send('updating question failed');
+			// err.status(400).send('updating question failed');
+			res.status(400).json({ question: "updating question failed" })
 		});
 });
 
