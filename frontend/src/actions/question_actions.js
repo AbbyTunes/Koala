@@ -6,12 +6,12 @@ export const REMOVE_QUESTION = "REMOVE_QUESTION";
 
 const receiveQuestions = (questions) => ({
 	type: RECEIVE_ALL_QUESTIONS,
-	questions
+	questions: questions.data
 });
 
 const receiveQuestion = (question) => ({
 	type: RECEIVE_QUESTION,
-	question
+	question: question.data
 });
 
 export const fetchQuestions = () => dispatch => (

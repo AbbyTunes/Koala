@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionIndexItem from './question_index_item';
+// import QuestionCreateContainer from './question_create_container';
 
 class QuestionIndex extends React.Component {
 	componentDidMount() {
@@ -16,9 +17,14 @@ class QuestionIndex extends React.Component {
 		});
 
 		return (
-			<ul className="question-frame">
-				{questions}
-			</ul>
+			<div className="question-frame">
+				<div>
+					{/* <QuestionCreateContainer /> */}
+				</div>
+				<ul>
+					{questions}
+				</ul> 
+			</div>
 		)
 	}
 }
