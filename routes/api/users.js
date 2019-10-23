@@ -126,6 +126,7 @@ router.get('/current/questions', passport.authenticate('jwt', { session: false }
 // 			res.status(404).json({ question: "You have no questions yet" })
 // 		);
 // });
+
 // show questions by a specific user
 
 router.get('/:user_id/questions', (req, res) => {

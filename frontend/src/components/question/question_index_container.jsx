@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchQuestions, deleteQuestion } from '../../actions/question_actions';
+import { fetchQuestions, createQuestion, deleteQuestion } from '../../actions/question_actions';
 import QuestionIndex from './question_index';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	fetchQuestions: () => dispatch(fetchQuestions()),
+	createQuestion: (data) => dispatch(createQuestion(data)),
 	deleteQuestion: (id) => dispatch(deleteQuestion(id))
 });
 
