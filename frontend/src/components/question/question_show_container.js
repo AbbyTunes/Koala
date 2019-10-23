@@ -13,7 +13,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		fetchQuestion: () => dispatch(fetchQuestion(questionId)),
 		updateQuestion: () => dispatch(updateQuestion(questionId))
 	}
-	
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionShow);

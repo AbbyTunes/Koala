@@ -12,7 +12,7 @@ class QuestionShow extends React.Component {
 				<div>
 					title: {question.title}
 					<br/>
-					description: "{question.description}""
+					description: "{question.description}"
 				</div>
 			)
 		} else {
