@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 
@@ -9,6 +8,8 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const passport = require('passport');
 
+const User = require('../../models/User');
+const Question = require('../../models/Question');
 
 router.get("/test", (req, res) => res.json({ msg: "User Route"}));
 
@@ -102,5 +103,29 @@ router.post('/login', (req, res) => {
 				})
 		})
 })
+
+// show questions by :user_id
+
+router.get('/:user_id/questions', (req, res) => {
+	Question.find({ authorId: req.params.user_id })
+		.then(questions => res.json(questions))
+		.catch(err =>
+			res.status(404).json({ question: 'This user has no questions' })
+		);
+});
+
+// show currentUser's questions
+// NOT working yet
+
+// router.get('current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
+// 	Question.find({ authorId: req.user.id })
+// 		.populate("questions")
+// 		.then(questions => res.json(questions))
+// 		.catch(err =>
+// 			res.status(404).json({ question: "You have no questions yet" })
+// 		);
+// });
+
+
 
 module.exports = router;
