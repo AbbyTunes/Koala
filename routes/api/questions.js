@@ -52,8 +52,7 @@ router.post('/',
 router.patch("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
 	Question.findOneAndUpdate({ _id: req.params.question_id },
 		{
-			$set:
-			{
+			$set: {
 				title: req.body.title,
 				description: req.body.description
 			}
@@ -61,7 +60,6 @@ router.patch("/:question_id", passport.authenticate('jwt', { session: false }), 
         { new: true }
         ).then(question => res.json(question))
 		.catch(err => {
-			// err.status(400).send('updating question failed');
 			res.status(400).json({ question: "updating question failed" })
 		});
 });
