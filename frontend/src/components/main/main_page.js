@@ -3,14 +3,8 @@ import React from 'react';
 class MainPage extends React.Component {
 
 	render() {
-		return (
-			<div>
-				<h1>A Quora Clone</h1>
-				<footer>
-					Copyright &copy; 2019 Koala
-        </footer>
-			</div>
-		);
+		return (<div className='main-page-container'>
+		</div>);
 	}
 }
 
