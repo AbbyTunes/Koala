@@ -143,7 +143,7 @@
 .navbar-search{
   font-size: 13px;
   box-sizing: border-box;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   position: static;
   width: 100%;
   display: block;
