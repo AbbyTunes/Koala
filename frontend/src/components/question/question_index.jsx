@@ -18,12 +18,17 @@ class QuestionIndex extends React.Component {
 
 		return (
 			<div className="question-frame">
-				<div>
-					{/* <QuestionCreateContainer /> */}
+				<div className="topic-frame">
+
 				</div>
-				<ul>
-					{questions}
-				</ul> 
+				<div className="question-middle">
+					{/* <QuestionCreateContainer /> */}
+					creating something here
+					<ul>
+						{questions}
+					</ul> 
+				</div>
+				
 			</div>
 		)
 	}
