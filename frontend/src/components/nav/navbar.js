@@ -133,6 +133,9 @@ class NavBar extends React.Component {
 
 											<div className={this.state.active ? "nav-profile-dropdown" : "hidden"}>
 												<div className="nav-profile-dropdown-contents">
+													<div className="nav-profile-dropdown-overflow">
+
+													</div>
 													<button onClick={this.logoutUser}>Logout</button>
 												</div>
 												
