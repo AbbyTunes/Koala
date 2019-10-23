@@ -18,7 +18,8 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         id: req.user.id,
         firstName: req.user.firstName,
 		lastName: req.user.lastName,
-        email: req.user.email
+		email: req.user.email,
+		questions: req.user.questions
     });
 })
 
@@ -104,7 +105,28 @@ router.post('/login', (req, res) => {
 		})
 })
 
-// show questions by :user_id
+// show questions by currentUser
+
+// correct
+router.get('/current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
+	Question.find({ authorId: req.user._id})
+		.populate("questions")
+		.then(questions => res.json(questions))
+		.catch(err =>
+			res.status(404).json({ question: "You have no questions yet" })
+		);
+});
+
+// not correct
+// router.get('/current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
+// 	User.findById( req.user._id )
+// 		.populate("questions")
+// 		.then(questions => res.json(questions))
+// 		.catch(err =>
+// 			res.status(404).json({ question: "You have no questions yet" })
+// 		);
+// });
+// show questions by a specific user
 
 router.get('/:user_id/questions', (req, res) => {
 	Question.find({ authorId: req.params.user_id })
@@ -113,19 +135,5 @@ router.get('/:user_id/questions', (req, res) => {
 			res.status(404).json({ question: 'This user has no questions' })
 		);
 });
-
-// show currentUser's questions
-// NOT working yet
-
-// router.get('current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-// 	Question.find({ authorId: req.user.id })
-// 		.populate("questions")
-// 		.then(questions => res.json(questions))
-// 		.catch(err =>
-// 			res.status(404).json({ question: "You have no questions yet" })
-// 		);
-// });
-
-
 
 module.exports = router;

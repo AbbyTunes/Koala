@@ -28,7 +28,7 @@ Raymond
 Abby
 Ryan
 
-### Day 1 -ALL
+### Day 1 - All Members
 * MongoDb Setup
 * Express Route Setup 
 * User Auth (sign up, log in, log out) 
@@ -38,15 +38,14 @@ Ryan
 ### Day 2 - 3
 * Home Page (Nav bar) - Ryan
 * Styling user auth (shared page for signup/login) - Raymond
-* Questions (topics, question index and answer preview) - Abby
+* Questions (question index and answer preview) - Abby
 * Answers (upvotes, comments) - Raymond
-* Topics (checkbox/tags) - Ryan
-* User Profile (user show) - Abby
+* User Profile (user show) - Ryan
     - questions (author)
     - answers (author)
 
 ### Day 4 - 5 
-* css
+* Topics (checkbox/tags)
 
 
 ### Bonus:
