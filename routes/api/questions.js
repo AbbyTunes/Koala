@@ -85,7 +85,7 @@ router.get('/:question_id/answers', (req, res) => {
 		// will not show errors when no answers; shows empty array
 });
 
-// post an answer
+// post an answer to a particular question
 router.post('/:question_id/answers',
 	passport.authenticate('jwt', { session: false }), (req, res) => {
 		const newAnswer = new Answer({
@@ -100,7 +100,7 @@ router.post('/:question_id/answers',
 			.save()
 			.then(answer => res.json(answer))
 			.catch(err => {
-				res.status(400).json({ answer: "failed to answer question" });
+				res.status(400).json({ answer: 'failed to answer question' });
 			});
 	}
 );
