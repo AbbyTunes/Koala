@@ -18,6 +18,10 @@ const UserSchema = new Schema ({
 		type: String,
 		required: true
 	},
+	questions: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Question'
+	}],
 	date: {
 		type: Date,
 		default: Date.now
