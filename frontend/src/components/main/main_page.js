@@ -17,6 +17,7 @@ class MainPage extends React.Component {
 						<Route exact path="/questions" component={QuestionIndexContainer} />
 						<Route exact path="/questions/:question_id" component={QuestionShowContainer} />
 						{/* <Route exact path="/" component={AnswerIndexContainer} /> */}
+						
 						<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
 						
 					</Switch>

@@ -8,8 +8,8 @@ import SessionFormContainer from './session/session_form_container'
 const App = () => (
 	<div>
 		<Switch>
-			<AuthRoute exact path="/login" component={SessionFormContainer} />
-			<AuthRoute exact path="/signup" component={SessionFormContainer} />
+			<AuthRoute exact path="/" component={SessionFormContainer} />
+			{/* <AuthRoute exact path="/signup" component={SessionFormContainer} /> */}
 			<ProtectedRoute path="/" component={MainPage} />
 			<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
 		</Switch>
