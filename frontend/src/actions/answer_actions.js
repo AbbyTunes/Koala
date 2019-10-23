@@ -19,23 +19,27 @@ const removeAnswer = id => ({
     id
 });
 
-export const fetchAnswers = () => dispatch => (
-    AnswerApiUtil.fetchAnswers().
-        then(answers => dispatch(receiveAnswers(answers)))
+export const fetchAnswers = questionId => dispatch => (
+    AnswerApiUtil.fetchAnswers(questionId)
+        .then(answers => dispatch(receiveAnswers(answers)))
 );
 
-export const fetchAnswer = (id) => dispatch => (
-    AnswerApiUtil.fetchAnswer(id).then(answer => dispatch(receiveAnswer(answer)))
+export const fetchAnswer = id => dispatch => (
+    AnswerApiUtil.fetchAnswer(id)
+        .then(answer => dispatch(receiveAnswer(answer)))
 );
 
-export const createAnswer = (answer) => dispatch => (
-    AnswerApiUtil.createAnswer(answer).then(answer => dispatch(receiveAnswer(answer)))
+export const createAnswer = answer => dispatch => (
+    AnswerApiUtil.createAnswer(answer)
+        .then(answer => dispatch(receiveAnswer(answer)))
 );
 
-export const updateAnswer = (answer) => dispatch => (
-    AnswerApiUtil.updateAnswer(answer).then(answer => dispatch(receiveAnswer(answer)))
+export const updateAnswer = answer => dispatch => (
+    AnswerApiUtil.updateAnswer(answer)
+        .then(answer => dispatch(receiveAnswer(answer)))
 );
 
-export const deleteAnswer = (answerId) => dispatch => (
-    AnswerApiUtil.deleteAnswer(answerId).then(answer => dispatch({ type: REMOVE_ANSWER, answerId: answer.id }))
+export const deleteAnswer = id => dispatch => (
+    AnswerApiUtil.deleteAnswer(id)
+        .then(answer => dispatch(removeAnswer(answer.id)))
 );
