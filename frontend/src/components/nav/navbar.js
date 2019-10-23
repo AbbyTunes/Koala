@@ -268,7 +268,7 @@ class NavBar extends React.Component {
 													</div>
 												</div>											
 											</div>											
-											<a className="nav-item-link" href="#">
+											<a className="nav-item-link">
 												<span className="expanded">
 													<span className="profile-icon-wrapper">
 														<div className="profile-icon-wrapper-inner-div">

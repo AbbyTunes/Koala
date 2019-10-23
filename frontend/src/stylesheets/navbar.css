@@ -97,6 +97,7 @@
     background-position: 10px center;
     box-sizing: border-box;
     border-bottom: 2px solid transparent;
+    cursor: pointer;
 }
 
 .red{

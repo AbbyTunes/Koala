@@ -6,7 +6,7 @@ import NavBarContainer from './nav/navbar_container';
 
 import MainPage from './main/main_page';
 import SessionFormContainer from './session/session_form_container';
-// trying pathname stuff
+// added props for stlying based on pahname
 const App = (props) => {
 	return(
 	<div>
