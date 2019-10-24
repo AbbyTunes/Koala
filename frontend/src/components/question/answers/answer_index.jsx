@@ -4,7 +4,7 @@ import AnswerIndexItem from './answer_index_item';
 
 class AnswerIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchAnswers(this.props.params.question_id);
+        this.props.fetchAnswers(this.props.match.params.question_id);
     }
 
     render() {
@@ -16,9 +16,10 @@ class AnswerIndex extends React.Component {
         );
 
         return (<div className='answer-index-container'>
-            <div class_name='answer-count'>
+            <div className='answer-count'>
                 {answers.length} Answers
             </div>
+            <div className='content-divider'></div>
             {answers}
         </div>)
     }

@@ -5,6 +5,8 @@ import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import MainPage from './main/main_page';
 import SessionFormContainer from './session/session_form_container'
 
+import ResetStylesheet from '../stylesheets/reset.css';
+
 // added props for stlying based on pathname
 const App = (props) => {
 	return(
