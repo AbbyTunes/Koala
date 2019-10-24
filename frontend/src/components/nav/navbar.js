@@ -113,7 +113,7 @@ class NavBar extends React.Component {
 																9.105,9.517 9.168,9.347 C9.268,9.078 9.47,8.843 9.775,8.641 L10.335,8.272
 																C10.903,7.896 11.287,7.587 11.487,7.345 C11.829,6.947 12,6.456 12,5.874
 																C12,4.925 11.607,4.209 10.821,3.725 C10.034,3.242 9.047,3 7.858,3 C6.953,3
-																6.191,3.17 5.57,3.51 Z M5.57,3.513" transform="translate(-5,0)"  transform="scale(1.5, 1.5)"fill-rule="evenodd"></path>								
+																6.191,3.17 5.57,3.51 Z M5.57,3.513" transform="translate(-5,0)"  transform="scale(1.5, 1.5)"></path>								
 														</g>
 													</svg>
 												</span>
@@ -152,7 +152,7 @@ class NavBar extends React.Component {
 											data-lpignore="true" 
 											autoFocus="True" 
 											data-group="js-editable" 
-											placeholder="Search Quora" 
+											placeholder="Search Koala" 
 											w2cid="wS9ZF19Z12" 
 											// id="__w2_wS9ZF19Z12_input"
 											/>
