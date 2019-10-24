@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchQuestions, createQuestion, deleteQuestion } from '../../actions/question_actions';
 import QuestionIndex from './question_index';
-import QuestionStylesheet from '../../stylesheets/question.scss';
+import QuestionIndexStylesheet from '../../stylesheets/question_index.scss';
 
 const mapStateToProps = state => ({
 	questions: Object.values(state.entities.questions)

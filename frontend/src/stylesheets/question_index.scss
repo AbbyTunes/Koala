@@ -1,6 +1,6 @@
 .question-frame {
 	position: relative;
-	top: 5px;
+	top: 0;
 	left: 0;
 	right: 0;
 	height: 800px;
@@ -11,7 +11,7 @@
 
 	.topic-frame {
 		position: absolute;
-		top: 30px;
+		top: 0;
 		left: 0;
 		width: 180px;
 		height: 500px;
@@ -21,7 +21,7 @@
 	.question-middle {
 		display: block;
 		position: absolute;
-		top: 30px;
+		top: 0;
 		left: 200px;
 		width: 600px;
 		// border: 2px solid yellow;
@@ -123,7 +123,7 @@
 				}
 			}
 
-			.question-4 {
+			.question-icon {
 				position: relative;
 				top: 0;
 				display: flex;
@@ -132,9 +132,6 @@
 
 				ul {
 					display: flex;
-					// position: absolute;
-					// bottom: 0px;
-					// right: -6px;
 				}
 
 				li {
@@ -146,20 +143,20 @@
 					display: flex;
 				}
 
-				.question-4-1 {
+				.question-icon-left {
 					display: flex;
 					position: relative;
 					top: 4px;
 					left: 6px;
 
-					.question-follow {
+					.question-number {
 						display: flex;
 						// padding-left: 8px;
 						font-weight: 400;
 					}
 				}
 
-				.question-more {
+				.question-icon-right {
 					position: absolute;
 					right: -8px;
 					display: flex;
