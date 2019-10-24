@@ -1,5 +1,5 @@
 html {
-  height: 100%;
+	height: 100%;
     font-weight: 400;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     font-size: 15px;
@@ -18,8 +18,17 @@ body {
 
 a {
     text-decoration: none;
-    color: #2b6dad;
-    background: transparent;
+	background: transparent;
+	cursor: pointer;
+}
+
+li {
+	list-style-type: none;
+}
+
+ul span {
+	padding: 0;
+	margin: 0;
 }
 
 button, input, optgroup, select textarea {

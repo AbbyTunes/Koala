@@ -1,4 +1,5 @@
 import React from "react";
+import AnswerIndexContainer from './answers/answer_index_container';
 
 class QuestionShow extends React.Component {
 
@@ -13,6 +14,7 @@ class QuestionShow extends React.Component {
 					title: {question.title}
 					<br/>
 					description: "{question.description}"
+					<AnswerIndexContainer />
 				</div>
 			)
 		} else {
