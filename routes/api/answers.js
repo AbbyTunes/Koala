@@ -23,6 +23,8 @@ router.patch('/:answer_id',
         {
             $set:
             {
+                upvote: req.body.upvote,
+                downvote: req.body.downvote,
                 description: req.body.description
             }
         },

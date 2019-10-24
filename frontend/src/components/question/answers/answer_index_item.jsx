@@ -6,7 +6,7 @@ class AnswerIndexItem extends React.Component {
         super(props);
 
         this.state = {
-            upvoteCount: 0,
+            upvoteCount: this.props.answer.upvote,
             upvoted: false,
             downvoted: false,
             downvoteHover: false
@@ -25,6 +25,10 @@ class AnswerIndexItem extends React.Component {
             this.setState({upvoted: true});
             this.setState({upvoteCount: this.state.upvoteCount + 1});
         }
+
+        let answer = Object.assign({}, this.props.answer);
+        answer.upvote = this.state.upvoteCount;
+        this.props.updateAnswer(answer);
     }
 
     toggleDownvote() {
@@ -73,7 +77,7 @@ class AnswerIndexItem extends React.Component {
                     onClick={this.toggleUpvote}>
                     <span className='svg-icon'>
                         <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-                            <g className='svg-base svg-stroke svg-fill'>
+                            <g className='svg-base'>
                                 <polygon points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
                             </g>
                         </svg>
@@ -94,7 +98,7 @@ class AnswerIndexItem extends React.Component {
                         onMouseEnter={() => this.downvoteHover(true)}
                         onMouseLeave={() => this.downvoteHover(false)}>
                         <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-                            <g className='svg-base svg-stroke svg-fill'>
+                            <g className='svg-base'>
                                 <polygon transform='translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000)' points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
                             </g>
                         </svg>

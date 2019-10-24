@@ -1,4 +1,7 @@
 .answer-index-container {
+    width: 600px;
+    min-width: 600px;
+
     .answer-count {
         font-size: 18px;
         font-weight: 500;
@@ -44,6 +47,20 @@
         justify-content: space-between;
         font-size: 14px;
 
+        .svg-icon {
+            line-height: 0px;
+            vertical-align: middle;
+
+            .svg-base {
+                stroke: #666;
+                stroke-width: 1.5;
+                stroke-linejoin: round;
+                fill: none;
+                fill-rule: evenodd;
+                transition: all 100ms ease-in-out 0s;
+            }
+        }
+
         .answer-upvote {
             display: flex;
             justify-content: space-between;
@@ -53,6 +70,10 @@
             padding: 7px 12px;
             border-radius: 40px;
             cursor: pointer;
+
+            .svg-base {
+                stroke: #329bff;
+            }
 
             .upvote-txt {
                 font-weight: 500;
@@ -71,7 +92,7 @@
             &.active {
                 color: #329bff;
 
-                .svg-fill {
+                .svg-base {
                     fill: #329bff;
                 }
             }
@@ -89,7 +110,8 @@
             }
 
             &.active {
-                .svg-fill {
+                .svg-base {
+                    stroke: #329bff;
                     fill: #329bff;
                 }
             }
@@ -126,23 +148,6 @@
                 }
             }
 
-        }
-    
-        .svg-icon {
-            line-height: 0px;
-            vertical-align: middle;
-
-            .svg-base {
-                stroke: #666;
-                stroke-width: 1.5;
-                stroke-linejoin: round;
-                fill: none;
-                fill-rule: evenodd;
-            }
-    
-            .svg-stroke {
-                stroke: #329bff;
-            }
         }
     }
 

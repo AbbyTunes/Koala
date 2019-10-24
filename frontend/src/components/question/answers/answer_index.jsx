@@ -12,7 +12,7 @@ class AnswerIndex extends React.Component {
             <AnswerIndexItem
                 key={`answer-${idx}`}
                 answer={answer}
-                deleteAnswer={this.props.deleteAnswer} />
+                updateAnswer={this.props.updateAnswer} />
         );
 
         return (<div className='answer-index-container'>

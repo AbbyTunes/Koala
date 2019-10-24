@@ -10,6 +10,7 @@ const passport = require('passport');
 
 const User = require('../../models/User');
 const Question = require('../../models/Question');
+const Answer = require('../../models/Answer');
 
 router.get("/test", (req, res) => res.json({ msg: "User Route"}));
 
@@ -117,6 +118,15 @@ router.get('/current/questions', passport.authenticate('jwt', { session: false }
 		);
 });
 
+router.get('/current/answers', passport.authenticate('jwt', { session: false }), (req, res) => {
+	Answer.find({ authorId: req.user._id })
+		.populate("answers")
+		.then(answers => res.json(answers))
+		.catch(err =>
+			res.status(404).json({ question: "You have no answers yet" })
+		);
+});
+
 // not correct
 // router.get('/current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
 // 	User.findById( req.user._id )
@@ -134,6 +144,14 @@ router.get('/:user_id/questions', (req, res) => {
 		.then(questions => res.json(questions))
 		.catch(err =>
 			res.status(404).json({ question: 'This user has no questions' })
+		);
+});
+
+router.get('/:user_id/answers', (req, res) => {
+	Answer.find({ authorId: req.params.user_id })
+		.then(answers => res.json(answers))
+		.catch(err =>
+			res.status(404).json({ question: 'This user has no answers' })
 		);
 });
 
