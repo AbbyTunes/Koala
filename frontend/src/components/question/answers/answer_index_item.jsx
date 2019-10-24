@@ -10,11 +10,13 @@ class AnswerIndexItem extends React.Component {
         this.state = {
             upvoteCount: 0,
             upvoted: false,
-            downvoted: false
+            downvoted: false,
+            downvoteHover: false
         }
 
         this.toggleUpvote = this.toggleUpvote.bind(this);
         this.toggleDownvote = this.toggleDownvote.bind(this);
+        this.downvoteHover = this.downvoteHover.bind(this);
     }
 
     toggleUpvote() {
@@ -35,6 +37,10 @@ class AnswerIndexItem extends React.Component {
         }
     }
 
+    downvoteHover(status) {
+        status ? this.setState({downvoteHover: true}) : this.setState({downvoteHover: false})
+    }
+
 
     render() {
         // Add locale-specific relative date/time formatting rules
@@ -47,6 +53,8 @@ class AnswerIndexItem extends React.Component {
 
         const downvoteClass = 'answer-downvote' + (
             this.state.downvoted ? ' active' : ''
+        ) + (
+            this.state.downvoteHover ? ' tooltip' : ''
         );
     
         return (<div className='answer-index-item-container'>
@@ -83,7 +91,9 @@ class AnswerIndexItem extends React.Component {
                 </div>
                 <div className={downvoteClass}
                     onClick={this.toggleDownvote}>
-                    <span className='svg-icon'>
+                    <span className='svg-icon'
+                        onMouseEnter={() => this.downvoteHover(true)}
+                        onMouseLeave={() => this.downvoteHover(false)}>
                         <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
                             <g className='svg-base svg-stroke svg-fill'>
                                 <polygon transform='translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000)' points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
