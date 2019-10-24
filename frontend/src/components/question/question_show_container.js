@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchQuestion, updateQuestion } from '../../actions/question_actions';
 import QuestionShow from './question_show';
+import QuestionShowStylesheet from '../../stylesheets/question_show.scss';
 
 const mapStateToProps = (state, ownProps) => {
 	const questionId = ownProps.match.params.question_id;

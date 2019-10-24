@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
+// import TimeAgo from 'javascript-time-ago'
+// import en from 'javascript-time-ago/locale/en'
 
 const QuestionIndexItem = ({ question, deleteQuestion }) => {
 
 	// Add locale-specific relative date/time formatting rules
-	TimeAgo.addLocale(en)
-	const timeAgo = new TimeAgo('en-US')
+	// TimeAgo.addLocale(en)
+	// const timeAgo = new TimeAgo('en-US')
+
+	const date = (new Date(question.date)).toLocaleDateString('en-US', {
+		year: 'numeric', month: 'short', day: 'numeric'
+	});
 
 	return (
 		<li className="question-item">
@@ -30,15 +34,15 @@ const QuestionIndexItem = ({ question, deleteQuestion }) => {
 						</svg>
 					</div>
 				</div>
-				<div className="question-2"><Link to="/">{question.title}</Link></div>
+				<div className="question-2"><Link to={`/questions/${question._id}`}>{question.title}</Link></div>
 				<div className="question-3">
 					<div className="question-answer"><Link to="/">100 answers</Link> </div>
 					<div className="question-1">
 						<div className="question-dot">·</div>
-						Last created { timeAgo.format(Date.now() - 60 * 1000, 'time') } ago 
+						Question added on { date }
 					</div>
 				</div>
-				<div className="question-4"> 
+				<div className="question-icon"> 
 					<ul>
 						<li>
 							<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -49,17 +53,17 @@ const QuestionIndexItem = ({ question, deleteQuestion }) => {
 									</g>
 								</g>
 							</svg>
-							<div className="question-4-1">
+							<div className="question-icon-left">
 								Follow
 								<div className="question-dot">·</div>
-								<div className="question-follow">20{}</div>
+								<div className="question-number">20{}</div>
 							</div>
 							
 						</li> 
 						{/* <li>Share</li>
 						<li>Comment</li> */}
 					</ul>
-					<div className="question-more">
+					<div className="question-icon-right">
 						<li>
 							<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
 								<g id="downvote" class="icon_svg-stroke icon_svg-fill" stroke="#666" fill="none" stroke-width="1.5" fill-rule="evenodd" stroke-linejoin="round">
