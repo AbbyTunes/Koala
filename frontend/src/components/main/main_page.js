@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Link, Redirect } from "react-router-dom";
 import MainPageStylesheet from '../../stylesheets/main_page.scss';
 
 import NavBarContainer from "../nav/navbar_container";
+ import ProfileShowContainer from "../profile/profile_container"
 import QuestionIndexContainer from "../question/question_index_container";
 import QuestionShowContainer from "../question/question_show_container";
 
@@ -22,7 +23,7 @@ class MainPage extends React.Component {
 						<Route exact path="/questions" component={QuestionIndexContainer} />
 						<Route exact path="/questions/:question_id" component={QuestionShowContainer} />
 						{/* <Route exact path="/" component={AnswerIndexContainer} /> */}
-						
+						<Route exact path="/profile/:user_id" component={ProfileShowContainer} />
 						<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
 						
 					</Switch>
