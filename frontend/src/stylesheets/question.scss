@@ -15,7 +15,7 @@
 		left: 0;
 		width: 180px;
 		height: 500px;
-		border: 2px solid grey;
+		border: 1px solid #e2e2e2;
 	}
 
 	.question-middle {
@@ -24,7 +24,7 @@
 		top: 30px;
 		left: 200px;
 		width: 600px;
-		border: 2px solid yellow;
+		// border: 2px solid yellow;
 
 		// .add-question {
 		// 	border: 1px solid #efefef;
@@ -57,7 +57,11 @@
 			padding: 16px;
 			margin-top: 0;
 			margin-bottom: 8px;
-			display: block;	
+			display: block;
+
+			.question-dot {
+				padding: 0 5px;
+			}
 
 			.question-1 {
 				position: relative;
@@ -69,7 +73,7 @@
 
 				.question-topic a {
 					color: #949494;
-					margin-left: 3px;
+					// margin-left: 3px;
 				}
 				.question-topic a:hover {
 					text-decoration: underline;
@@ -105,7 +109,7 @@
 				margin: 5px 0;
 
 				.question-answer {
-					padding: 5px 5px 5px 0;	
+					margin: 5px 0;	
 				}
 
 				& a {
@@ -120,8 +124,11 @@
 			}
 
 			.question-4 {
+				position: relative;
+				top: 0;
 				display: flex;
 				margin-bottom: -5px;
+				align-content: center;
 
 				ul {
 					display: flex;
@@ -131,14 +138,35 @@
 				}
 
 				li {
-					padding: 5px 10px 5px 0;
+					padding: 0 10px 5px 0;
 					font-size: 14px;
+					font-weight: 500;
 					color: #666;
+					cursor: pointer;
+					display: flex;
+				}
 
+				.question-4-1 {
+					display: flex;
+					position: relative;
+					top: 4px;
+					left: 6px;
+
+					.question-follow {
+						display: flex;
+						// padding-left: 8px;
+						font-weight: 400;
+					}
 				}
 
 				.question-more {
+					position: absolute;
+					right: -8px;
+					display: flex;
 
+					li {
+						margin-left: 5px;
+					}
 				}
 			}
 		}
