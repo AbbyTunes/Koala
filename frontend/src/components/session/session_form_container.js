@@ -1,7 +1,7 @@
 import React from 'react';
 import SignupFormContainer from './signup_form_container';
 import LoginFormContainer from './login_form_container';
-import sessionFormStylesheet from '../../stylesheets/session_form.scss';
+import SessionFormStylesheet from '../../stylesheets/session_form.scss';
 
 const SessionFormContainer = () => {
     return (<div className='session-form-container'>
