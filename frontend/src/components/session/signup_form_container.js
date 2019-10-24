@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
 };
 
 const demoUser1 = {
-
+    email: 'bagel@gmail.com',
+    password: '123456'
 };
 
 const demoUser2 = {
