@@ -8,6 +8,7 @@ class AnswerIndexItem extends React.Component {
         super(props);
 
         this.state = {
+            upvoteCount: 0,
             upvoted: false,
             downvoted: false
         }
@@ -17,11 +18,21 @@ class AnswerIndexItem extends React.Component {
     }
 
     toggleUpvote() {
-        this.state.upvoted ? this.setState({upvoted: false}) : this.setState({upvoted: true})
+        if (this.state.upvoted) {
+            this.setState({upvoted: false});
+            this.setState({upvoteCount: this.state.upvoteCount - 1});
+        } else {
+            this.setState({upvoted: true});
+            this.setState({upvoteCount: this.state.upvoteCount + 1});
+        }
     }
 
     toggleDownvote() {
-        this.state.downvoted ? this.setState({ downvoted: false }) : this.setState({ downvoted: true })
+        if (this.state.downvoted) {
+            this.setState({ downvoted: false });
+        } else {
+            this.setState({ downvoted: true });
+        }
     }
 
 
@@ -30,12 +41,12 @@ class AnswerIndexItem extends React.Component {
         TimeAgo.addLocale(en)
         const timeAgo = new TimeAgo('en-US');
 
-        const svgUpvoteClass = 'svg-base svg-stroke' + (
-            this.state.upvoted ? ' svg-fill' : ''
+        const upvoteClass = 'answer-upvote' + (
+            this.state.upvoted ? ' active' : ''
         );
 
-        const svgDownvoteClass = 'svg-base svg-stroke' + (
-            this.state.downvoted ? ' svg-fill' : ''
+        const downvoteClass = 'answer-downvote' + (
+            this.state.downvoted ? ' active' : ''
         );
     
         return (<div className='answer-index-item-container'>
@@ -51,10 +62,11 @@ class AnswerIndexItem extends React.Component {
                 {this.props.answer.description}
             </div>
             <div className='answer-footer'>
-                <div className='answer-upvote'>
+                <div className={upvoteClass}
+                    onClick={this.toggleUpvote}>
                     <span className='svg-icon'>
                         <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-                            <g className={svgUpvoteClass}>
+                            <g className='svg-base svg-stroke svg-fill'>
                                 <polygon points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
                             </g>
                         </svg>
@@ -62,14 +74,18 @@ class AnswerIndexItem extends React.Component {
                     <div className='upvote-txt'>
                         Upvote
                     </div>
+                    <div className='upvote-bullet'>
+                        ·
+                    </div>
                     <div className='upvote-count'>
-                        
+                        {this.state.upvoteCount}
                     </div>
                 </div>
-                <div className='answer-downvote'>
+                <div className={downvoteClass}
+                    onClick={this.toggleDownvote}>
                     <span className='svg-icon'>
                         <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-                            <g className={svgDownvoteClass}>
+                            <g className='svg-base svg-stroke svg-fill'>
                                 <polygon transform='translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000)' points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
                             </g>
                         </svg>

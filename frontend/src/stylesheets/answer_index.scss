@@ -1,4 +1,18 @@
 .answer-index-container {
+    div {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+    }
+
+    *::-moz-focus-inner {
+        outline: none;
+        border: 0;
+    }
+    
     .answer-count {
         color: #333;
         font-size: 18px;
@@ -9,32 +23,79 @@
         width: 100%;
         height: 1px;
         background: #e2e2e2;
-        margin: 7px 0px;
+        margin: 8px 0px 12px 0px;
     }
 
-    .answer-upvote {
+    .answer-footer {
         display: flex;
         justify-content: space-between;
-        color: #329bff;
         font-size: 14px;
-        font-weight: 500;
+
+        .answer-upvote {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+            padding: 7px 12px;
+            border-radius: 40px;
+            cursor: pointer;
+
+            .upvote-txt {
+                font-weight: 500;
+                margin: 0px 5px;
+            }
+
+            .upvote-bullet {
+                margin-right: 5px;
+                opacity: 0.5;
+            }
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.02);
+            }
+
+            &.active {
+                color: #329bff;
+
+                .svg-fill {
+                    fill: #329bff;
+                }
+            }
+        }
+
+        .answer-downvote {
+            padding: 7px;
+            border-radius: 40px;
+            cursor: pointer;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.02);
+            }
+
+            &.active {
+                .svg-fill {
+                    fill: #329bff;
+                }
+            }
+        }
+    
+        .svg-icon {
+            line-height: 0px;
+            vertical-align: middle;
+
+            .svg-base {
+                stroke: #666;
+                stroke-width: 1.5;
+                stroke-linejoin: round;
+                fill: none;
+                fill-rule: evenodd;
+            }
+    
+            .svg-stroke {
+                stroke: #329bff;
+            }
+        }
     }
 
-    .svg-icon {
-        .svg-base {
-            stroke: #666;
-            stroke-width: 1.5;
-            stroke-linejoin: round;
-            fill: none;
-            fill-rule: evenodd;
-        }
-
-        .svg-stroke {
-            stroke: #329bff;
-        }
-
-        .svg-fill {
-            fill: #329bff;
-        }
-    }
 }
