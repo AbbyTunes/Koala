@@ -92,7 +92,7 @@ class NavBar extends React.Component {
 
 								<span id="nav-item-span">
 									<div className="header-nav-item">
-										<Link className="nav-item-link" to={'/filler1'}>
+										<Link className="nav-item-link" to={'/questions'}>
 											<div className="nav-item-link-inner">
 												<span className="nav-item-link-icon">
 													<svg version="1.1" baseProfile="full" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +102,7 @@ class NavBar extends React.Component {
 													</svg>
 												</span>
 											</div>
-											<span>Filler</span>
+											<span>Questions</span>
 										</Link>
 									</div>
 								</span>
