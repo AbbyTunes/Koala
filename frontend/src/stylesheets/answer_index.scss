@@ -11,6 +11,30 @@
         margin: 8px 0px 12px 0px;
     }
 
+    .answer-header {
+        margin-bottom: 8px;
+
+        .answer-author {
+            font-size: 15px;
+            margin-bottom: 2px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    
+        .answer-date {
+            color: #949494;
+            cursor: pointer;
+    
+            &:hover {
+                text-decoration: underline;
+                text-decoration-color: #949494;
+            }
+        }
+    }
+
     .answer-body {
         font-size: 16px;
     }

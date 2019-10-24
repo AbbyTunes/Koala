@@ -56,7 +56,8 @@ class AnswerIndexItem extends React.Component {
         );
     
         return (<div className='answer-index-item-container'>
-            <div class_name='answer-header'>
+            <div className='content-divider'></div>
+            <div className='answer-header'>
                 <div className='answer-author'>
                     {this.props.answer.authorId}
                 </div>
@@ -67,7 +68,7 @@ class AnswerIndexItem extends React.Component {
             <div className='answer-body'>
                 {this.props.answer.description}
             </div>
-            <div className='answer-footer'>
+            <div className='answer-footer no-select'>
                 <div className={upvoteClass}
                     onClick={this.toggleUpvote}>
                     <span className='svg-icon'>

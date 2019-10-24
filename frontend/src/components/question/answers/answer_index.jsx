@@ -19,7 +19,6 @@ class AnswerIndex extends React.Component {
             <div className='answer-count'>
                 {answers.length} Answers
             </div>
-            <div className='content-divider'></div>
             {answers}
         </div>)
     }
