@@ -13,18 +13,30 @@ const QuestionIndexItem = ({ question, deleteQuestion }) => {
 	return (
 		<li className="question-item">
 			<div className="question-left">
-				{/* <div>{question.topics}</div> */}
-				<div className="question-title">{question.title}</div>
-				<div className="question-time">Last created { timeAgo.format(Date.now() - 60 * 1000, 'time') } </div>
+				
+				<div className="question-topic">
+					Question added . 
+					<div className="show-topic">
+						<Link to="/">topic_name_hard_code</Link>
+						{/* <div>{question.topics}</div> */}
+					</div>
+				</div>
+				<div className="question-title"><Link to="/">{question.title}</Link></div>
+				<div className="question-answer">
+					Last created { timeAgo.format(Date.now() - 60 * 1000, 'time') } ago 
+				</div>
 				<ul className="question-option">
-					<li>Answer</li>
 					<li>Follow</li> 
-					<li>Share</li> 
+					<li>Share</li>
+					<li>Comment</li>
 				</ul>
 			</div>
 			<div className="question-right">
 				<div className="question-hide"></div>
-				<div className="question-more"></div>
+				<ul className="question-more">
+					<li>downvote</li>
+					<li>more</li>
+				</ul>
 			</div>
 		</li>
 	)

@@ -1,4 +1,4 @@
-html{
+html {
   height: 100%;
     font-weight: 400;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
@@ -6,7 +6,7 @@ html{
     line-height: 1.4;
 }
 
-body{
+body {
   text-align: left;
   direction: ltr;
   height: 100%;
@@ -16,13 +16,13 @@ body{
   overflow-x: auto;
 }
 
-a{
+a {
     text-decoration: none;
     color: #2b6dad;
     background: transparent;
 }
 
-button, input, optgroup, select textarea{
+button, input, optgroup, select textarea {
     color: inherit;
     font: inherit;
     margin: 0;
