@@ -27,7 +27,6 @@ class NavBar extends React.Component {
 
 // still need to add things to make the icons/links have red border thing at bottom
 	getLinks() {
-
 		let homeClass = "nav-item-link";
 		let gHomeClass = "nav-item-link-icon-svg-g";
 		let answerClass = "nav-item-link";
@@ -165,11 +164,11 @@ class NavBar extends React.Component {
 																	</Link>
 																	<div className="margin-left"></div>
 																</div>
-																<Link className="dropdown-link-to-profile" to={'/profile'}>
+																<Link className="dropdown-link-to-profile" to={`/profile/${this.props.currentUser.id}`}>
 																	<div className="dropdown-link-to-profile-flex-center">
 	{/* for now will be profile, maybe add currentUser to state and do it that way in span */}
 																		<div className="dropdown-link-to-profile-username-container">
-																			<span>Profile</span>
+																			<span>{this.props.currentUser.firstName}</span>
 																		</div>
 																		<div className="dropdown-link-to-profile-arrow-container">
 																			<span className="dropdown-link-to-profile-arrow">
@@ -307,7 +306,6 @@ class NavBar extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Koala</h1>
 				{this.getLinks()}
 			</div>
 		);
