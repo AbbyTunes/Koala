@@ -9,14 +9,14 @@ import ResetStylesheet from '../stylesheets/reset.css';
 // added props for stlying based on pathname
 const App = (props) => {
 	return(
-	<div>
-		<Switch>
-			<AuthRoute exact path="/login" component={SessionFormContainer} />
-			<ProtectedRoute path="/" component={MainPage}/>
-			<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
-		</Switch>
-	</div>
+		<div>
+			<Switch>
+				<AuthRoute exact path="/login" component={SessionFormContainer} />
+				<ProtectedRoute path="/" component={MainPage}/>
+				<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
+			</Switch>
+		</div>
 	)
-	};
+};
 //pathname withRouter change
 export default withRouter(App);

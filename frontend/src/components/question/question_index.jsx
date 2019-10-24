@@ -3,6 +3,7 @@ import QuestionIndexItem from './question_index_item';
 // import QuestionCreateContainer from './question_create_container';
 
 class QuestionIndex extends React.Component {
+	
 	componentDidMount() {
 		this.props.fetchQuestions();
 	}
