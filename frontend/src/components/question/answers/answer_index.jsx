@@ -15,7 +15,10 @@ class AnswerIndex extends React.Component {
                 deleteAnswer={this.props.deleteAnswer} />
         );
 
-        return (<div className="answer-index-container">
+        return (<div className='answer-index-container'>
+            <div class_name='answer-count'>
+                {answers.length} Answers
+            </div>
             {answers}
         </div>)
     }
