@@ -22,8 +22,11 @@ class QuestionIndex extends React.Component {
 
 				</div>
 				<div className="question-middle">
-					{/* <QuestionCreateContainer /> */}
-					creating something here
+					<div className="add-question">
+						{/* <QuestionCreateContainer /> */}
+						Add new question here
+					</div>
+					
 					<ul>
 						{questions}
 					</ul> 
