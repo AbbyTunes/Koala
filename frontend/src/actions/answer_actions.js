@@ -6,12 +6,12 @@ export const REMOVE_ANSWER = 'REMOVE_ANSWER';
 
 const receiveAnswers = answers => ({
     type: RECEIVE_ANSWERS,
-    answers: answers
+    answers: answers.data
 });
 
 const receiveAnswer = answer => ({
     type: RECEIVE_ANSWER,
-    answer: answer
+    answer: answer.data
 });
 
 const removeAnswer = id => ({
