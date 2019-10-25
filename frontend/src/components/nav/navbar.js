@@ -78,7 +78,7 @@ class NavBar extends React.Component {
 									</div>
 								</span>
 
-								<span id="nav-item-span">
+								{/* <span id="nav-item-span">
 									<div className="header-nav-item">
 										<Link className={answerClass} to={'/answer'}>
 											<div className="nav-item-link-inner">
@@ -93,7 +93,7 @@ class NavBar extends React.Component {
 											<span>Answer</span>
 										</Link>
 									</div>
-								</span>
+								</span> */}
 
 								<span id="nav-item-span">
 									<div className="header-nav-item">
