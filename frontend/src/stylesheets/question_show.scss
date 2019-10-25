@@ -1,16 +1,16 @@
 .show-frame {
 	position: absolute;
-    top: 70px;
+    top: 90px;
     left: 30px;
     right: 30px;
 	bottom: 30px;
-	border: 1px solid grey;
+	// border: 1px solid #e2e2e2;
 
 	.show-session {
 		display: flex;
 		position: relative;
 		top: 0;
-		width: 850px;
+		width: 900px;
 		margin: auto;
 
 		.show-left {
@@ -19,7 +19,7 @@
 			top: 0;
 			left: 0;
 			width: 800px;
-			border: 1px solid grey;
+			// border: 1px solid #e2e2e2;
 
 			.show-topic {
 				display: flex;
@@ -51,10 +51,10 @@
 				font-size: 23px;
 			}
 
-			.show-description {
-				margin: 15px 0;
-				font-size: 15px;
-			}
+			// .show-description {
+			// 	margin: 15px 0;
+			// 	font-size: 15px;
+			// }
 
 			.question-icon {
 				position: relative;
@@ -63,12 +63,14 @@
 				margin-bottom: -5px;
 				align-content: center;
 
-				ul {
+				.question-left {
 					display: flex;
+					padding: 0;
+					margin: 8px 8px 16px 0;
 				}
 
 				li {
-					padding: 0 10px 5px 0;
+					margin: 0 20px 5px 0;
 					font-size: 14px;
 					font-weight: 500;
 					color: #666;
@@ -76,26 +78,31 @@
 					display: flex;
 				}
 
-				.question-icon-left {
+				.question-left-icon {
 					display: flex;
 					position: relative;
 					top: 4px;
 					left: 6px;
 
+					.question-dot {
+						padding: 0 5px;
+					}
+
 					.question-number {
 						display: flex;
-						// padding-left: 8px;
 						font-weight: 400;
 					}
 				}
 
 				.question-icon-right {
 					position: absolute;
+					bottom: 15px;
 					right: -8px;
 					display: flex;
 
 					li {
-						margin-left: 5px;
+						margin: 0 5px;
+						cursor: pointer;
 					}
 				}
 			}
@@ -103,8 +110,9 @@
 
 		.show-right {
 			display: block;
-			width: 400px;
-			border: 1px solid grey;
+			width: 500px;
+			margin-left: 50px;
+			border: 1px solid #e2e2e2;
 		}
 	}
 

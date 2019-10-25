@@ -1,14 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import TimeAgo from 'javascript-time-ago'
-// import en from 'javascript-time-ago/locale/en'
-
 const QuestionIndexItem = ({ question, deleteQuestion }) => {
-
-	// Add locale-specific relative date/time formatting rules
-	// TimeAgo.addLocale(en)
-	// const timeAgo = new TimeAgo('en-US')
 
 	const date = (new Date(question.date)).toLocaleDateString('en-US', {
 		year: 'numeric', month: 'short', day: 'numeric'
