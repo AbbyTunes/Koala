@@ -247,11 +247,11 @@ class NavBar extends React.Component {
 																		Help
 																	</div>
 																</Link>
-																<Link className="nav-profile-dropdown-settings-link" to={"/settings"}>
-																	<div className="nav-profile-dropdown-settings-link-content" onClick={this.logoutUser}>
+																<div className="nav-profile-dropdown-settings-link" onClick={this.logoutUser}>
+																	<div className="nav-profile-dropdown-settings-link-content" >
 																		Logout
 																	</div>
-																</Link>
+																</div>
 															</div>
 
 															<div className="nav-profile-dropdown-official-links-container">

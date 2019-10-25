@@ -96,9 +96,9 @@ class ProfileAnswerIndexItem extends React.Component {
         this.state.downvoteHover ? ' tooltip' : ''
       );
     
-    return (<div className='answer-index-item-container'>
+    return (<div className='profile-answer-index-item-container'>
       <div className="answer-index-question-header">
-        <div className="question-2"><Link to={`/questions/${this.props.answer.questionId}`}>{this.state.questionTitle}</Link></div>
+        <div className="profile-answer-index-title"><Link to={`/questions/${this.props.answer.questionId}`}>{this.state.questionTitle}</Link></div>
       </div>
         <div className='answer-header'>
           <div className='answer-author'>

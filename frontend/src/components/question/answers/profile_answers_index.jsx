@@ -16,7 +16,6 @@ class ProfileAnswerIndex extends React.Component {
     );
 
     return (<div className='question-answer-index-container'>
-      {/* need the question it is referencing here */}
       {answers}
     </div>)
   }
