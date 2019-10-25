@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import profileIcon from '../../images/koala-profile.png';
 import '../../stylesheets/profile.scss';
 import ProfileQuestionsContainer from "../question/profile_questions_container";
-
+import ProfileAnswersContainer from "../question/answers/profile_answers_index_container";
 
 class Profile extends React.Component {
   constructor(props) {
@@ -26,6 +26,7 @@ class Profile extends React.Component {
     switch (this.props.location.pathname) {
       case `/profile/${this.profileId}/answers`:
         headerValue = "Answers";
+        feedContent = <ProfileAnswersContainer profileId={this.profileId} />
         break;
       case `/profile/${this.profileId}/questions`:
         headerValue = "Questions";
@@ -50,6 +51,7 @@ class Profile extends React.Component {
         headerValue = "Activity";
         break;
       default:
+        feedContent = <ProfileAnswersContainer profileId={this.profileId} />
         break;
     }
 
