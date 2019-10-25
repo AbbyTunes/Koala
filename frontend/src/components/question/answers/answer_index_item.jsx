@@ -1,14 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en';
 
 class AnswerIndexItem extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            upvoteCount: 0,
+            upvoteCount: this.props.answer.upvote,
             upvoted: false,
             downvoted: false,
             downvoteHover: false
@@ -27,6 +25,10 @@ class AnswerIndexItem extends React.Component {
             this.setState({upvoted: true});
             this.setState({upvoteCount: this.state.upvoteCount + 1});
         }
+
+        let answer = Object.assign({}, this.props.answer);
+        answer.upvote = this.state.upvoteCount;
+        this.props.updateAnswer(answer);
     }
 
     toggleDownvote() {
@@ -43,9 +45,9 @@ class AnswerIndexItem extends React.Component {
 
 
     render() {
-        // Add locale-specific relative date/time formatting rules
-        TimeAgo.addLocale(en)
-        const timeAgo = new TimeAgo('en-US');
+        const date = (new Date(this.props.answer.date)).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
 
         const upvoteClass = 'answer-upvote' + (
             this.state.upvoted ? ' active' : ''
@@ -58,23 +60,24 @@ class AnswerIndexItem extends React.Component {
         );
     
         return (<div className='answer-index-item-container'>
-            <div class_name='answer-header'>
+            <div className='content-divider'></div>
+            <div className='answer-header'>
                 <div className='answer-author'>
                     {this.props.answer.authorId}
                 </div>
                 <div className='answer-date'>
-                    Answered {timeAgo.format(Date.now() - 60 * 1000, 'time')}
+                    Answered {date}
                 </div>
             </div>
             <div className='answer-body'>
                 {this.props.answer.description}
             </div>
-            <div className='answer-footer'>
+            <div className='answer-footer no-select'>
                 <div className={upvoteClass}
                     onClick={this.toggleUpvote}>
                     <span className='svg-icon'>
                         <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-                            <g className='svg-base svg-stroke svg-fill'>
+                            <g className='svg-base'>
                                 <polygon points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
                             </g>
                         </svg>
@@ -95,7 +98,7 @@ class AnswerIndexItem extends React.Component {
                         onMouseEnter={() => this.downvoteHover(true)}
                         onMouseLeave={() => this.downvoteHover(false)}>
                         <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-                            <g className='svg-base svg-stroke svg-fill'>
+                            <g className='svg-base'>
                                 <polygon transform='translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000)' points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
                             </g>
                         </svg>

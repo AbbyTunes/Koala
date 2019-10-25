@@ -9,11 +9,11 @@ export const fetchAnswer = id => (
 );
 
 export const createAnswer = answer => (
-    axios.post(`/api/questions/${answer.question_id}/answers`, answer)
+    axios.post(`/api/questions/${answer.questionId}/answers`, answer)
 );
 
 export const updateAnswer = answer => (
-    axios.patch(`/api/answers/${answer.id}`, answer)
+    axios.patch(`/api/answers/${answer._id}`, answer)
 );
 
 export const deleteAnswer = id => (

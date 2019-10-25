@@ -12,8 +12,9 @@ body {
   height: 100%;
   color: #333;
   font-size: 13px;
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -38,3 +39,16 @@ button, input, optgroup, select textarea {
     color: #333;
 }
 
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
+*::-moz-focus-inner {
+    outline: none;
+    border: 0;
+}
