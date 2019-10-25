@@ -399,6 +399,7 @@
 .nav-profile-dropdown-settings-link{
   padding-top: 6px!important;
   padding-bottom: 6px!important;
+  cursor: pointer;
 }
 
 .nav-profile-dropdown-links-link:hover, .nav-profile-dropdown-settings-link:hover{

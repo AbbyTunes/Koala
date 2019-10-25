@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const QuestionIndexItem = ({ question, deleteQuestion }) => {
 
-	const date = (new Date(question.date)).toLocaleDateString('en-US', {
+	const createDate = (new Date(question.createate)).toLocaleDateString('en-US', {
 		year: 'numeric', month: 'short', day: 'numeric'
 	});
 
@@ -32,7 +32,7 @@ const QuestionIndexItem = ({ question, deleteQuestion }) => {
 					<div className="question-answer"><Link to="/">100 answers</Link> </div>
 					<div className="question-1">
 						<div className="question-dot">·</div>
-						Question added on { date }
+						Question added on { createDate }
 					</div>
 				</div>
 				<div className="question-icon"> 

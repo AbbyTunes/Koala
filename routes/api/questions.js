@@ -10,7 +10,7 @@ const Answer = require('../../models/Answer');
 //// Questions Routes
 
 //http://localhost:5000/api/questions/test
-router.get("/test", (req, res) => res.json({ question: "Question Route" }));
+// router.get("/test", (req, res) => res.json({ question: "Question Route" }));
 
 // show all questions
 router.get("/", (req, res) => {
@@ -35,8 +35,8 @@ router.post('/',
 	passport.authenticate('jwt', { session: false }), (req, res) => {
 		const newQuestion = new Question({
 			authorId: req.user.id,
-			title: req.body.title,
-			description: req.body.description
+			title: req.body.title
+			// createDate: Date.now()
 			// topics: 
 		});
 		newQuestion
@@ -50,13 +50,17 @@ router.post('/',
 // edit a question
 
 router.patch("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
+	debugger
 	Question.findOneAndUpdate({ _id: req.params.question_id },
 		{
 			$set: {
-				title: req.body.title,
-				description: req.body.description
+				title: req.body.title
+			},
+			$push: {
+				editorId: req.user.id,
+				updateDate: Date.now()
 			}
-        },
+		},
         { new: true }
         ).then(question => res.json(question))
 		.catch(err => {
