@@ -39,8 +39,7 @@ class AnswerIndexItem extends React.Component {
 
     componentDidMount() {
         this.props.fetchUser(this.answer.authorId)
-            .then(user => {
-                this.setState({ author: user.user })});
+            .then(user => this.setState({ author: user.user }));
     }
 
     toggleUpvote() {
@@ -102,11 +101,14 @@ class AnswerIndexItem extends React.Component {
         return (<div className='answer-index-item-container'>
             <div className='content-divider'></div>
             <div className='answer-header'>
-                <div className='answer-author'>
-                    {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
-                </div>
-                <div className='answer-date'>
-                    Answered {date}
+                <div className='answer-author-icon'></div>
+                <div className='answer-author-date-container'>
+                    <div className='answer-author'>
+                        {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
+                    </div>
+                    <div className='answer-date'>
+                        Answered {date}
+                    </div>
                 </div>
             </div>
             <div className='answer-body'>

@@ -9,13 +9,13 @@ class AnswerIndexItem extends React.Component {
         this.currentVoterIdx = -1;
 
         this.answer.voters.forEach((voter, idx) => {
-            if (voter.id === this.props.currentUser._id) this.currentVoterIdx = idx;
+            if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
         });
 
         if (this.currentVoterIdx === -1) {
             this.currentVoterIdx = this.answer.voters.length;
             this.answer.voters.push({
-                id: this.props.currentUser._id,
+                id: this.props.currentUser.id,
                 upvote: false,
                 downvote: false
             });
@@ -23,6 +23,7 @@ class AnswerIndexItem extends React.Component {
 
         this.state = {
             questionTitle: '',
+            author: null,
             upvoteCount: this.props.answer.upvote,
             upvoted: this.answer.voters[this.currentVoterIdx].upvote,
             downvoted: this.answer.voters[this.currentVoterIdx].downvote,
@@ -30,6 +31,9 @@ class AnswerIndexItem extends React.Component {
             moreHover: false,
             moreActive: false
         }
+
+        this.props.fetchUser(this.answer.authorId)
+            .then(user => this.setState({ author: user.user }));
 
         this.props.fetchQuestion(this.answer.questionId)
             .then(question => this.setState({ questionTitle: question.question.title }));
@@ -39,6 +43,14 @@ class AnswerIndexItem extends React.Component {
         this.toggleMore = this.toggleMore.bind(this);
         this.upvoteHover = this.upvoteHover.bind(this);
         this.moreHover = this.moreHover.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchUser(this.answer.authorId)
+            .then(user => this.setState({ author: user.user }));
+        
+        this.props.fetchQuestion(this.answer.questionId)
+            .then(question => this.setState({ questionTitle: question.question.title }));
     }
 
     toggleUpvote() {
@@ -111,11 +123,14 @@ class AnswerIndexItem extends React.Component {
                 {this.state.questionTitle}
             </div>
             <div className='answer-header'>
-                <div className='answer-author'>
-                    {this.props.answer.authorId}
-                </div>
-                <div className='answer-date'>
-                    Answered {date}
+                <div className='answer-author-icon'></div>
+                <div className='answer-author-date-container'>
+                    <div className='answer-author'>
+                        {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
+                    </div>
+                    <div className='answer-date'>
+                        Answered {date}
+                    </div>
                 </div>
             </div>
             <div className='answer-body'>
