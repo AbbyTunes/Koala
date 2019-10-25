@@ -17,16 +17,16 @@ class AnswerIndex extends React.Component {
 
     render() {
         const answers = this.props.answers.map((answer, idx) =>
-        <AnswerIndexItem
-            key={`answer-${idx}`}
-            answer={answer}
-            {...this.props} />
+            <AnswerIndexItem
+                key={`answer-${idx}`}
+                answer={answer}
+                {...this.props} />
         );
 
-    return (<div className='question-answer-index-container'>
+    return (<div className='user-answer-index-container'>
         <div className='answer-count'>
             {answers.length} Answers
-                </div>
+        </div>
         {answers}
     </div>)
   }
