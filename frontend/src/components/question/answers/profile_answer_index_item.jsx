@@ -22,20 +22,21 @@ class ProfileAnswerIndexItem extends React.Component {
     }
 
     this.state = {
+      questionTitle: '',
       upvoteCount: this.props.answer.upvote,
       upvoted: this.answer.voters[this.currentVoterIdx].upvote,
       downvoted: this.answer.voters[this.currentVoterIdx].downvote,
       downvoteHover: false
     }
 
+    this.props.fetchQuestion(this.answer.questionId)
+      .then(question => this.setState({ questionTitle: question.question.title }));
+
     this.toggleUpvote = this.toggleUpvote.bind(this);
     this.toggleDownvote = this.toggleDownvote.bind(this);
     this.downvoteHover = this.downvoteHover.bind(this);
   }
 
-  componentDidMount() {
-  this.props.fetchQuestion(this.props.answer.questionId);
-  }
 
   // currently trying to get the fetch question down to this level to add question header for answerIndexItem
 
@@ -81,7 +82,6 @@ class ProfileAnswerIndexItem extends React.Component {
 
 
   render() {
-    debugger;
     const date = (new Date(this.props.answer.date)).toLocaleDateString('en-US', {
       year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
     });
@@ -98,9 +98,8 @@ class ProfileAnswerIndexItem extends React.Component {
     
     return (<div className='answer-index-item-container'>
       <div className="answer-index-question-header">
-        <div className="question-2"><Link to={`/questions/${this.props.question.id}`}>{this.props.question.title}</Link></div>
+        <div className="question-2"><Link to={`/questions/${this.props.answer.questionId}`}>{this.state.questionTitle}</Link></div>
       </div>
-        <div className='content-divider'></div>
         <div className='answer-header'>
           <div className='answer-author'>
             {this.props.answer.authorId}
@@ -145,6 +144,7 @@ class ProfileAnswerIndexItem extends React.Component {
             </span>
           </div>
         </div>  
+      <div className='content-divider'></div>
     </div>);
   }
 };

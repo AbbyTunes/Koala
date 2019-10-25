@@ -2,3 +2,19 @@
   width: 572px;
   min-width: 572px;
 }
+
+.question-2{
+  	margin: 5px 0;
+
+				& a {
+					font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+					font-weight: bold;
+					line-height: 1.3;
+					color: #333;
+					font-size: 18px;
+				}
+				
+				& a:hover {
+					text-decoration: underline;
+				}
+}
