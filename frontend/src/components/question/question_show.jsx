@@ -24,7 +24,7 @@ class QuestionShow extends React.Component {
 								<ul>
 									<li>
 										<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-											<g stroke="none" fill="none" fill-rule="evenodd" stroke-linecap="round">
+											<g stroke="none" fill="none" fillRule="evenodd" strokeLinecap="round">
 												<g id="follow" class="icon_svg-stroke" stroke="#666" stroke-width="1.5">
 													<path d="M14.5,19 C14.5,13.3369229 11.1630771,10 5.5,10 M19.5,19 C19.5,10.1907689 14.3092311,5 5.5,5" id="lines"></path>
 													<circle id="circle" cx="7.5" cy="17" r="2" class="icon_svg-fill" fill="none"></circle>
