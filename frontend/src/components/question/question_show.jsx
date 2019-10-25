@@ -1,5 +1,5 @@
 import React from "react";
-import AnswerIndexContainer from './answers/answer_index_container';
+import AnswerIndexContainer from './answers/question_answer_index_container';
 
 class QuestionShow extends React.Component {
 

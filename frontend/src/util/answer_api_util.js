@@ -1,8 +1,14 @@
 import axios from 'axios';
 
-export const fetchAnswers = questionId => (
-    axios.get(`/api/questions/${questionId}/answers`)
-);
+export const fetchAnswers = optionId => {
+    if (optionId.currentUserId) {
+        return axios.get(`/api/current/answers`);
+    } else if (optionId.userId) {
+        return axios.get(`/api/users/${optionId.userId}/answers`);
+    } else if (optionId.questionId) {
+        return axios.get(`/api/questions/${optionId.questionId}/answers`);
+    }
+};
 
 export const fetchAnswer = id => (
     axios.get(`/api/answers/${id}`)

@@ -16,6 +16,9 @@ const AnswerSchema = new Schema({
 	downvote: {
 		type: Number
 	},
+	voters: {
+		type: Array
+	},
 	description: {
 		type: String,
 		required: true

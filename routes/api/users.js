@@ -118,6 +118,7 @@ router.get('/current/questions', passport.authenticate('jwt', { session: false }
 		);
 });
 
+// show answers by currentUser
 router.get('/current/answers', passport.authenticate('jwt', { session: false }), (req, res) => {
 	Answer.find({ authorId: req.user._id })
 		.populate("answers")
@@ -147,6 +148,7 @@ router.get('/:user_id/questions', (req, res) => {
 		);
 });
 
+// show answers by specific user
 router.get('/:user_id/answers', (req, res) => {
 	Answer.find({ authorId: req.params.user_id })
 		.then(answers => res.json(answers))
