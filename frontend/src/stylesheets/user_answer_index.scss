@@ -106,7 +106,12 @@
             font-size: 14px;
             padding: 5px;
             border-radius: 40px;
+            margin-left: -5px;
             cursor: pointer;
+
+            .upvote-count {
+                margin-left: 5px;
+            }
 
             &:hover {
                 background: rgba(0, 0, 0, 0.02);
