@@ -6,15 +6,36 @@ import {
 
 const AnswersReducer = (state = {}, action) => {
     Object.freeze(state);
+    let newState
 
     switch (action.type) {
         case RECEIVE_ANSWERS:
             return action.answers;
         case RECEIVE_ANSWER:
-            return Object.assign({}, state, { [action.answer.id]: action.answer });
+            newState = Array.from(state);
+            let update = false;
+
+            newState.forEach((answer, idx) => {
+                if (answer._id === action.answer._id) {
+                    newState[idx] = action.answer;
+                    update = true;
+                    return;
+                }
+            });
+
+            if (!update) newState.push(action.answer);
+            
+            return newState;
         case REMOVE_ANSWER:
-            let newState = Object.assign({}, state);
-            delete newState[action.id];
+            newState = Array.from(state);
+
+            newState.forEach((answer, idx) => {
+                if (answer._id === action.answer._id) {
+                    delete newState[action.id];
+                    return;
+                }
+            });
+            
             return newState;
         default:
             return state;

@@ -19,8 +19,8 @@ const removeAnswer = id => ({
     id
 });
 
-export const fetchAnswers = questionId => dispatch => (
-    AnswerApiUtil.fetchAnswers(questionId)
+export const fetchAnswers = optionId => dispatch => (
+    AnswerApiUtil.fetchAnswers(optionId)
         .then(answers => dispatch(receiveAnswers(answers)))
 );
 
