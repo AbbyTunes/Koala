@@ -19,8 +19,7 @@ const QuestionSchema = new Schema({
 		default: Date.now
 	},
 	updateDate: [{
-		type: Date,
-		default: Date.now
+		type: Date
 	}]
 })
 

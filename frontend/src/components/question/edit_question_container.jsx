@@ -1,20 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import QuestionForm from './question_form';
+import { withRouter } from 'react-router-dom';
+import EditQuestionForm from './edit_question_form';
 import { fetchQuestion, updateQuestion } from '../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
-	// const sessionId = state.session.id;
-	// const users = state.entities.users;
-	// const currentUser = users[sessionId];
 
 	const defaultQuestion = { title: '' };
-
-	debugger;
+	// debugger
 	const questionId = ownProps.match.params.question_id;
-	const question = state.questions[questionId] || defaultQuestion;
-
-	const formType = 'Save';
+	const question = state.entities.questions[questionId] || defaultQuestion;
+	const formType = 'Update Question';
 
 	return { question, formType };
 };
@@ -28,30 +24,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	
 };
 
-class EditQuestionForm extends React.Component {
-
-	componentDidMount() {
-		this.props.fetchQuestion();
-	}
-
-	componentDidUpdate(prevProps) {
-		const questionId = this.props.match.params.question_id
-		if (prevProps.match.params.question_id != questionId) {
-			this.props.fetchQuestion(questionId);
-		}
-	}
-
-	render() {
-		const { question, action, formType } = this.props;
-
-		return (
-			<QuestionForm
-				question={question}
-				action={action}
-				formType={formType}
-				/>
-		);
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditQuestionForm);
+export default withRouter(
+	connect(mapStateToProps, mapDispatchToProps)(EditQuestionForm)
+);

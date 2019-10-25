@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class QuestionForm extends React.Component {
+class CreateQuestionForm extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -25,9 +25,9 @@ class QuestionForm extends React.Component {
 			<div>
 				<form onSubmit={this.handleSubmit}>
 					<input type="title"
-							placeholder="title"
-							value={this.state.title}
-							onChange={this.handleInput('title')} />
+						placeholder="title"
+						value={this.state.title}
+						onChange={this.handleInput('title')} />
 
 					<input type="submit" value={this.props.formType} />
 				</form>
@@ -36,4 +36,4 @@ class QuestionForm extends React.Component {
 	}
 }
 
-export default withRouter(QuestionForm);
+export default withRouter(CreateQuestionForm);

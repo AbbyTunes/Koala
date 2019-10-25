@@ -35,8 +35,8 @@ router.post('/',
 	passport.authenticate('jwt', { session: false }), (req, res) => {
 		const newQuestion = new Question({
 			authorId: req.user.id,
-			title: req.body.title,
-			createDate: Date.now()
+			title: req.body.title
+			// createDate: Date.now()
 			// topics: 
 		});
 		newQuestion
@@ -50,12 +50,13 @@ router.post('/',
 // edit a question
 
 router.patch("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
+	debugger
 	Question.findOneAndUpdate({ _id: req.params.question_id },
 		{
 			$set: {
 				title: req.body.title
 			},
-			$addToSet: {
+			$push: {
 				editorId: req.user.id,
 				updateDate: Date.now()
 			}
