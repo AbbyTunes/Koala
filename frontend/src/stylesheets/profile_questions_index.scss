@@ -1,11 +1,19 @@
-.question-frame{
-  padding-right: 0px;
-  width: 572px;
 
-  .question-middle{
-  position: relative;
-  left: 0;
-  width: 572px;
- }
+.current-feed-wrapper{
+    .profile-question-frame, .quesiton-frame{
+        padding-right: 0px;
+        width: 572px;
+        position: relative;
+        height: 800px;
+        display: flex;
+        margin: auto;
+
+        .proifle-question-middle, .question-middle{
+        position: relative;
+        left: 0;
+        width: 572px;
+        display: block;
+        }
+    }
 }
-
+  

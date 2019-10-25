@@ -1,9 +1,9 @@
-.question-answer-index-container{
+.profile-answer-index-item-container{
   width: 572px;
   min-width: 572px;
 }
 
-.question-2{
+.profile-answer-index-title{
   	margin: 5px 0;
 
 				& a {
@@ -17,4 +17,11 @@
 				& a:hover {
 					text-decoration: underline;
 				}
+}
+
+.current-feed-wrapper{
+  .question-answer-index-container{
+    width:572;
+    min-width: 572;
+  }
 }
