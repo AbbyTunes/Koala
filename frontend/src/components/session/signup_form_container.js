@@ -15,8 +15,8 @@ const demoUser1 = {
 };
 
 const demoUser2 = {
-	email: 'name_1@gmail.com',
-	password: 'name_1' 
+    email: 'name_1@gmail.com',
+    password: 'name_1'
 };
 
 const mapDispatchToProps = (dispatch) => {
