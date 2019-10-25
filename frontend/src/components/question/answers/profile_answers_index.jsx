@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import AnswerIndexItem from './question_answer_index_item';
+import ProfileAnswerIndexItem from './profile_answer_index_item';
 
 class ProfileAnswerIndex extends React.Component {
   componentDidMount() {
@@ -9,7 +9,7 @@ class ProfileAnswerIndex extends React.Component {
 
   render() {
     const answers = this.props.answers.map((answer, idx) =>
-      <AnswerIndexItem
+      <ProfileAnswerIndexItem
         key={`answer-${idx}`}
         answer={answer}
         {...this.props} />
