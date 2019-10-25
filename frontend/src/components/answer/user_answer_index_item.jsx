@@ -31,6 +31,7 @@ class AnswerIndexItem extends React.Component {
         }
 
         this.toggleUpvote = this.toggleUpvote.bind(this);
+        this.toggleMore = this.toggleMore.bind(this);
         this.upvoteHover = this.upvoteHover.bind(this);
         this.moreHover = this.moreHover.bind(this);
     }
@@ -79,6 +80,10 @@ class AnswerIndexItem extends React.Component {
             this.state.upvoteHover ? ' tooltip' : ''
         );
 
+        const moreClass = 'answer-more' + (
+            this.state.moreHover ? ' tooltip' : ''
+        );
+
         return (<div className='answer-index-item-container'>
             <div className='content-divider'></div>
             <div className='answer-header'>
@@ -108,7 +113,7 @@ class AnswerIndexItem extends React.Component {
                         {this.state.upvoteCount}
                     </div>
                 </div>
-                <div className='answer-more'
+                <div className={moreClass}
                     onClick={this.toggleMore}>
                     <span className='svg-icon'
                         onMouseEnter={() => this.moreHover(true)}
@@ -121,7 +126,12 @@ class AnswerIndexItem extends React.Component {
                     </span>
                     <div className='more-dropdown-container'
                         hidden={!this.state.moreActive}>
-                        
+                        <div className='option-container'>
+                            Downvote
+                        </div>
+                        <div className='option-container'>
+                            Downvote Question
+                        </div>
                     </div>
                 </div>
             </div>

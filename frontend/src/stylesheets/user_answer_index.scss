@@ -61,6 +61,37 @@
             }
         }
 
+        &.tooltip {
+            position: relative;
+
+            &::before {
+                background-color: #444;
+                content: ' ';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, calc(-100% + 5px)) rotate(45deg);
+                width: 7px;
+                height: 7px;
+                z-index: 999;
+            }
+
+            &::after {
+                position: absolute;
+                top: 0px;
+                left: 50%;
+                transform: translate(-50%, calc(-100% + 2px));
+                color: white;
+                font-size: 12px;
+                line-height: 12px;
+                text-align: center;
+                padding: 7px;
+                background: #444;
+                border-radius: 3px;
+                z-index: 999;
+            }
+        }
+
         .answer-upvote {
             display: flex;
             justify-content: space-between;
@@ -86,9 +117,13 @@
                     fill: #329bff;
                 }
             }
+
+            &.tooltip::after {
+                content: 'Upvote';
+            }
         }
 
-        .answer-downvote {
+        .answer-more {
             display: flex;
             align-items: center;
             padding: 7px;
@@ -106,36 +141,8 @@
                 }
             }
 
-            &.tooltip {
-                position: relative;
-
-                &::before {
-                    background-color: #444;
-                    content: ' ';
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translate(-50%, calc(-100% + 5px)) rotate(45deg);
-                    width: 7px;
-                    height: 7px;
-                    z-index: 999;
-                }
-    
-                &::after {
-                    position: absolute;
-                    top: 0px;
-                    left: 50%;
-                    transform: translate(-50%, calc(-100% + 2px));
-                    content: 'Downvote';
-                    color: white;
-                    font-size: 12px;
-                    line-height: 12px;
-                    text-align: center;
-                    padding: 7px;
-                    background: #444;
-                    border-radius: 3px;
-                    z-index: 999;
-                }
+            &.tooltip::after {
+                content: 'More';
             }
 
         }
