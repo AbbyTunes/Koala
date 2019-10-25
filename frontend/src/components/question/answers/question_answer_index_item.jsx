@@ -9,28 +9,37 @@ class AnswerIndexItem extends React.Component {
         this.currentVoterIdx = -1;
 
         this.answer.voters.forEach((voter, idx) => {
-            if (voter.id === this.props.currentUser._id) this.currentVoterIdx = idx;
+            if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
         });
 
         if (this.currentVoterIdx === -1) {
             this.currentVoterIdx = this.answer.voters.length;
             this.answer.voters.push({
-                id: this.props.currentUser._id,
+                id: this.props.currentUser.id,
                 upvote: false,
                 downvote: false
             });
         }
 
         this.state = {
+            author: null,
             upvoteCount: this.props.answer.upvote,
             upvoted: this.answer.voters[this.currentVoterIdx].upvote,
             downvoted: this.answer.voters[this.currentVoterIdx].downvote,
             downvoteHover: false
         }
-
+        
+        this.props.fetchUser(this.answer.authorId)
+            .then(user => this.setState({ author: user.user }));
+        
         this.toggleUpvote = this.toggleUpvote.bind(this);
         this.toggleDownvote = this.toggleDownvote.bind(this);
         this.downvoteHover = this.downvoteHover.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchUser(this.answer.authorId)
+            .then(user => this.setState({ author: user.user }));
     }
 
     toggleUpvote() {
@@ -75,7 +84,6 @@ class AnswerIndexItem extends React.Component {
 
 
     render() {
-        debugger;
         const date = (new Date(this.props.answer.date)).toLocaleDateString('en-US', {
             year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
         });
@@ -93,11 +101,14 @@ class AnswerIndexItem extends React.Component {
         return (<div className='answer-index-item-container'>
             <div className='content-divider'></div>
             <div className='answer-header'>
-                <div className='answer-author'>
-                    {this.props.answer.authorId}
-                </div>
-                <div className='answer-date'>
-                    Answered {date}
+                <div className='answer-author-icon'></div>
+                <div className='answer-author-date-container'>
+                    <div className='answer-author'>
+                        {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
+                    </div>
+                    <div className='answer-date'>
+                        Answered {date}
+                    </div>
                 </div>
             </div>
             <div className='answer-body'>

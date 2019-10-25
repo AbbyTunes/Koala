@@ -14,6 +14,36 @@ const Answer = require('../../models/Answer');
 
 router.get("/test", (req, res) => res.json({ msg: "User Route"}));
 
+// show all users
+router.get('/', (req, res) => {
+	User.find()
+		.sort({ date: -1 })
+		.then(users => res.json(users.map(user => ({
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            questions: user.questions
+        }))))
+		.catch(err => res.status(404).json({ question: "No users found" }));
+	// not showing the errors when no users 
+});
+
+// find by user id
+router.get('/:user_id', (req, res) => {
+	User.findById(req.params.user_id)
+		.then(user => res.json({
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            questions: user.questions
+		}))
+		.catch(err =>
+			res.status(404).json({ user: "No user found with that ID" })
+		);
+});
+
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
