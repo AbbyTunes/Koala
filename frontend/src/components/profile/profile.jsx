@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/koala-profile.png';
 import '../../stylesheets/profile.scss';
+import '../../stylesheets/profile_questions_index.scss';
+import '../../stylesheets/profile_answers_index.scss';
 import ProfileQuestionsContainer from "../question/profile_questions_container";
 import ProfileAnswersContainer from "../question/answers/profile_answers_index_container";
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -138,7 +141,7 @@ class Profile extends React.Component {
                   <div className="current-feed-wrapper">
 {/* I think current feed item will just turn into the the styling of the question show */}
 {/* <div className="current-feed-item"></div> */}
-                    <div>{feedContent}</div>
+                    {feedContent}
                   </div>
                 </div>
               </div>
