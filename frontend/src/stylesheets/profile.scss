@@ -252,3 +252,30 @@
     clear: both;
   }
 }
+
+.combined-profile-feed{
+  font-size: 13px;
+  margin-bottom: 32px;
+  transition: opacity 100ms ease-in-out;
+  position: relative;
+}
+
+.current-feed-item{
+    position: relative;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0 0 16px 0;
+    margin-bottom: 16px;
+    
+     &::before{
+    display: table;
+    content: "";
+    zoom: 1;
+  }
+
+   &::after{
+    display: table;
+    content: "";
+    zoom: 1;
+    clear: both;
+  }
+}
