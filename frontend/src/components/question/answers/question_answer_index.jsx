@@ -14,10 +14,10 @@ class AnswerIndex extends React.Component {
                 answer={answer}
                 {...this.props} />
         );
-
+        
         return (<div className='question-answer-index-container'>
             <div className='answer-count'>
-                {answers.length} Answers
+                {answers.length} {answers.length === 1 ? 'Answer' : 'Answers'}
             </div>
             {answers}
         </div>)
