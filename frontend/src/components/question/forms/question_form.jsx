@@ -21,8 +21,11 @@ class QuestionForm extends React.Component {
 	}
 
 	render() {
+		if ( !this.props.question ) {
+			return null
+		}
 		return (
-			<div>
+			<div className="question-pop-up">
 				<form onSubmit={this.handleSubmit}>
 					<input type="title"
 							placeholder="title"

@@ -1,6 +1,6 @@
 import React from 'react';
 import QuestionIndexItem from './question_index_item';
-import CreateQuestionContainer from './create_question_container';
+import CreateQuestionContainer from './forms/create_question_container';
 
 class QuestionIndex extends React.Component {
 	
@@ -24,10 +24,6 @@ class QuestionIndex extends React.Component {
 
 				</div>
 				<div className="question-middle">
-					<div className="new-question">
-						<CreateQuestionContainer />
-					</div>
-
 					<div className="new-question">New Questions</div>
 					<ul>
 						{questions}

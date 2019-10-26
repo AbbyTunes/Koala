@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const QuestionIndexItem = ({ question, deleteQuestion }) => {
 
-	const createDate = (new Date(question.createate)).toLocaleDateString('en-US', {
+	const createDate = (new Date(question.createDate)).toLocaleDateString('en-US', {
 		year: 'numeric', month: 'short', day: 'numeric'
 	});
 

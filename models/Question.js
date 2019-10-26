@@ -6,7 +6,7 @@ const QuestionSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	},
-	editorId: [{
+	editorIds: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	}],
