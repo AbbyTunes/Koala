@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 class AnswerIndexItem extends React.Component {
@@ -123,11 +124,17 @@ class AnswerIndexItem extends React.Component {
                 {this.state.questionTitle}
             </div>
             <div className='answer-header'>
-                <div className='answer-author-icon'></div>
+                <Link className='answer-author-icon-link no-select'
+                    to={this.state.author ? `/profile/${this.state.author.id}` : ''}>
+                    <div className='answer-author-icon'></div>
+                </Link>
                 <div className='answer-author-date-container'>
-                    <div className='answer-author'>
-                        {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
-                    </div>
+                    <Link className='answer-author-link'
+                        to={this.state.author ? `/profile/${this.state.author.id}` : ''}>
+                        <div className='answer-author'>
+                            {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
+                        </div>
+                    </Link>
                     <div className='answer-date'>
                         Answered {date}
                     </div>
