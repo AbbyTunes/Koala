@@ -18,6 +18,10 @@
         display: flex;
         margin-bottom: 8px;
 
+        .answer-author-icon-link {
+            margin-right: 8px;
+        }
+
         .answer-author-icon {
             width: 40px;
             min-width: 40px;
@@ -26,11 +30,11 @@
             background-image: url('../images/koala-profile.png');
             background-size: contain;
             border-radius: 50%;
-            margin-right: 8px;
         }
 
         .answer-author-date-container {
             .answer-author {
+                color: #333;
                 font-size: 15px;
                 margin-bottom: 2px;
                 cursor: pointer;

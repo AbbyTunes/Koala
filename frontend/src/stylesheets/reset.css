@@ -48,6 +48,10 @@ button, input, optgroup, select textarea {
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
+.no-select:active {
+    outline: none;
+}
+
 *::-moz-focus-inner {
     outline: none;
     border: 0;
