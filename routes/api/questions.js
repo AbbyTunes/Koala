@@ -56,13 +56,15 @@ router.patch("/:question_id", passport.authenticate('jwt', { session: false }), 
 			$set: {
 				title: req.body.title
 			},
-			$push: {
-				editorId: req.user.id,
+			$addToSet: {
+				editorIds: req.user._id,
 				updateDate: Date.now()
 			}
 		},
         { new: true }
-        ).then(question => res.json(question))
+        ).then(question => {
+			debugger
+			res.json(question)})
 		.catch(err => {
 			res.status(400).json({ question: "updating question failed" })
 		});

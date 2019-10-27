@@ -4,6 +4,7 @@ import headerLogo from '../../images/Koala-logo-final.png'
 import profileIcon from '../../images/koala-profile.png'
 import '../../stylesheets/reset.css' // this will probably get moved
 import '../../stylesheets/navbar.css'
+import QuestionPopUp from '../question/forms/question_pop_up'
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -302,7 +303,8 @@ class NavBar extends React.Component {
 								</div>
 								{/* link triggers modal */}
 								<div className="navbar-add-question">
-									<Link id="ask-question-modal-button" to={'/new_koala'}>Write a Koala</Link>
+									{/* <Link id="ask-question-modal-button" to={'/new_koala'}>Write a Koala</Link> */}
+									<QuestionPopUp />
 								</div>
 							</div>
 						</div>
