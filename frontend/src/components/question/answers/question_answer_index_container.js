@@ -4,7 +4,8 @@ import { fetchAnswers, updateAnswer, deleteAnswer } from '../../../actions/answe
 import AnswerIndex from './question_answer_index';
 import AnswerIndexStylesheet from '../../../stylesheets/question_answer_index.scss';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
+    childDeletion: ownProps.childDeletion,
     answers: Object.values(state.entities.answers),
     currentUser: state.session.user
 });
