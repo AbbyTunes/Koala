@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+<<<<<<< HEAD
 // const QuestionIndexItem = ({ question, deleteQuestion }) => {
+=======
+>>>>>>> c0017e1a359194a9ac13f57df7658f5f91e147e9
 class QuestionIndexItem extends React.Component {
 
 	constructor(props) {
@@ -25,7 +28,7 @@ class QuestionIndexItem extends React.Component {
 		return (
 			<li className="question-item">
 				<div className="question-left">
-					
+
 					<div className="question-1">
 						Question added
 						<div className="question-dot">·</div>
@@ -46,13 +49,13 @@ class QuestionIndexItem extends React.Component {
 					<div className="question-3">
 						<div className="question-answer">
 							<Link to="/"> answers</Link>
-							</div>
+						</div>
 						<div className="question-1">
 							<div className="question-dot">·</div>
-							Question added on { createDate }
+							Question added on {createDate}
 						</div>
 					</div>
-					<div className="question-icon"> 
+					<div className="question-icon">
 						<ul>
 							<li>
 								<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" >
@@ -101,7 +104,6 @@ class QuestionIndexItem extends React.Component {
 									</g>
 								</svg>
 							</div> */}
-							
 						</div>
 					</div>
 				</div>
@@ -109,7 +111,6 @@ class QuestionIndexItem extends React.Component {
 		)
 	}
 
-	
 }
 
 export default QuestionIndexItem;

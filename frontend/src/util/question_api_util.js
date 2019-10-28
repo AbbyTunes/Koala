@@ -12,8 +12,8 @@ export const createQuestion = (data) => {
 	return axios.post("/api/questions", data);
 }
 
-export const updateQuestion = (data, id) => {
-	return axios.patch(`/api/questions/${id}`, data);
+export const updateQuestion = (data) => {
+	return axios.patch(`/api/questions/${data._id}`, data);
 }
 
 export const deleteQuestion = (id) => {
