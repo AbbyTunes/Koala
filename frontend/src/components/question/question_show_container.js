@@ -5,7 +5,9 @@ import QuestionShowStylesheet from '../../stylesheets/question_show.scss';
 
 const mapStateToProps = (state, ownProps) => {
 	const questionId = ownProps.match.params.question_id;
-	return { question: state.entities.questions[questionId] }
+	const question = state.entities.questions[questionId];
+	const answersNum = state.entities.answers.length;
+	return { question, answersNum }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

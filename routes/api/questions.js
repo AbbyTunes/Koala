@@ -50,20 +50,18 @@ router.post('/',
 // edit a question
 
 router.patch("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
-	debugger
 	Question.findOneAndUpdate({ _id: req.params.question_id },
 		{
 			$set: {
 				title: req.body.title
 			},
-			$addToSet: {
+			$push: {
 				editorIds: req.user._id,
 				updateDate: Date.now()
 			}
 		},
         { new: true }
         ).then(question => {
-			debugger
 			res.json(question)})
 		.catch(err => {
 			res.status(400).json({ question: "updating question failed" })

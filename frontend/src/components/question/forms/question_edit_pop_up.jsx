@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import EditQuestionContainer from "./edit_question_container";
 import QuestionPopUpStylesheet from "../../../stylesheets/question_pop_up.scss";
 

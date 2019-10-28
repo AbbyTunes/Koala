@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import QuestionForm from './question_form';
 import { createQuestion } from '../../../actions/question_actions';
 
@@ -14,4 +15,6 @@ const mapDispatchToProps = (dispatch) => ({
 	action: (question) => dispatch(createQuestion(question)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionForm);
+export default withRouter(
+	connect(mapStateToProps, mapDispatchToProps)(QuestionForm)
+);
