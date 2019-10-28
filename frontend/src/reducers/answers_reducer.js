@@ -16,7 +16,7 @@ const AnswersReducer = (state = {}, action) => {
             let update = false;
 
             newState.forEach((answer, idx) => {
-                if (answer._id === action.answer._id) {
+                if (answer && answer._id === action.answer._id) {
                     newState[idx] = action.answer;
                     update = true;
                     return;
@@ -30,8 +30,8 @@ const AnswersReducer = (state = {}, action) => {
             newState = Array.from(state);
 
             newState.forEach((answer, idx) => {
-                if (answer._id === action.answer._id) {
-                    delete newState[action.id];
+                if (answer && answer._id === action.id) {
+                    newState.splice(idx, 1);
                     return;
                 }
             });

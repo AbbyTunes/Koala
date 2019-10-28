@@ -37,14 +37,25 @@ router.patch('/:answer_id',
 );
 
 // delete an answer
+// router.delete('/:answer_id',
+//     passport.authenticate('jwt', { session: false }), (req, res) => {
+//         Answer.findByIdAndRemove(req.params.answer_id, err => {
+//             debugger
+//             if (err) res.send(err);
+//             else res.json({ answer: 'the answer has been deleted' });
+//         });
+//     }
+// );
 router.delete('/:answer_id',
     passport.authenticate('jwt', { session: false }), (req, res) => {
-        Answer.findByIdAndRemove(req.params.answer_id, err => {
-        if (err) res.send(err);
-        else res.json({ answer: 'the answer has been deleted' });
-        });
+        Answer.findByIdAndRemove(req.params.answer_id)
+            .then(answer => res.json(answer))
+            .catch(err => {
+                res.status(400).json({ answer: 'could not find answer' })
+            });
     }
 );
+
 
 
 module.exports = router;

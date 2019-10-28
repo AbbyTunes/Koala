@@ -3,7 +3,8 @@
     top: 90px;
     left: 30px;
     right: 30px;
-	bottom: 30px;
+    bottom: 30px;
+    overflow-y: scroll;
 	// border: 1px solid #e2e2e2;
 
 	.show-session {
@@ -75,14 +76,36 @@
 					font-weight: 500;
 					color: #666;
 					cursor: pointer;
-					display: flex;
-				}
+                    display: flex;
+                    
+                    .svg-base {
+                        stroke: #329bff;
+                        stroke-width: 1.5;
+                        fill: none;
+                        fill-rule: evenodd;
+                    }
+
+                    &.active {
+                        cursor: default;
+                        
+                        .svg-base {
+                            stroke: #666;
+                        }
+                    }
+                }
+                
+                .answer-form-btn {
+                    &.hidden {
+                        display: none;
+                    }
+                }
 
 				.question-left-icon {
 					display: flex;
 					position: relative;
 					top: 4px;
 					left: 6px;
+
 
 					.question-dot {
 						padding: 0 5px;
