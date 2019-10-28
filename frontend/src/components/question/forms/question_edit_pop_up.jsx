@@ -28,7 +28,7 @@ class QuestionEditPopUp extends React.Component {
 				{this.state.showForm ? (
 					<div>
 						<div className="modal" onClick={this.hideForm}></div>
-						<EditQuestionContainer hideForm={this.hideForm}  />
+						<EditQuestionContainer hideForm={this.hideForm} />
 					</div>
 				) : (null)
 				}

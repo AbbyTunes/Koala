@@ -44,12 +44,13 @@ class EditQuestionForm extends React.Component {
 	}
 
 	render() {
-		const { question, action, formType } = this.props;
+		const { question, action, formType, hideForm } = this.props;
 		return (
 			<QuestionForm
 				question={question}
 				action={action}
 				formType={formType}
+				hideForm={hideForm}
 				/>
 		);
 	}
