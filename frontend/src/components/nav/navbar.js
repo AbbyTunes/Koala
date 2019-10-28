@@ -172,7 +172,7 @@ class NavBar extends React.Component {
 
 															<div className="nav-profile-dropdown-header-container">
 																<div className="nav-profile-dropdown-header-icon-container">
-																	<Link className="dropdown-icon-link-to-profile" to={'/profile'}>
+																	<Link className="dropdown-icon-link-to-profile" to={`/profile/${this.props.currentUser.id}`}>
 																		<div className="dropdown-icon-content-container">
 																			<span className="dropdown-icon-content-wrapper">
 																				<img className="profile-photo-img-dropdown" src={profileIcon} alt="Header logo" />
