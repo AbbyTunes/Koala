@@ -19,7 +19,7 @@ class AnswerIndex extends React.Component {
             <div className='answer-count'>
                 {answers.length} {answers.length === 1 ? 'Answer' : 'Answers'}
             </div>
-            {answers}
+            {answers.reverse()}
         </div>)
     }
 }
