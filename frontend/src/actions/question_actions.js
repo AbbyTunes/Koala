@@ -31,5 +31,5 @@ export const updateQuestion = (question) => dispatch => (
 );
 
 export const deleteQuestion = (questionId) => dispatch => (
-	QuestionApiUtil.deleteQuestion(questionId).then(question => dispatch({ type: REMOVE_QUESTION, questionId: question.id}))
+	QuestionApiUtil.deleteQuestion(questionId).then(question => dispatch({ type: REMOVE_QUESTION, questionId: question.data._id}))
 );

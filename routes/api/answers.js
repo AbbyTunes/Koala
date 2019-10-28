@@ -56,6 +56,10 @@ router.delete('/:answer_id',
     }
 );
 
-
+router.delete('/',
+    passport.authenticate('jwt', { session: false }), (req, res) => {
+        Answer.collection.deleteMany({});
+    }
+)
 
 module.exports = router;
