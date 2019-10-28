@@ -22,10 +22,6 @@ export const updateAnswer = answer => (
     axios.patch(`/api/answers/${answer._id}`, answer)
 );
 
-export const deleteAnswers = () => (
-    axios.delete('/api/answers')
-);
-
 export const deleteAnswer = id => (
     axios.delete(`/api/answers/${id}`)
 );
