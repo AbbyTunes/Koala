@@ -31,7 +31,7 @@ class QuestionEditPopUp extends React.Component {
 						</g>
 					</svg>
 					<div className="question-left-icon">
-						Edit Question
+						Edit
 					</div>
 				</li>
 

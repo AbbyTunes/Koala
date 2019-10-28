@@ -17,8 +17,8 @@ class QuestionForm extends React.Component {
 		e.preventDefault();
 
 		this.props.action(this.state);
-		this.props.hideForm();
-			// .then(() => this.props.history.push('/questions'));
+		this.props.hideForm()
+		this.props.history.push('/questions');
 	}
 
 	render() {
