@@ -12,8 +12,9 @@ const mapStateToProps = (state, ownProps) => {
 	
 	const question = state.entities.questions[questionId] || defaultQuestion;
 	const formType = 'Update Question';
+	const hideForm = ownProps.hideForm;
 
-	return { question, formType, currentUser };
+	return { question, formType, currentUser, hideForm };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
