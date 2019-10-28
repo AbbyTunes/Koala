@@ -101,7 +101,7 @@ class QuestionShow extends React.Component {
 
 								<MoreDropdown />
 							</div>
-							{ this.state.answerForm ? <AnswerFormContainer /> : ''}
+							{ this.state.answerForm ? <AnswerFormContainer questionId={question._id} /> : ''}
 							<AnswerIndexContainer />
 						</div>
 						<div className="show-right">

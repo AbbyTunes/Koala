@@ -12,6 +12,8 @@ class AnswerIndexItem extends React.Component {
         }
 
         this.changeTextarea = this.changeTextarea.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -30,12 +32,19 @@ class AnswerIndexItem extends React.Component {
         }
     }
 
-    update(field) {
+    handleChange(field) {
         this.changeTextarea();
         
         return e => this.setState({
             [field]: e.currentTarget.value
         });
+    }
+
+    handleSubmit() {
+        this.props.createAnswer({
+            questionId: this.props.match.params.question_id,
+            description: this.state.body
+        })
     }
 
     render() {
@@ -57,10 +66,12 @@ class AnswerIndexItem extends React.Component {
             <textarea className='answer-input-txt'
                 value={this.state.body}
                 ref={ref => this.textarea = ref}
-                onChange={this.update('body')}
+                onChange={this.handleChange('body')}
                 placeholder='Write your answer' />
             <div className='answer-footer'>
-                <button className='answer-input-submit'>
+                <button className='answer-input-submit'
+                    type='button'
+                    onClick={this.handleSubmit}>
                     Submit
                 </button>
             </div>
