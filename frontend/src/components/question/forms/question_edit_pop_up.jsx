@@ -23,7 +23,7 @@ class QuestionEditPopUp extends React.Component {
 	render() {
 		return (
 			<div>
-				<li className="question-edit-menu" onClick={this.showForm}>Edit Question</li>
+				<li className="question-menu-edit" onClick={this.showForm}>Edit Question</li>
 
 				{this.state.showForm ? (
 					<div>

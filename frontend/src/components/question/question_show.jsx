@@ -5,11 +5,27 @@ import { RECEIVE_ANSWERS } from "../../actions/answer_actions";
 
 class QuestionShow extends React.Component {
 
+	constructor(props) {
+		super(props)
+		// const author = this.props.fetchUser(this.props.question.authorId)
+		// this.state = {
+		// 	author: author,
+		// 	editor: null
+		// }
+	}
+
 	componentDidMount() {
 		this.props.fetchQuestion()
 	}
 	render() {
 		const { question, answersNum } = this.props;
+
+		// this.props.fetchUser(question.authorId)
+		// 	.then(user => this.setState({ author: user }));
+
+		// const updateDate = (new Date(question.createDate)).toLocaleDateString('en-US', {
+		// 	year: 'numeric', month: 'short', day: 'numeric'
+		// });
 		if (question) {
 			return (
 				<div className="show-frame">
@@ -20,14 +36,15 @@ class QuestionShow extends React.Component {
 								<li>topics</li>
 							</div>
 							<div className="show-title">{question.title}</div>
-							
+							{/* <div className="show-editor">
+								Last edited on {} by {}
+							</div> */}
 							<div className="question-icon">
+								
 								<ul className="question-left">
 									<div className="question-3">
 										
-										<div className="question-1">
-											Last edited on {question.ed} by {}
-										</div>
+										
 									</div>
 
 									<li>

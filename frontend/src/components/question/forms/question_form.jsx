@@ -16,8 +16,9 @@ class QuestionForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 
-		this.props.action(this.state)
-			.then(() => this.props.history.push('/questions'));
+		this.props.action(this.state);
+		this.props.hideForm();
+			// .then(() => this.props.history.push('/questions'));
 	}
 
 	render() {

@@ -9,7 +9,8 @@ router.get('/test', (req, res) => res.json({ answer: 'Answers Route' }));
 
 // find by answer_id
 router.get('/:answer_id', (req, res) => {
-    Answer.findById(req.params.answer_id)
+	Answer.findById(req.params.answer_id)
+		// .populate("questionId")
         .then(answer => res.json(answer))
         .catch(err =>
             res.status(404).json({ answer: 'No answer found with that ID' })
