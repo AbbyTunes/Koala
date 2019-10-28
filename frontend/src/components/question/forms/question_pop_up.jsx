@@ -29,7 +29,7 @@ class QuestionPopUp extends React.Component {
 				{this.state.showForm ? (
 					<div className="full-screen">
 						<div className="modal" onClick={this.hideForm}></div>
-						<CreateQuestionContainer />
+						<CreateQuestionContainer hideForm={this.hideForm} />
 					</div>
 					) : (null)
 				}

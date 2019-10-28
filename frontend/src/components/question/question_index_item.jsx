@@ -11,7 +11,8 @@ class QuestionIndexItem extends React.Component {
 	deleteQuestion(e) {
 		e.preventDefault();
 		const questionId = this.props.question._id;
-		this.props.deleteQuestion(questionId);
+		this.props.deleteQuestion(questionId)
+			.then()
 	}
 
 	render() {
@@ -100,14 +101,12 @@ class QuestionIndexItem extends React.Component {
 									</g>
 								</svg>
 							</div> */}
-
 						</div>
 					</div>
 				</div>
 			</li>
 		)
 	}
-
 
 }
 

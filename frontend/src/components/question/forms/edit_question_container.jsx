@@ -12,8 +12,9 @@ const mapStateToProps = (state, ownProps) => {
 	
 	const question = state.entities.questions[questionId] || defaultQuestion;
 	const formType = 'Update Question';
+	const hideForm = ownProps.hideForm;
 
-	return { question, formType, currentUser };
+	return { question, formType, currentUser, hideForm };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -43,12 +44,13 @@ class EditQuestionForm extends React.Component {
 	}
 
 	render() {
-		const { question, action, formType } = this.props;
+		const { question, action, formType, hideForm } = this.props;
 		return (
 			<QuestionForm
 				question={question}
 				action={action}
 				formType={formType}
+				hideForm={hideForm}
 				/>
 		);
 	}

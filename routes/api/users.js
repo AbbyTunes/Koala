@@ -181,6 +181,7 @@ router.get('/:user_id/questions', (req, res) => {
 // show answers by specific user
 router.get('/:user_id/answers', (req, res) => {
 	Answer.find({ authorId: req.params.user_id })
+		.populate("questionId")
 		.then(answers => res.json(answers))
 		.catch(err =>
 			res.status(404).json({ question: 'This user has no answers' })
