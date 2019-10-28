@@ -8,10 +8,12 @@ class QuestionShow extends React.Component {
         super(props);
 
         this.state = {
+            answerIcon: true,
             answerForm: false
         }
 
         this.toggleAnswer = this.toggleAnswer.bind(this);
+        this.childDeletion = this.childDeletion.bind(this);
     }
 
     toggleAnswer() {
@@ -19,8 +21,39 @@ class QuestionShow extends React.Component {
     }
 
 	componentDidMount() {
-		this.props.fetchQuestion()
-	}
+        this.props.fetchQuestion()
+        this.props.fetchAnswers({ questionId: this.props.match.params.question_id })
+            .then(answers => {
+                answers.answers.forEach(answer => {
+                    if (answer.authorId === this.props.currentUser.id) {
+                        this.setState({ answerIcon: false });
+                        return;
+                    }
+                })
+            });
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.answers && this.props.answers) {
+            if (prevProps.answers.length !== this.props.answers.length) {
+                this.props.answers.forEach(answer => {
+                    if (answer.authorId === this.props.currentUser.id) {
+                        this.setState({ answerIcon: false });
+                        this.setState({ answerForm: false });
+                        return;
+                    } else {
+                        this.setState({ answerIcon: true });
+                        this.setState({ answerForm: false });
+                    }
+                });
+            }
+        }
+    }
+
+    childDeletion() {
+        this.setState({ answerIcon: true });
+    }
+    
 	render() {
         const {question} = this.props;
 
@@ -38,7 +71,7 @@ class QuestionShow extends React.Component {
 							<div className="question-icon">
 								<ul className="question-left">
 
-									<li className={`answer-form-btn ${this.state.answerForm ? 'active' : ''}`}
+									<li className={`answer-form-btn${this.state.answerForm ? ' active' : ''}${this.state.answerIcon ? '' : ' hidden'}`}
                                         onClick={this.toggleAnswer}>
 										<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" >
 											<g transform="translate(2.500000, 3.500000)">
@@ -101,8 +134,8 @@ class QuestionShow extends React.Component {
 
 								<MoreDropdown />
 							</div>
-							{ this.state.answerForm ? <AnswerFormContainer questionId={question._id} /> : ''}
-							<AnswerIndexContainer />
+							{ this.state.answerForm ? <AnswerFormContainer /> : ''}
+                            <AnswerIndexContainer childDeletion={this.childDeletion} />
 						</div>
 						<div className="show-right">
 							<div className="top-questions"></div>

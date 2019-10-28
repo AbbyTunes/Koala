@@ -45,6 +45,8 @@ class AnswerIndexItem extends React.Component {
             questionId: this.props.match.params.question_id,
             description: this.state.body
         })
+
+        this.setState({ body: '' })
     }
 
     render() {

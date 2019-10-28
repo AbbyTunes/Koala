@@ -41,5 +41,7 @@ export const updateAnswer = answer => dispatch => (
 
 export const deleteAnswer = id => dispatch => (
     AnswerApiUtil.deleteAnswer(id)
-        .then(answer => dispatch(removeAnswer(answer.id)))
+        .then(answer => {
+            dispatch(removeAnswer(answer.data._id))
+        })
 );

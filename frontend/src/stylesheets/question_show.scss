@@ -92,7 +92,13 @@
                             stroke: #666;
                         }
                     }
-				}
+                }
+                
+                .answer-form-btn {
+                    &.hidden {
+                        display: none;
+                    }
+                }
 
 				.question-left-icon {
 					display: flex;
