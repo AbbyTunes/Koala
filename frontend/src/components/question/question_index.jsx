@@ -21,7 +21,10 @@ class QuestionIndex extends React.Component {
 		return (
 			<div className="question-frame">
 				<div className="topic-frame">
-
+					<button className='answer-deletion-debugger'
+						onClick={this.props.deleteAnswers}>
+						Delete All Answers
+					</button>
 				</div>
 				<div className="question-middle">
 					<div className="new-question">New Questions</div>

@@ -2,6 +2,7 @@ import * as AnswerApiUtil from '../util/answer_api_util';
 
 export const RECEIVE_ANSWERS = 'RECEIVE_ANSWERS';
 export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
+export const REMOVE_ANSWERS = 'REMOVE_ANSWERS';
 export const REMOVE_ANSWER = 'REMOVE_ANSWER';
 
 const receiveAnswers = answers => ({
@@ -12,6 +13,10 @@ const receiveAnswers = answers => ({
 const receiveAnswer = answer => ({
     type: RECEIVE_ANSWER,
     answer: answer.data
+});
+
+const removeAnswers = () => ({
+    type: REMOVE_ANSWERS
 });
 
 const removeAnswer = id => ({
@@ -37,6 +42,13 @@ export const createAnswer = answer => dispatch => (
 export const updateAnswer = answer => dispatch => (
     AnswerApiUtil.updateAnswer(answer)
         .then(answer => dispatch(receiveAnswer(answer)))
+);
+
+export const deleteAnswers = () => dispatch => (
+    AnswerApiUtil.deleteAnswers()
+        .then(() => {
+            dispatch(removeAnswers())
+        })
 );
 
 export const deleteAnswer = id => dispatch => (

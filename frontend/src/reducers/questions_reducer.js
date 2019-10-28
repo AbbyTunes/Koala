@@ -8,7 +8,9 @@ const QuestionsReducer = (state = {}, action) => {
 	Object.freeze(state);
 	switch (action.type) {
 		case RECEIVE_ALL_QUESTIONS:
-			return action.questions;
+			let newQuestionState = {};
+			action.questions.forEach((question) => newQuestionState[question._id] = question);
+			return newQuestionState;
 		case RECEIVE_QUESTION:
 			return Object.assign({}, state, { [action.question._id]: action.question });
 		case REMOVE_QUESTION:

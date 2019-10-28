@@ -1,6 +1,7 @@
 import {
   RECEIVE_ANSWERS,
   RECEIVE_ANSWER,
+  REMOVE_ANSWERS,
   REMOVE_ANSWER
 } from "../actions/answer_actions";
 
@@ -26,6 +27,8 @@ const AnswersReducer = (state = {}, action) => {
             if (!update) newState.push(action.answer);
             
             return newState;
+        case REMOVE_ANSWERS:
+            return {};
         case REMOVE_ANSWER:
             newState = Array.from(state);
 
