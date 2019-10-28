@@ -22,7 +22,7 @@ class QuestionIndex extends React.Component {
 			<div className="question-frame">
 				<div className="topic-frame">
 					<button className='answer-deletion-debugger'
-						onClick={this.props.removeAnswers}>
+						onClick={() => this.props.deleteAnswers()}>
 						Delete All Answers
 					</button>
 				</div>

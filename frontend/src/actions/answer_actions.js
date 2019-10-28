@@ -15,7 +15,7 @@ const receiveAnswer = answer => ({
     answer: answer.data
 });
 
-export const removeAnswers = () => ({
+const removeAnswers = () => ({
     type: REMOVE_ANSWERS
 });
 
@@ -42,6 +42,11 @@ export const createAnswer = answer => dispatch => (
 export const updateAnswer = answer => dispatch => (
     AnswerApiUtil.updateAnswer(answer)
         .then(answer => dispatch(receiveAnswer(answer)))
+);
+
+export const deleteAnswers = () => dispatch => (
+    AnswerApiUtil.deleteAnswers()
+        .then(() => dispatch(removeAnswers()))
 );
 
 export const deleteAnswer = id => dispatch => (
