@@ -3,9 +3,23 @@ import QuestionIndexItem from './question_index_item';
 import CreateQuestionContainer from './forms/create_question_container';
 
 class QuestionIndex extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.handleCreate = this.handleCreate.bind(this);
+	}
 	
 	componentDidMount() {
 		this.props.fetchQuestions();
+	}
+
+	handleCreate() {
+		this.props.questions.forEach(question => {
+			this.props.createAnswer({
+				questionId: question._id,
+				description: question.title
+			})
+		})
 	}
 
 	render() {
@@ -21,8 +35,12 @@ class QuestionIndex extends React.Component {
 		return (
 			<div className="question-frame">
 				<div className="topic-frame">
+					<button className='answer-creation-debugger'
+						onClick={this.handleCreate}>
+						Create All Answers
+					</button>
 					<button className='answer-deletion-debugger'
-						onClick={() => this.props.deleteAnswers()}>
+						onClick={this.props.deleteAnswers}>
 						Delete All Answers
 					</button>
 				</div>
