@@ -46,9 +46,7 @@ export const updateAnswer = answer => dispatch => (
 
 export const deleteAnswers = () => dispatch => (
     AnswerApiUtil.deleteAnswers()
-        .then(() => {
-            dispatch(removeAnswers())
-        })
+        .then(() => dispatch(removeAnswers()))
 );
 
 export const deleteAnswer = id => dispatch => (

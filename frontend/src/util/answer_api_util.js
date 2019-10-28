@@ -23,7 +23,7 @@ export const updateAnswer = answer => (
 );
 
 export const deleteAnswers = () => (
-    axios.delete('/api/answers')
+    axios.delete('/api/answers/')
 );
 
 export const deleteAnswer = id => (

@@ -5,7 +5,7 @@ import {
   REMOVE_ANSWER
 } from "../actions/answer_actions";
 
-const AnswersReducer = (state = {}, action) => {
+const AnswersReducer = (state = [], action) => {
     Object.freeze(state);
     let newState
 
@@ -28,7 +28,7 @@ const AnswersReducer = (state = {}, action) => {
             
             return newState;
         case REMOVE_ANSWERS:
-            return {};
+            return [];
         case REMOVE_ANSWER:
             newState = Array.from(state);
 
