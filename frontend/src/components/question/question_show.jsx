@@ -1,4 +1,5 @@
 import React from "react";
+import AnswerFormContainer from './answers/question_answer_form_container';
 import AnswerIndexContainer from './answers/question_answer_index_container';
 import MoreDropdown from './forms/more_dropdown';
 
@@ -100,7 +101,7 @@ class QuestionShow extends React.Component {
 
 								<MoreDropdown />
 							</div>
-							
+							{ this.state.answerForm ? <AnswerFormContainer /> : ''}
 							<AnswerIndexContainer />
 						</div>
 						<div className="show-right">
