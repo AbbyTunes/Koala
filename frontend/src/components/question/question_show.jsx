@@ -57,7 +57,9 @@ class QuestionShow extends React.Component {
 	}
 
 	render() {
-        const { question, deleteQuestion } = this.props;
+		const { question, deleteQuestion } = this.props;
+		
+		
 
 		if (question) {
 			return (
@@ -69,9 +71,6 @@ class QuestionShow extends React.Component {
 								<li>topics</li>
 							</div>
 							<div className="show-title">{question.title}</div>
-							{/* <div className="show-editor">
-								Last edited on {} by {}
-							</div> */}
 							<div className="question-icon">
 								
 								<ul className="question-left">
@@ -92,10 +91,10 @@ class QuestionShow extends React.Component {
 											<div className="question-number">{this.props.answers.length}</div>
 										</div>
 									</li>
+									<QuestionEditPopUp />									
 								</ul>
-
 								{/* <MoreDropdown deleteQuestion={deleteQuestion} /> */}
-								<QuestionEditPopUp />
+								
 							</div>
 							{ this.state.answerForm ? <AnswerFormContainer /> : ''}
                             <AnswerIndexContainer childDeletion={this.childDeletion} />
