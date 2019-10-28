@@ -1,6 +1,6 @@
 import React from 'react';
 import QuestionIndexItem from './question_index_item';
-// import QuestionCreateContainer from './question_create_container';
+import CreateQuestionContainer from './forms/create_question_container';
 
 class QuestionIndex extends React.Component {
 	
@@ -9,6 +9,7 @@ class QuestionIndex extends React.Component {
 	}
 
 	render() {
+		// const date = Date.now
 		const questions = this.props.questions.map((question, idx) => {
 			return <QuestionIndexItem 
 						key={`question-${idx}`}
@@ -23,10 +24,6 @@ class QuestionIndex extends React.Component {
 
 				</div>
 				<div className="question-middle">
-					{/* <div className="add-question">
-						<QuestionCreateContainer />
-					</div> */}
-
 					<div className="new-question">New Questions</div>
 					<ul>
 						{questions}

@@ -4,6 +4,7 @@ import headerLogo from '../../images/Koala-logo-final.png'
 import profileIcon from '../../images/koala-profile.png'
 import '../../stylesheets/reset.css' // this will probably get moved
 import '../../stylesheets/navbar.css'
+import QuestionPopUp from '../question/forms/question_pop_up'
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -78,7 +79,7 @@ class NavBar extends React.Component {
 									</div>
 								</span>
 
-								<span id="nav-item-span">
+								{/* <span id="nav-item-span">
 									<div className="header-nav-item">
 										<Link className={answerClass} to={'/answer'}>
 											<div className="nav-item-link-inner">
@@ -93,7 +94,7 @@ class NavBar extends React.Component {
 											<span>Answer</span>
 										</Link>
 									</div>
-								</span>
+								</span> */}
 
 								<span id="nav-item-span">
 									<div className="header-nav-item">
@@ -247,11 +248,11 @@ class NavBar extends React.Component {
 																		Help
 																	</div>
 																</Link>
-																<Link className="nav-profile-dropdown-settings-link" to={"/settings"}>
-																	<div className="nav-profile-dropdown-settings-link-content" onClick={this.logoutUser}>
+																<div className="nav-profile-dropdown-settings-link" onClick={this.logoutUser}>
+																	<div className="nav-profile-dropdown-settings-link-content" >
 																		Logout
 																	</div>
-																</Link>
+																</div>
 															</div>
 
 															<div className="nav-profile-dropdown-official-links-container">
@@ -302,7 +303,8 @@ class NavBar extends React.Component {
 								</div>
 								{/* link triggers modal */}
 								<div className="navbar-add-question">
-									<Link id="ask-question-modal-button" to={'/new_koala'}>Write a Koala</Link>
+									{/* <Link id="ask-question-modal-button" to={'/new_koala'}>Write a Koala</Link> */}
+									<QuestionPopUp />
 								</div>
 							</div>
 						</div>

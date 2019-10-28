@@ -6,19 +6,24 @@ const QuestionSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	},
+	editorIds: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}],
 	title: {
 		type: String,
 		required: true
 	},
-	description: {
-		type: String,
-		required: true
-	},
-	date: {
+	createDate: {
 		type: Date,
 		default: Date.now
-	}
+	},
+	updateDate: [{
+		type: Date
+	}]
 })
+
+
 
 module.exports = Question = mongoose.model('Question', QuestionSchema);
 

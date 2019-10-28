@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import profileIcon from '../../images/koala-profile.png'
-import '../../stylesheets/profile.scss'
+import { Link } from 'react-router-dom';
+import profileIcon from '../../images/koala-profile.png';
+import '../../stylesheets/profile.scss';
+import '../../stylesheets/profile_questions_index.scss';
+import '../../stylesheets/profile_answers_index.scss';
+import ProfileQuestionsContainer from "../question/profile_questions_container";
+import ProfileAnswersContainer from "../question/answers/profile_answers_index_container";
 
 
 class Profile extends React.Component {
@@ -21,12 +25,15 @@ class Profile extends React.Component {
 
   getLinks(){
     let headerValue = "Profile";
+    let feedContent;
     switch (this.props.location.pathname) {
       case `/profile/${this.profileId}/answers`:
         headerValue = "Answers";
+        feedContent = <ProfileAnswersContainer profileId={this.profileId} />
         break;
       case `/profile/${this.profileId}/questions`:
         headerValue = "Questions";
+        feedContent = <ProfileQuestionsContainer profileId={this.profileId} />;
         break;
       case `/profile/${this.profileId}/shares`:
         headerValue = "Shares";
@@ -47,6 +54,7 @@ class Profile extends React.Component {
         headerValue = "Activity";
         break;
       default:
+        feedContent = <ProfileAnswersContainer profileId={this.profileId} />
         break;
     }
 
@@ -129,7 +137,13 @@ class Profile extends React.Component {
               </div>
 {/* not implemented need to load associated questions etc */}
               <div className="profile-content-center-content-wrapper">
-
+                <div className="combined-profile-feed">
+                  <div className="current-feed-wrapper">
+{/* I think current feed item will just turn into the the styling of the question show */}
+{/* <div className="current-feed-item"></div> */}
+                    {feedContent}
+                  </div>
+                </div>
               </div>
             </div>
 

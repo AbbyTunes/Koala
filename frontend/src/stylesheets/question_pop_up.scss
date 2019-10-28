@@ -1,0 +1,38 @@
+.question-edit-menu {
+	position: relative;
+	top: 0;
+}
+
+.full-screen {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 5;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.6;
+	z-index: 100;
+}
+
+.question-pop-up {
+	position: relative;
+	top: 80px;
+	right: 10px;
+	margin: auto;
+	width: 580px;
+	height: 400px;
+	border: 1px solid rgb(224, 224, 224);
+	border-radius: 4px;
+	background-color: white;
+	z-index: 200;
+}
+
