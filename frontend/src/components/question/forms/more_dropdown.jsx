@@ -11,6 +11,7 @@ class MoreDropdown extends React.Component {
 		this.state = { showMenu: false }
 		this.showMenu = this.showMenu.bind(this);
 		this.hideMenu = this.hideMenu.bind(this);
+		this.deleteQuestion = this.deleteQuestion.bind(this);
 	}
 
 	showMenu() {
@@ -19,6 +20,12 @@ class MoreDropdown extends React.Component {
 
 	hideMenu() {
 		this.setState({ showMenu: false })
+	}
+
+	deleteQuestion(e) {
+		e.preventDefault();
+		const questionId = this.props.question._id;
+		this.props.deleteQuestion(questionId);
 	}
 
 	render() {
@@ -35,12 +42,15 @@ class MoreDropdown extends React.Component {
 				</div>
 
 				{this.state.showMenu ? (
-					<ul className="question-menu">
+					<div className="question-menu">
 						<div className="modal-dropdown" onClick={this.hideMenu}></div>
-						<QuestionEditPopUp />
-						<li className="question-menu-delete" >Delete Question</li>
-					</ul>
-				) : (null)
+						 <ul>
+							 <QuestionEditPopUp />
+							<li className="question-menu-delete" onClick={this.deleteQuestion} >Delete Question</li>
+						 </ul>
+						
+					</div>
+					) : (null)
 				}
 			</div>
 		)

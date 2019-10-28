@@ -10,19 +10,30 @@
 	}
 }
 
-.modal-dropdown {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	z-index: 50;
+.question-menu {
+
+	.modal-dropdown {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		z-index: 50;
+	}
+
+	.question-edit-menu {
+		position: relative;
+		top: 40px;
+		left: 150px;
+		z-index: 60;
+		ul {
+			li {
+				
+			}
+		}
+	}
 }
 
-.question-edit-menu {
-	position: relative;
-    top: 40px;
-    left: 150px;
-    z-index: 60;
-}
+
+
 

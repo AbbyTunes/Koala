@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
-// const QuestionIndexItem = ({ question, deleteQuestion }) => {
-=======
->>>>>>> c0017e1a359194a9ac13f57df7658f5f91e147e9
 class QuestionIndexItem extends React.Component {
 
 	constructor(props) {
