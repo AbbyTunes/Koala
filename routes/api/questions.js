@@ -67,17 +67,17 @@ router.patch("/:question_id", passport.authenticate('jwt', { session: false }), 
 });
 
 
-// delete a question
-router.delete("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
+// // delete a question
+// router.delete("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
 	
-	Answer.collection.deleteMany({ "questionId": {"$eq" :req.params.question_id}}); 
-//	db.answers.deleteMany({ "questionId": req.params.question_id })
+// 	Answer.collection.deleteMany({ "questionId": {"$eq" :req.params.question_id}}); 
+// //	db.answers.deleteMany({ "questionId": req.params.question_id })
 
-	Question.findByIdAndRemove(req.params.question_id, err => {
-		if (err) res.send(err);
-		else res.json({ question: "the question has been deleted" });
-	});
-});
+// 	Question.findByIdAndRemove(req.params.question_id, err => {
+// 		if (err) res.send(err);
+// 		else res.json({ question: "the question has been deleted" });
+// 	});
+// });
 
 
 //// Answers Routes
