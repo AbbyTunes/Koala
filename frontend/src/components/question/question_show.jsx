@@ -128,7 +128,7 @@ class QuestionShow extends React.Component {
 											</g>
 										</svg>
 										<div className="question-left-icon">
-											Answer by lastAnswerAuthor
+											Answer
 											<div className="question-dot">·</div>
 											<div className="question-number">{this.props.answers.length}</div>
 										</div>
