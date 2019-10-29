@@ -21,10 +21,12 @@ class AnswerIndex extends React.Component {
             this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
                 .then(answers => this.setState({ answers: answers.answers })); 
         }
-        // if (prevProps.location.pathname !== this.props.location.pathname) {
-        //     this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-        //         .then(answers => this.setState({ answers: answers.answers }));
-        // }
+        if (this.state.answers && this.state.answers[0]) {
+            if (this.props.question._id !== this.state.answers[0].question._id) {
+                this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
+                    .then(answers => this.setState({ answers: answers.answers }));
+            }
+        }
     }
 
     render() {
