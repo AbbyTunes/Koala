@@ -9,7 +9,7 @@ class ProfileQuestionIndex extends React.Component {
   }
 
   render() {
-    const newQuestions = this.props.questions.filter(question => question.authorId === this.props.profileId)
+    const newQuestions = this.props.questions.filter(question => question.authorId._id === this.props.profileId)
     const questions = newQuestions.map((question, idx) => {
       return <QuestionIndexItem
         key={`question-${idx}`}
