@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import AnswerFormContainer from './answers/question_answer_form_container';
 import AnswerIndexContainer from './answers/question_answer_index_container';
 // import MoreDropdown from './forms/more_dropdown';
@@ -30,7 +31,8 @@ class QuestionShow extends React.Component {
 
 	componentDidMount() {
 		this.props.fetchQuestion()
-		this.props.fetchAnswers({ questionId: this.props.match.params.question_id })
+
+		this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
 			.then(answers => {
 				if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
 					this.setState({ answerIcon: false });
@@ -43,7 +45,7 @@ class QuestionShow extends React.Component {
 	componentDidUpdate(prevProps) {
 		if (prevProps.answers && this.props.answers) {
 			if (prevProps.answers.length !== this.props.answers.length) {
-				this.props.fetchAnswers({ questionId: this.props.match.params.question_id })
+				this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
 					.then(answers => {
 						if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
 							this.setState({ answerIcon: false });
@@ -107,7 +109,7 @@ class QuestionShow extends React.Component {
 								{/* <MoreDropdown deleteQuestion={deleteQuestion} /> */}								
 							</div>
 							{this.state.answerForm ? <AnswerFormContainer question={question} answerSubmitted={this.answerSubmitted} /> : ''}
-							<AnswerIndexContainer childDeletion={this.childDeletion} />
+							<AnswerIndexContainer question={question} childDeletion={this.childDeletion} />
 						</div>
 						<div className="show-right">
 						</div>
@@ -122,4 +124,4 @@ class QuestionShow extends React.Component {
 		
 }
 
-export default QuestionShow;
+export default withRouter(QuestionShow);
