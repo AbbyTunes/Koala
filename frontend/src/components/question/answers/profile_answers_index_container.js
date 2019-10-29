@@ -1,21 +1,21 @@
 import { connect } from 'react-redux';
-import { fetchAnswers, updateAnswer, deleteAnswer } from '../../../actions/answer_actions';
+import { fetchUser } from '../../../actions/user_actions';
 import { fetchQuestion } from '../../../actions/question_actions';
+import { fetchAnswers, updateAnswer, deleteAnswer } from '../../../actions/answer_actions';
 import ProfileAnswerIndex from './profile_answers_index';
-import AnswerIndexStylesheet from '../../../stylesheets/question_answer_index.scss';
-import ProfileAnswerIndexStylesheet from '../../../stylesheets/profile_answers_index.scss';
+import AnswerIndexStylesheet from '../../../stylesheets/user_answer_index.scss';
 
-const mapStateToProps = state => {
-  return ({
+const mapStateToProps = state => ({
   answers: Object.values(state.entities.answers),
   currentUser: state.session.user
-})};
+});
 
 const mapDispatchToProps = dispatch => ({
+  fetchUser: id => dispatch(fetchUser(id)),
+  fetchQuestion: id => dispatch(fetchQuestion(id)),
   fetchAnswers: optionId => dispatch(fetchAnswers(optionId)),
   updateAnswer: answer => dispatch(updateAnswer(answer)),
-  deleteAnswer: id => dispatch(deleteAnswer(id)), 
-  fetchQuestion: (questionId) => dispatch(fetchQuestion(questionId))
+  deleteAnswer: id => dispatch(deleteAnswer(id))
 });
 
 export default connect(

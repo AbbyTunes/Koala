@@ -1,4 +1,4 @@
-.profile-answer-index-item-container{
+#profile-user-answer-index-container{
   width: 572px;
   min-width: 572px;
 }
@@ -17,11 +17,4 @@
 				& a:hover {
 					text-decoration: underline;
 				}
-}
-
-.current-feed-wrapper{
-  .question-answer-index-container{
-    width:572;
-    min-width: 572;
-  }
 }
