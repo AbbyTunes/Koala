@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import AnswerFormContainer from './answers/question_answer_form_container';
 import AnswerIndexContainer from './answers/question_answer_index_container';
 // import MoreDropdown from './forms/more_dropdown';
@@ -81,20 +82,23 @@ class QuestionShow extends React.Component {
 			if (question.editorIds.length) {
 				const editorArr = question.editorIds;
 				lastEditor = editorArr[editorArr.length - 1];
-				lastEditorName = `by ${lastEditor.firstName} ${lastEditor.lastName}`;
-				
+				lastEditorName = (
+					<div className="question-editor">by <Link to={`/profile/${lastEditor._id}`}>{lastEditor.firstName} {lastEditor.lastName}</Link>
+					</div>
+				)
 			} else {
 				lastEditorName = null;
 			}
 
-			// let lastEditDate;
-			// if (question.updateDate.length) {
-			// 	const 
-			// }
-			// lastEditDate = lastEditor.
-			// const lastEditDate = (new Date(question.createDate)).toLocaleDateString('en-US', {
-			// 	year: 'numeric', month: 'short', day: 'numeric'
-			// });
+			let lastEditDate;
+			if (question.updateDate.length) {
+				const datesArr = question.updateDate;
+				lastEditDate = datesArr[datesArr.length - 1];
+			}
+
+			const updateDate = (new Date(lastEditDate)).toLocaleDateString('en-US', {
+				year: 'numeric', month: 'short', day: 'numeric'
+			});
 
 			return (
 				<div className="show-frame">
@@ -106,8 +110,8 @@ class QuestionShow extends React.Component {
 							</div>
 							
 							<div className="show-title">{question.title}</div>
-							<div className="show-editor">Created by {question.authorId.firstName} {question.authorId.lastName} </div>
-							<div className="show-editor">Last edited {lastEditorName} on updateDate</div>
+							{/* <div className="show-editor">Created by {question.authorId.firstName} {question.authorId.lastName} </div> */}
+							<div className="show-editor">Last edited {lastEditorName} on {updateDate}</div>
 
 							<div className="question-icon">
 								<ul className="question-left">
