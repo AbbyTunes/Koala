@@ -52,7 +52,7 @@ class QuestionIndexItem extends React.Component {
 			const answerArr = this.state.answers;
 			lastAnswer = answerArr[answerArr.length - 1];
 			lastAnswerAuthor = (
-				<div className="question-author">by <Link to="">{lastAnswer.author.firstName} {lastAnswer.author.lastName}</Link>
+				<div className="question-author">by <Link to={`/profile/${lastAnswer.author._id}`}>{lastAnswer.author.firstName} {lastAnswer.author.lastName}</Link>
 				</div>
 			)
 		} else {
@@ -68,12 +68,9 @@ class QuestionIndexItem extends React.Component {
 		}
 
 		const questionAuthor = (
-			<div className="question-author">by <Link to="">{question.authorId.firstName} {question.authorId.lastName}</Link>
+			<div className="question-author">by <Link to={`/profile/${question.authorId._id}`}>{question.authorId.firstName} {question.authorId.lastName}</Link>
 			</div>
 		)
-
-		// let profileId;
-		// const profileLink = `profile/${profileId}/answers`
 
 		return (
 			<li className="question-item">
