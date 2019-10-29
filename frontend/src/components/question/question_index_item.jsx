@@ -41,7 +41,7 @@ class QuestionIndexItem extends React.Component {
 	render() {
 
 		const { question } = this.props;
-		const createDate = (new Date(question.createDate)).toLocaleDateString('en-US', {
+		const createDate =  (new Date(question.createDate)).toLocaleDateString('en-US', {
 			year: 'numeric', month: 'short', day: 'numeric'
 		});
 
@@ -61,16 +61,30 @@ class QuestionIndexItem extends React.Component {
 
 		let lastAnswerDate;
 		if (lastAnswer) {
-
-			lastAnswerDate = (new Date(lastAnswer.date)).toLocaleDateString('en-US', {
+			const answerDate = (new Date(lastAnswer.date)).toLocaleDateString('en-US', {
 				year: 'numeric', month: 'short', day: 'numeric'
 			});
+			lastAnswerDate = (
+				<div> on {answerDate} </div>
+			)
 		}
 
 		const questionAuthor = (
 			<div className="question-author">by <Link to={`/profile/${question.authorId._id}`}>{question.authorId.firstName} {question.authorId.lastName}</Link>
 			</div>
 		)
+
+		let answerAuthor;
+		if (lastAnswer) {
+			answerAuthor = (
+				<div className="question-1">
+					<div className="question-dot">·</div>
+					Last answered {lastAnswerAuthor} {lastAnswerDate}
+				</div>
+			)
+		}
+
+		
 
 		return (
 			<li className="question-item">
@@ -97,10 +111,7 @@ class QuestionIndexItem extends React.Component {
 						<div className="question-answer">
 							<Link to={`/questions/${question._id}`}>{this.state.answers.length} answers</Link>
 						</div>
-						<div className="question-1">
-							<div className="question-dot">·</div>
-							Last answered {lastAnswerAuthor} on {lastAnswerDate}
-						</div>
+						{answerAuthor}
 					</div>
 					<div className="question-icon">
 						<ul>
