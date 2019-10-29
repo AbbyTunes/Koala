@@ -72,7 +72,6 @@ class Profile extends React.Component {
         break;
     }
 
-    debugger;
 
     return (
       <div className="profile-page-container">
@@ -101,8 +100,7 @@ class Profile extends React.Component {
                   </div>
 {/* not implemented, come back as bonus */}
                   <div className="profile-header-credential-link">
-                    <span className="credential-link"></span>
-                  </div>
+                    <span className="credential-link"></span></div>
                 </div>
 
                 <div className="profile-header-description-container">
@@ -111,9 +109,7 @@ class Profile extends React.Component {
                       <span className="profile-description-edit-link"></span>
                     </div>
                     {/* to be implemented at later date */}
-                    <div className="hidden-profile-header-description-edit-form">
-
-                    </div>
+                    <div className="hidden-profile-header-description-edit-form"></div>
                   </div>
   
 
