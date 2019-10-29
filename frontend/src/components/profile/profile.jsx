@@ -6,6 +6,7 @@ import '../../stylesheets/profile_questions_index.scss';
 import '../../stylesheets/profile_answers_index.scss';
 import ProfileQuestionsContainer from "../question/profile_questions_container";
 import ProfileAnswersContainer from "../question/answers/profile_answers_index_container";
+//import UserAnswersContainer from "../answer/user_answer_index_container";
 
 
 class Profile extends React.Component {
@@ -15,12 +16,25 @@ class Profile extends React.Component {
     this.toggleClass = this.toggleClass.bind(this);
     this.state = { active: false};
     this.profileId = this.props.match.params.user_id; 
+
+
+
+    this.state = {
+      currentProfile: {}
+    }
+    this.props.fetchUser(this.profileId)
+      .then(user => this.setState({ currentProfile: user.user }));
   }
 
   toggleClass() {
     const currentState = this.state.active;
     this.setState({ active: !currentState });
   };
+
+  componentDidMount() {
+    this.props.fetchUser(this.profileId)
+      .then(user => this.setState({ currentProfile: user.user }));
+  }
 
 
   getLinks(){
@@ -29,7 +43,7 @@ class Profile extends React.Component {
     switch (this.props.location.pathname) {
       case `/profile/${this.profileId}/answers`:
         headerValue = "Answers";
-        feedContent = <ProfileAnswersContainer profileId={this.profileId} />
+        feedContent = <ProfileAnswersContainer  profileId={this.profileId} />
         break;
       case `/profile/${this.profileId}/questions`:
         headerValue = "Questions";
@@ -54,10 +68,9 @@ class Profile extends React.Component {
         headerValue = "Activity";
         break;
       default:
-        feedContent = <ProfileAnswersContainer profileId={this.profileId} />
+        feedContent = <ProfileAnswersContainer  profileId={this.profileId} />
         break;
     }
-
 
 
     return (
@@ -76,7 +89,7 @@ class Profile extends React.Component {
                 <div className="profile-header-content-name-and-credential">
                   <div className="profile-header-content-name-edit-wrapper">
                     <h1 className="profile-name">
-                      <span>{this.props.currentUser.firstName} {this.props.currentUser.lastName}</span>
+                      <span>{this.state.currentProfile.firstName} {this.state.currentProfile.lastName}</span>
                     </h1>
                     <span className="edit-link">Edit</span>
 {/* not implemented, come back as bonus */}
@@ -87,19 +100,16 @@ class Profile extends React.Component {
                   </div>
 {/* not implemented, come back as bonus */}
                   <div className="profile-header-credential-link">
-                    <span className="credential-link">Add profile credential</span>
-                  </div>
+                    <span className="credential-link"></span></div>
                 </div>
 
                 <div className="profile-header-description-container">
                   <div className="profile-header-description">
                     <div className="profile-description-edit-link-wrapper">
-                      <span className="profile-description-edit-link">Write a description about yourself</span>
+                      <span className="profile-description-edit-link"></span>
                     </div>
                     {/* to be implemented at later date */}
-                    <div className="hidden-profile-header-description-edit-form">
-
-                    </div>
+                    <div className="hidden-profile-header-description-edit-form"></div>
                   </div>
   
 
@@ -121,12 +131,12 @@ class Profile extends React.Component {
                   <li><Link to={`/profile/${this.profileId}`}>Profile</Link></li>
                   <li><Link to={`/profile/${this.profileId}/answers`}>Answers</Link></li>
                   <li><Link to={`/profile/${this.profileId}/questions`}>Questions</Link></li>
-                  <li><Link to={`/profile/${this.profileId}/shares`}>Shares</Link></li>
+                  {/* <li><Link to={`/profile/${this.profileId}/shares`}>Shares</Link></li>
                   <li><Link to={`/profile/${this.profileId}/posts`}>Posts</Link></li>
                   <li><Link to={`/profile/${this.profileId}/followers`}>Followers</Link></li>
                   <li><Link to={`/profile/${this.profileId}/following`}>Following</Link></li>
                   <li><Link to={`/profile/${this.profileId}/edits`}>Edits</Link></li>
-                  <li><Link to={`/profile/${this.profileId}/activity`}>Activity</Link></li>
+                  <li><Link to={`/profile/${this.profileId}/activity`}>Activity</Link></li> */}
                 </ul>
               </div>
             </div>

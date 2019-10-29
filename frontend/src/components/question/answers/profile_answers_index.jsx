@@ -1,24 +1,32 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ProfileAnswerIndexItem from './profile_answer_index_item';
+import AnswerIndexItem from './profile_answer_index_item';
+import ProfileAnswerIndexStylesheet from '../../../stylesheets/profile_answers_index.scss';
 
-class ProfileAnswerIndex extends React.Component {
+class AnswerIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchAnswers({ userId: this.props.profileId});
+    if (this.props.currentUser._id === parseInt(this.props.match.params.user_id)) {
+      this.props.fetchAnswers({ currentUserId: true });
+    } else {
+      this.props.fetchAnswers({ userId: this.props.match.params.user_id });
+    }
   }
 
   render() {
     const answers = this.props.answers.map((answer, idx) =>
-      <ProfileAnswerIndexItem
+      <AnswerIndexItem
         key={`answer-${idx}`}
         answer={answer}
         {...this.props} />
     );
 
-    return (<div className='question-answer-index-container'>
+    return (<div className='user-answer-index-container' id="profile-user-answer-index-container">
+      {/* <div className='answer-count'>
+        {answers.length} {answers.length === 1 ? 'Answer' : 'Answers'}
+      </div> */}
       {answers}
     </div>)
   }
 }
 
-export default withRouter(ProfileAnswerIndex);
+export default withRouter(AnswerIndex);

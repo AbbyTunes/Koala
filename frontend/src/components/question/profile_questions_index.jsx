@@ -14,7 +14,7 @@ class ProfileQuestionIndex extends React.Component {
       return <QuestionIndexItem
         key={`question-${idx}`}
         question={question}
-        deleteQuestion={this.props.deleteQuestion}
+        {...this.props}
       />
     });
 
