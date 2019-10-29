@@ -134,7 +134,12 @@ router.post('/:question_id/answers',
 		});
 		newAnswer
 			.save()
-			.then(answer => res.json(answer))
+			.then(answer => {
+				Question.findOneAndUpdate({ _id: req.params.question_id },
+					{ $push: { answerIds: answer._id }},
+					{	new: true	}
+				).then(question => res.json(answer))
+			})
 			.catch(err => {
 				res.status(400).json({ answer: 'failed to answer question' });
 			});

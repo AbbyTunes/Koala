@@ -12,14 +12,20 @@ class AnswerIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchAnswers({questionId: this.props.match.params.question_id})
+        this.props.fetchAnswers({questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id})
             .then(answers => this.setState({answers: answers.answers}));
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.answers.length !== this.props.answers.length) {
-            this.props.fetchAnswers({ questionId: this.props.match.params.question_id })
+            this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
                 .then(answers => this.setState({ answers: answers.answers })); 
+        }
+        if (this.state.answers && this.state.answers[0]) {
+            if (this.props.question._id !== this.state.answers[0].question._id) {
+                this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
+                    .then(answers => this.setState({ answers: answers.answers }));
+            }
         }
     }
 
