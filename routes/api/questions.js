@@ -12,6 +12,18 @@ const Answer = require('../../models/Answer');
 // show all questions
 router.get("/", (req, res) => {
 	Question.find()
+		.populate({
+			path: 'authorId',
+			select: 'firstName lastName'
+		})
+		.populate({
+			path: 'editorIds',
+			select: 'firstName lastName'
+		})
+		.populate({
+			path: 'answerIds',
+			select: 'author'
+		})
 		.sort({ date: -1 })
 		.then(questions => res.json(questions))
 		.catch(err => res.status(404).json({ question: "No questions found" }));
@@ -21,9 +33,18 @@ router.get("/", (req, res) => {
 // find by question id
 router.get("/:question_id", (req, res) => {
 	Question.findById(req.params.question_id)
-		.populate("answerIds")
-		.populate("authorId")
-		.populate("editorIds")
+		.populate({
+			path: 'authorId',
+			select: 'firstName lastName'
+		})
+		.populate({
+			path: 'editorIds',
+			select: 'firstName lastName'
+		})
+		.populate({
+			path: 'answerIds',
+			select: 'author'
+		})
 		.then(question => res.json(question))
 		.catch(err =>
 			res.status(404).json({ question: "No question found with that ID" })

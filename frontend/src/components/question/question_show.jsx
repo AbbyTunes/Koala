@@ -73,8 +73,31 @@ class QuestionShow extends React.Component {
 
 	render() {
 		const { question } = this.props;
+		
 
 		if (question) {
+
+			let lastEditor;
+			let lastEditorName;
+
+			if (question.editorIds.length) {
+				const editorArr = question.editorIds;
+				lastEditor = editorArr[editorArr.length - 1];
+				lastEditorName = `by ${lastEditor.firstName} ${lastEditor.lastName}`;
+				
+			} else {
+				lastEditorName = null;
+			}
+
+			// let lastEditDate;
+			// if (question.updateDate.length) {
+			// 	const 
+			// }
+			// lastEditDate = lastEditor.
+			// const lastEditDate = (new Date(question.createDate)).toLocaleDateString('en-US', {
+			// 	year: 'numeric', month: 'short', day: 'numeric'
+			// });
+
 			return (
 				<div className="show-frame">
 					<div className="show-session">
@@ -85,9 +108,12 @@ class QuestionShow extends React.Component {
 							</div>
 							
 							<div className="show-title">{question.title}</div>
+							<div className="show-editor">Created by {question.authorId.firstName} {question.authorId.lastName} </div>
+							<div className="show-editor">Last edited {lastEditorName} on updateDate</div>
+
 							<div className="question-icon">
-								
 								<ul className="question-left">
+
 									<li className={`answer-form-btn${this.state.answerForm ? ' active' : ''}${this.state.answerIcon ? '' : ' hidden'}`}
 										onClick={this.toggleAnswer}>
 										<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" >
@@ -99,7 +125,7 @@ class QuestionShow extends React.Component {
 											</g>
 										</svg>
 										<div className="question-left-icon">
-											Answer
+											Answer by lastAnswerAuthor
 											<div className="question-dot">·</div>
 											<div className="question-number">{this.props.answers.length}</div>
 										</div>

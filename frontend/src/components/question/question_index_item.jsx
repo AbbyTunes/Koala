@@ -14,7 +14,6 @@ class QuestionIndexItem extends React.Component {
 		};
 
 		this.toggleAnswer = this.toggleAnswer.bind(this);
-		// this.deleteQuestion = this.deleteQuestion.bind(this);
 		this.answerSubmitted = this.answerSubmitted.bind(this);
 	}
 
@@ -34,13 +33,6 @@ class QuestionIndexItem extends React.Component {
 			});
 	}
 
-	// deleteQuestion(e) {
-	// 	e.preventDefault();
-	// 	const questionId = this.props.question._id;
-	// 	this.props.deleteQuestion(questionId)
-	// 		.then()
-	// }
-
 	answerSubmitted() {
 		this.setState({ answerIcon: false });
 		this.setState({ answerForm: false });
@@ -52,18 +44,43 @@ class QuestionIndexItem extends React.Component {
 		const createDate = (new Date(question.createDate)).toLocaleDateString('en-US', {
 			year: 'numeric', month: 'short', day: 'numeric'
 		});
-		// debugger
+
+		let lastAnswerAuthor;
+		let lastAnswer;
+
+		if (this.state.answers.length) {
+			const answerArr = this.state.answers;
+			lastAnswer = answerArr[answerArr.length - 1];
+			lastAnswerAuthor = `by ${lastAnswer.author.firstName} ${lastAnswer.author.lastName}`;
+		} else {
+			lastAnswerAuthor = null;
+		}
+
+		let lastAnswerDate;
+		if (lastAnswer) {
+
+			lastAnswerDate = (new Date(lastAnswer.date)).toLocaleDateString('en-US', {
+				year: 'numeric', month: 'short', day: 'numeric'
+			});
+		}
+
+		const questionAuthor = `by ${question.authorId.firstName} ${question.authorId.lastName}`;
+		
+		// let profileId;
+		// const profileLink = `profile/${profileId}/answers`
+
+
 		return (
 			<li className="question-item">
 				<div className="question-left">
 
 					<div className="question-1">
-						Question added
-						<div className="question-dot">·</div>
+						Question added {questionAuthor} on {createDate}
+
+						{/* <div className="question-dot">·</div>
 						<div className="question-topic">
 							<Link to="/">topic_name_hard_code</Link>
-							{/* <div>{question.topics}</div> */}
-						</div>
+						</div> */}
 						{/* <div className="question-hide" onClick={this.deleteQuestion}>
 							<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
 								<g id="small_close" className="icon_svg-stroke" fill="none" fillRule="evenodd" strokeLinecap="round" stroke="#666666" strokeWidth="1.5">
@@ -80,7 +97,7 @@ class QuestionIndexItem extends React.Component {
 						</div>
 						<div className="question-1">
 							<div className="question-dot">·</div>
-							Question added on {createDate}
+							Last answered {lastAnswerAuthor} on {lastAnswerDate}
 						</div>
 					</div>
 					<div className="question-icon">
