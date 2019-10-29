@@ -1,7 +1,7 @@
-.question-edit-menu {
-	position: relative;
-	top: 0;
-}
+// .question-edit-menu {
+// 	position: relative;
+// 	top: 0;
+// }
 
 .full-screen {
 	position: fixed;
@@ -25,14 +25,104 @@
 
 .question-pop-up {
 	position: relative;
-	top: 80px;
+	top: 250px;
 	right: 10px;
 	margin: auto;
-	width: 580px;
-	height: 400px;
+	width: 450px;
+	height: 250px;
+	display: block;
 	border: 1px solid rgb(224, 224, 224);
 	border-radius: 4px;
 	background-color: white;
+	color: #333;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	overflow: hidden;
 	z-index: 200;
+
+	.question-form-1 {
+		display: flex;
+		position: relative;
+		top: 0;
+		height: 50px;
+		border-bottom: 1px solid #e2e2e2;
+
+		.form-1-left {
+			font-size: 19px;
+			font-weight: bold;
+			margin: 10px 0;
+			padding: 0 15px;
+		}
+
+		.form-1-right {
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin-top: 15px;
+			padding: 0 15px;
+
+		}
+	}
+
+	.question-form-2 {
+		width: auto;
+		height: auto;
+		padding: 30px 50px;
+
+		.form-2-title {
+			// overflow-wrap: break-word;
+			// display: flex;  
+			// flex-wrap: wrap;
+			position: relative;
+			top: 15px;
+			width: 95%;
+			height: auto;
+			padding: 10px;
+			direction: ltr;
+			text-align: left;
+			font-weight: bold;
+			line-height: 1.3;
+			font-size: 23px;
+			border: none;
+			border-bottom: 1px solid #e2e2e2;
+		}
+
+		.form-2-title:focus {
+			border-bottom: 2px solid rgba(0, 132, 255, .5);
+			outline: 0;
+		}
+
+		.form-3-cancel {
+			position: absolute;
+			bottom: 0;
+			right: 150px;
+			margin: 30px;
+			color: #949494;
+			font-size: 15px;
+			cursor: pointer;
+		}
+
+		.form-3-submit {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			margin: 25px;
+			// transition: opacity ease-in-out 100ms,color ease-in-out 100ms,background-color ease-in-out 100ms,border-color ease-in-out 100ms;
+			border-radius: 3px;
+			font-weight: 500;
+			outline: 0;
+			text-align: center;
+			text-decoration: none;
+			background: #3e78ad;
+			color: #fff;
+			border: 1px solid #3a66ad;
+			box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
+			font-size: 15px;
+			padding: 6px 8px;
+			cursor: pointer;
+		}
+
+	}
+
+	
 }
 
