@@ -7,10 +7,10 @@ import QuestionShowStylesheet from '../../stylesheets/question_show.scss';
 const mapStateToProps = (state, ownProps) => {
 	const questionId = ownProps.match.params.question_id;
 	return {
-        currentUser: state.session.user,
-        question: state.entities.questions[questionId],
-        answers: state.entities.answers
-    }
+		currentUser: state.session.user,
+		question: state.entities.questions[questionId],
+		answers: Object.values(state.entities.answers)
+	}
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		fetchQuestion: () => dispatch(fetchQuestion(questionId)),
 		updateQuestion: () => dispatch(updateQuestion(questionId)),
-        deleteQuestion: (id) => dispatch(deleteQuestion(id)),
-        fetchAnswers: optionId => dispatch(fetchAnswers(optionId))
+		deleteQuestion: (id) => dispatch(deleteQuestion(id)),
+		fetchAnswers: optionId => dispatch(fetchAnswers(optionId))
 	}
 };
 

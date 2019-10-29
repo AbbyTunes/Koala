@@ -6,34 +6,12 @@ class AnswerIndexItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.answer = Object.assign({}, this.props.answer);
-        this.currentVoterIdx = -1;
-
-        this.answer.voters.forEach((voter, idx) => {
-            if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
-        });
-
-        if (this.currentVoterIdx === -1) {
-            this.currentVoterIdx = this.answer.voters.length;
-            this.answer.voters.push({
-                id: this.props.currentUser.id,
-                upvote: false,
-                downvote: false,
-                moreHover: false,
-                moreActive: false
-            });
-        }
-
         this.state = {
-            author: null,
-            upvoteCount: this.props.answer.upvote,
-            upvoted: this.answer.voters[this.currentVoterIdx].upvote,
-            downvoted: this.answer.voters[this.currentVoterIdx].downvote,
-            downvoteHover: false
+            answer: null,
+            downvoteHover: false,
+            moreHover: false,
+            moreActive: false
         }
-        
-        this.props.fetchUser(this.answer.authorId)
-            .then(user => this.setState({ author: user.user }));
         
         this.toggleUpvote = this.toggleUpvote.bind(this);
         this.toggleDownvote = this.toggleDownvote.bind(this);
@@ -44,49 +22,96 @@ class AnswerIndexItem extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.answer.authorId)
-            .then(user => this.setState({ author: user.user }));
+        this._mounted = true;
+
+        if (this._mounted) {
+            this.setState({ answer: this.props.answer })
+            this.currentVoterIdx = -1;
+    
+            if (this.state.answer) {
+                this.state.answer.voters.forEach((voter, idx) => {
+                    if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
+                });
+        
+                if (this.currentVoterIdx === -1) {
+                    this.currentVoterIdx = this.state.answer.voters.length;
+        
+                    let answer = Object.assign({}, this.state.answer);
+                    answer.voters.push({
+                        id: this.props.currentUser.id,
+                        upvote: false,
+                        downvote: false,
+                    });
+        
+                    this.setState({answer});
+                }
+            }
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this._mounted) {
+            if (this.currentVoterIdx === -1 || prevProps.answer._id !== this.state.answer_id) {
+                this.currentVoterIdx = -1;
+    
+                this.state.answer.voters.forEach((voter, idx) => {
+                    if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
+                });
+    
+                if (this.currentVoterIdx === -1) {
+                    this.currentVoterIdx = this.state.answer.voters.length;
+    
+                    let answer = Object.assign({}, this.state.answer);
+                    answer.voters.push({
+                        id: this.props.currentUser.id,
+                        upvote: false,
+                        downvote: false,
+                    });
+    
+                    this.setState({ answer });
+                }
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        this._mounted = false;
     }
 
     toggleUpvote() {
-        if (this.state.upvoted) {
-            this.setState({upvoted: false});
-            this.setState({upvoteCount: this.state.upvoteCount - 1});
-            this.answer.upvote -= 1;
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], {upvote: false}
-            );
+        let answer = Object.assign({}, this.state.answer);
+
+        if (answer.voters[this.currentVoterIdx].upvote) {
+            answer.upvote -= 1;
+            answer.voters[this.currentVoterIdx].upvote = false;
         } else {
-            this.setState({upvoted: true});
-            this.setState({upvoteCount: this.state.upvoteCount + 1});
-            this.answer.upvote += 1;
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], { upvote: true }
-            );
+            answer.upvote += 1;
+            answer.voters[this.currentVoterIdx].upvote = true;
         }
 
-        this.props.updateAnswer(this.answer);
+        this.setState({answer});
+        this.props.updateAnswer(answer);
     }
 
     toggleDownvote() {
-        if (this.state.downvoted) {
-            this.setState({ downvoted: false });
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], { downvote: false }
-            );
+        let answer = Object.assign({}, this.state.answer);
+
+        if (answer.voters[this.currentVoterIdx].downvote) {
+            answer.downvote -= 1;
+            answer.voters[this.currentVoterIdx].downvote = false;
         } else {
-            this.setState({ downvoted: true });
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], { downvote: true }
-            );
+            answer.downvote += 1;
+            answer.voters[this.currentVoterIdx].downvote = true;
         }
 
-        this.props.updateAnswer(this.answer);
+        this.setState({ answer })
+
+        this.props.updateAnswer(this.state.answer);
     }
 
     handleDelete() {
         this.toggleMore();
-        this.props.deleteAnswer(this.props.answer._id);
+        this.props.deleteAnswer(this.state.answer._id);
         this.props.childDeletion();
     }
 
@@ -104,16 +129,51 @@ class AnswerIndexItem extends React.Component {
 
 
     render() {
-        const date = (new Date(this.props.answer.date)).toLocaleDateString('en-US', {
-            year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
-        });
-        
+        let author, description, upvoteCount, upvoted, downvoted, date
+
+        if (this.state.answer && this.currentVoterIdx !== -1) {
+            author = this.state.answer.author;
+            description = this.state.answer.description;
+            upvoteCount = this.state.answer.upvote;
+            upvoted = this.state.answer.voters[this.currentVoterIdx].upvote;
+            downvoted = this.state.answer.voters[this.currentVoterIdx].downvote;
+            date = (new Date(this.state.answer.date)).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'short', day: 'numeric'
+            });
+        } else {
+            this.currentVoterIdx = -1;
+            this.props.answer.voters.forEach((voter, idx) => {
+                if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
+            });
+            if (this.currentVoterIdx === -1) {
+                this.currentVoterIdx = this.props.answer.voters.length
+
+                let answer = Object.assign({}, this.props.answer);
+                answer.voters.push({
+                    id: this.props.currentUser.id,
+                    upvote: false,
+                    downvote: false,
+                });
+
+                this.props.updateAnswer(answer);
+            };
+
+            author = this.props.answer.author;
+            description = this.props.answer.description;
+            upvoteCount = this.props.answer.upvote;
+            upvoted = this.props.answer.voters[this.currentVoterIdx].upvote;
+            downvoted = this.props.answer.voters[this.currentVoterIdx].downvote;
+            date = (new Date(this.props.answer.date)).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'short', day: 'numeric'
+            });
+        }
+
         const upvoteClass = 'answer-upvote' + (
-            this.state.upvoted ? ' active' : ''
+            upvoted ? ' active' : ''
         );
 
         const downvoteClass = 'answer-downvote' + (
-            this.state.downvoted ? ' active' : ''
+            downvoted ? ' active' : ''
         ) + (
             this.state.downvoteHover ? ' tooltip' : ''
         );
@@ -126,14 +186,14 @@ class AnswerIndexItem extends React.Component {
             <div className='content-divider'></div>
             <div className='answer-header'>
                 <Link className='answer-author-icon-link no-select'
-                    to={this.state.author ? `/profile/${this.state.author.id}` : ''}>
+                    to={author ? `/profile/${author._id}` : ''}>
                     <div className='answer-author-icon'></div>
                 </Link>
                 <div className='answer-author-date-container'>
                     <Link className='answer-author-link'
-                        to={this.state.author ? `/profile/${this.state.author.id}` : ''}>
+                        to={author ? `/profile/${author._id}` : ''}>
                         <div className='answer-author'>
-                            {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
+                            {author ? `${author.firstName} ${author.lastName}` : ''}
                         </div>
                     </Link>
                     <div className='answer-date'>
@@ -142,7 +202,7 @@ class AnswerIndexItem extends React.Component {
                 </div>
             </div>
             <div className='answer-body'>
-                {this.props.answer.description}
+                {description}
             </div>
             <div className='answer-footer no-select'>
                 <div className={upvoteClass}
@@ -161,7 +221,7 @@ class AnswerIndexItem extends React.Component {
                         ·
                     </div>
                     <div className='upvote-count'>
-                        {this.state.upvoteCount}
+                        {upvoteCount}
                     </div>
                 </div>
                 <div className='footer-right'>

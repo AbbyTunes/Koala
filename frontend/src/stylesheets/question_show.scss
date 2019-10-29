@@ -74,29 +74,29 @@
 					font-weight: 500;
 					color: #666;
 					cursor: pointer;
-                    display: flex;
-                    
-                    .svg-base {
-                        stroke: #329bff;
-                        stroke-width: 1.5;
-                        fill: none;
-                        fill-rule: evenodd;
-                    }
+					display: flex;
+					
+					.svg-base {
+						stroke: #329bff;
+						stroke-width: 1.5;
+						fill: none;
+						fill-rule: evenodd;
+					}
 
-                    &.active {
-                        cursor: default;
-                        
-                        .svg-base {
-                            stroke: #666;
-                        }
-                    }
-                }
-                
-                .answer-form-btn {
-                    &.hidden {
-                        display: none;
-                    }
-                }
+					&.active {
+						cursor: default;
+						
+						.svg-base {
+								stroke: #666;
+						}
+					}
+				}
+				
+				.answer-form-btn {
+					&.hidden {
+						display: none;
+					}
+				}
 
 				.question-left-icon {
 					display: flex;

@@ -84,7 +84,16 @@ router.patch("/:question_id", passport.authenticate('jwt', { session: false }), 
 
 // show all answers for a particular question
 router.get('/:question_id/answers', (req, res) => {
-	Answer.find({ questionId: req.params.question_id })
+	// Answer.find({ question: { id: req.params.question_id } })
+	Answer.find({ question: req.params.question_id })
+		.populate({
+			path: 'question',
+			select: 'title'
+		})
+		.populate({
+			path: 'author',
+			select: 'firstName lastName'
+		})
 		.sort({ date: -1 })
 		.then(answers => res.json(answers))
 		.catch(err => res.status(404).json({ answers: "No answers for this question.. yet!" }));
@@ -95,8 +104,8 @@ router.get('/:question_id/answers', (req, res) => {
 router.post('/:question_id/answers',
 	passport.authenticate('jwt', { session: false }), (req, res) => {
 		const newAnswer = new Answer({
-			authorId: req.user.id,
-			questionId: req.params.question_id,
+			author: req.user.id,
+			question: req.params.question_id,
 			upvote: 0,
 			downvote: 0,
 			description: req.body.description

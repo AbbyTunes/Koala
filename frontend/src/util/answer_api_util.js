@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 export const fetchAnswers = optionId => {
-    if (optionId.currentUserId) {
-        return axios.get(`/api/current/answers`);
-    } else if (optionId.userId) {
+    if (optionId.userId) {
         return axios.get(`/api/users/${optionId.userId}/answers`);
     } else if (optionId.questionId) {
         return axios.get(`/api/questions/${optionId.questionId}/answers`);
@@ -15,7 +13,7 @@ export const fetchAnswer = id => (
 );
 
 export const createAnswer = answer => (
-    axios.post(`/api/questions/${answer.questionId}/answers`, answer)
+    axios.post(`/api/questions/${answer.question}/answers`, answer)
 );
 
 export const updateAnswer = answer => (
