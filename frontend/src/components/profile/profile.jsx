@@ -8,6 +8,7 @@ import '../../stylesheets/profile_questions_index.scss';
 import '../../stylesheets/profile_answers_index.scss';
 import ProfileQuestionsContainer from "../question/profile_questions_container";
 import ProfileAnswersContainer from "../question/answers/profile_answers_index_container";
+import ProfilePopUp from './profile_user_edit_popup'
 //import UserAnswersContainer from "../answer/user_answer_index_container";
 
 
@@ -103,8 +104,7 @@ class Profile extends React.Component {
                     <h1 className="profile-name">
                       <span>{this.state.currentProfile.firstName} {this.state.currentProfile.lastName}</span>
                     </h1>
-                    <span className="edit-link">Edit</span>
-{/* not implemented, come back as bonus */}
+                    <ProfilePopUp currentProfile={this.state.currentProfile}/>
                     <div className="hidden-edit-form-for-profile">
 
                     </div>
@@ -119,6 +119,7 @@ class Profile extends React.Component {
                   <div className="profile-header-description">
                     <div className="profile-description-edit-link-wrapper">
                       <span className="profile-description-edit-link"></span>
+
                     </div>
                     {/* to be implemented at later date */}
                     <div className="hidden-profile-header-description-edit-form"></div>
