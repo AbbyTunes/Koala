@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/koala-profile.png';
+import koalaAd1 from '../../images/koala-AD-1.jpeg';
+import koalaAd2 from '../../images/Koala-AD-2.jpeg';
 import '../../stylesheets/profile.scss';
 import '../../stylesheets/profile_questions_index.scss';
 import '../../stylesheets/profile_answers_index.scss';
@@ -71,6 +73,16 @@ class Profile extends React.Component {
         feedContent = <ProfileAnswersContainer  profileId={this.profileId} />
         break;
     }
+
+    let ad;
+    let randomNum = Math.random();
+    if (randomNum > 0.5) {
+      ad = koalaAd1;
+    }
+    else{
+      ad = koalaAd2;
+    }
+
 
 
     return (
@@ -160,7 +172,9 @@ class Profile extends React.Component {
           </div>
 {/* also doesnt have a purpose to project currently */}
           <div className="profile-content-right">
-
+            <a id="ad-profile" href="https://www.savethekoala.com/">
+              <img className="profile-side-AD" src={ad} alt="Ad" />
+            </a>
           </div>
         </div>
       </div>
