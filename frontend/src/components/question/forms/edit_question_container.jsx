@@ -38,7 +38,7 @@ class EditQuestionForm extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		const questionId = this.props.match.params.question_id
-		if (prevProps.match.params.question_id != questionId) {
+		if (prevProps.match.params.question_id !== questionId) {
 			this.props.fetchQuestion(questionId);
 		}
 	}

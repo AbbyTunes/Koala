@@ -1,6 +1,5 @@
 import React from 'react';
 import QuestionIndexItem from './question_index_item';
-import CreateQuestionContainer from './forms/create_question_container';
 
 class QuestionIndex extends React.Component {
 	constructor(props) {
