@@ -5,8 +5,8 @@ import AnswerIndex from './question_answer_index';
 import AnswerIndexStylesheet from '../../../stylesheets/question_answer_index.scss';
 
 const mapStateToProps = (state, ownProps) => ({
-    childDeletion: ownProps.childDeletion,
     answers: Object.values(state.entities.answers),
+    childDeletion: ownProps.childDeletion,
     currentUser: state.session.user
 });
 

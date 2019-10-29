@@ -6,88 +6,112 @@ class AnswerIndexItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.answer = Object.assign({}, this.props.answer);
-        this.currentVoterIdx = -1;
-
-        this.answer.voters.forEach((voter, idx) => {
-            if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
-        });
-
-        if (this.currentVoterIdx === -1) {
-            this.currentVoterIdx = this.answer.voters.length;
-            this.answer.voters.push({
-                id: this.props.currentUser.id,
-                upvote: false,
-                downvote: false
-            });
-        }
-
         this.state = {
-            questionTitle: '',
-            author: null,
-            upvoteCount: this.props.answer.upvote,
-            upvoted: this.answer.voters[this.currentVoterIdx].upvote,
-            downvoted: this.answer.voters[this.currentVoterIdx].downvote,
-            upvoteHover: false,
+            answer: null,
             moreHover: false,
+            upvoteHover: false,
             moreActive: false
         }
 
-        this.props.fetchUser(this.answer.authorId)
-            .then(user => this.setState({ author: user.user }));
-
-        this.props.fetchQuestion(this.answer.questionId)
-            .then(question => this.setState({ questionTitle: question.question.title }));
-
         this.toggleUpvote = this.toggleUpvote.bind(this);
         this.toggleDownvote = this.toggleDownvote.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.toggleMore = this.toggleMore.bind(this);
-        this.upvoteHover = this.upvoteHover.bind(this);
         this.moreHover = this.moreHover.bind(this);
+        this.upvoteHover = this.upvoteHover.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.answer.authorId)
-            .then(user => this.setState({ author: user.user }));
-        
-        this.props.fetchQuestion(this.answer.questionId)
-            .then(question => this.setState({ questionTitle: question.question.title }));
+        this._mounted = true;
+
+        if (this._mounted) {
+            this.setState({ answer: this.props.answer })
+            this.currentVoterIdx = -1;
+
+            if (this.state.answer) {
+                this.state.answer.voters.forEach((voter, idx) => {
+                    if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
+                });
+
+                if (this.currentVoterIdx === -1) {
+                    this.currentVoterIdx = this.state.answer.voters.length;
+
+                    let answer = Object.assign({}, this.state.answer);
+                    answer.voters.push({
+                        id: this.props.currentUser.id,
+                        upvote: false,
+                        downvote: false,
+                    });
+
+                    this.setState({ answer });
+                }
+            }
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this._mounted) {
+            if (this.currentVoterIdx === -1 || prevProps.answer._id !== this.state.answer_id) {
+                this.currentVoterIdx = -1;
+
+                this.state.answer.voters.forEach((voter, idx) => {
+                    if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
+                });
+
+                if (this.currentVoterIdx === -1) {
+                    this.currentVoterIdx = this.state.answer.voters.length;
+
+                    let answer = Object.assign({}, this.state.answer);
+                    answer.voters.push({
+                        id: this.props.currentUser.id,
+                        upvote: false,
+                        downvote: false,
+                    });
+
+                    this.setState({ answer });
+                }
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        this._mounted = false;
     }
 
     toggleUpvote() {
-        if (this.state.upvoted) {
-            this.setState({ upvoted: false });
-            this.setState({ upvoteCount: this.state.upvoteCount - 1 });
-            this.answer.upvote -= 1;
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], { upvote: false }
-            );
+        let answer = Object.assign({}, this.state.answer);
+
+        if (answer.voters[this.currentVoterIdx].upvote) {
+            answer.upvote -= 1;
+            answer.voters[this.currentVoterIdx].upvote = false;
         } else {
-            this.setState({ upvoted: true });
-            this.setState({ upvoteCount: this.state.upvoteCount + 1 });
-            this.answer.upvote += 1;
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], { upvote: true }
-            );
+            answer.upvote += 1;
+            answer.voters[this.currentVoterIdx].upvote = true;
         }
 
-        this.props.updateAnswer(this.answer);
+        this.setState({ answer });
+        this.props.updateAnswer(answer);
     }
 
     toggleDownvote() {
-        if (this.state.downvoted) {
-            this.setState({ downvoted: false });
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], { downvote: false }
-            );
+        let answer = Object.assign({}, this.state.answer);
+
+        if (answer.voters[this.currentVoterIdx].downvote) {
+            answer.downvote -= 1;
+            answer.voters[this.currentVoterIdx].downvote = false;
         } else {
-            this.setState({ downvoted: true });
-            this.answer.voters[this.currentVoterIdx] = Object.assign(
-                {}, this.answer.voters[this.currentVoterIdx], { downvote: true }
-            );
+            answer.downvote += 1;
+            answer.voters[this.currentVoterIdx].downvote = true;
         }
 
-        this.props.updateAnswer(this.answer);
+        this.setState({ answer })
+
+        this.props.updateAnswer(this.state.answer);
+    }
+
+    handleDelete() {
+        this.toggleMore();
+        this.props.deleteAnswer(this.state.answer._id);
     }
 
     toggleMore() {
@@ -104,12 +128,49 @@ class AnswerIndexItem extends React.Component {
 
 
     render() {
-        const date = (new Date(this.props.answer.date)).toLocaleDateString('en-US', {
-            year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
-        });
+        let question, author, description, upvoteCount, upvoted, downvoted, date
+
+        if (this.state.answer && this.currentVoterIdx !== -1) {
+            question = this.state.answer.question;
+            author = this.state.answer.author;
+            description = this.state.answer.description;
+            upvoteCount = this.state.answer.upvote;
+            upvoted = this.state.answer.voters[this.currentVoterIdx].upvote;
+            downvoted = this.state.answer.voters[this.currentVoterIdx].downvote;
+            date = (new Date(this.state.answer.date)).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'short', day: 'numeric'
+            });
+        } else {
+            this.currentVoterIdx = -1;
+            this.props.answer.voters.forEach((voter, idx) => {
+                if (voter.id === this.props.currentUser.id) this.currentVoterIdx = idx;
+            });
+            if (this.currentVoterIdx === -1) {
+                this.currentVoterIdx = this.props.answer.voters.length
+
+                let answer = Object.assign({}, this.props.answer);
+                answer.voters.push({
+                    id: this.props.currentUser.id,
+                    upvote: false,
+                    downvote: false,
+                });
+
+                this.props.updateAnswer(answer);
+            };
+            
+            question = this.props.answer.question;
+            author = this.props.answer.author;
+            description = this.props.answer.description;
+            upvoteCount = this.props.answer.upvote;
+            upvoted = this.props.answer.voters[this.currentVoterIdx].upvote;
+            downvoted = this.props.answer.voters[this.currentVoterIdx].downvote;
+            date = (new Date(this.props.answer.date)).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'short', day: 'numeric'
+            });
+        }
 
         const upvoteClass = 'answer-upvote' + (
-            this.state.upvoted ? ' active' : ''
+            upvoted ? ' active' : ''
         ) + (
             this.state.upvoteHover ? ' tooltip' : ''
         );
@@ -121,18 +182,18 @@ class AnswerIndexItem extends React.Component {
         return (<div className='answer-index-item-container'>
             <div className='content-divider'></div>
             <div className='question-title'>
-                {this.state.questionTitle}
+                {question.title}
             </div>
             <div className='answer-header'>
                 <Link className='answer-author-icon-link no-select'
-                    to={this.state.author ? `/profile/${this.state.author.id}` : ''}>
+                    to={author ? `/profile/${author.id}` : ''}>
                     <div className='answer-author-icon'></div>
                 </Link>
                 <div className='answer-author-date-container'>
                     <Link className='answer-author-link'
-                        to={this.state.author ? `/profile/${this.state.author.id}` : ''}>
+                        to={author ? `/profile/${author.id}` : ''}>
                         <div className='answer-author'>
-                            {this.state.author ? `${this.state.author.firstName} ${this.state.author.lastName}` : ''}
+                            {author ? `${author.firstName} ${author.lastName}` : ''}
                         </div>
                     </Link>
                     <div className='answer-date'>
@@ -141,14 +202,14 @@ class AnswerIndexItem extends React.Component {
                 </div>
             </div>
             <div className='answer-body'>
-                {this.props.answer.description}
+                {description}
             </div>
             <div className='answer-footer no-select'>
                 <div className={upvoteClass}
+                    onMouseEnter={() => this.upvoteHover(true)}
+                    onMouseLeave={() => this.upvoteHover(false)}
                     onClick={this.toggleUpvote}>
-                    <span className='svg-icon'
-                        onMouseEnter={() => this.upvoteHover(true)}
-                        onMouseLeave={() => this.upvoteHover(false)}>
+                    <span className='svg-icon'>
                         <svg width='20px' height='20px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
                             <g className='svg-base'>
                                 <polygon points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
@@ -156,13 +217,13 @@ class AnswerIndexItem extends React.Component {
                         </svg>
                     </span>
                     <div className='upvote-count'>
-                        {this.state.upvoteCount}
+                        {upvoteCount}
                     </div>
                 </div>
-                <div className={moreClass}>
+                <div className={moreClass}
+                    onMouseEnter={() => this.moreHover(true)}
+                    onMouseLeave={() => this.moreHover(false)}>
                     <span className='svg-icon'
-                        onMouseEnter={() => this.moreHover(true)}
-                        onMouseLeave={() => this.moreHover(false)}
                         onClick={this.toggleMore}>
                         <svg width='20px' height='20px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
                             <g className='svg-base'>
@@ -174,10 +235,11 @@ class AnswerIndexItem extends React.Component {
                         hidden={!this.state.moreActive}>
                         <div className='option-container'
                             onClick={this.toggleDownvote}>
-                            {this.state.downvoted ? 'Undo' : ''} Downvote
+                            {downvoted ? 'Undo' : ''} Downvote
                         </div>
-                        <div className='option-container'>
-                            Downvote Question
+                        <div className='option-container'
+                            onClick={this.handleDelete}>
+                            Delete Answer
                         </div>
                     </div>
                 </div>

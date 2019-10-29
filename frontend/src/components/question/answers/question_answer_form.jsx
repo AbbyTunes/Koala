@@ -42,11 +42,12 @@ class AnswerIndexItem extends React.Component {
 
     handleSubmit() {
         this.props.createAnswer({
-            questionId: this.props.match.params.question_id,
+            question: this.props.question._id,
             description: this.state.body
         })
 
         this.setState({ body: '' })
+        this.props.answerSubmitted();
     }
 
     render() {
