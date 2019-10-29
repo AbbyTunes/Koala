@@ -19,9 +19,9 @@ Koala is an app for asking questions and posting answers about Koalas, based on 
  * Frontend: React-Redux
 
 ## Group Members and Contributions
-Raymond: https://github.com/ray-leun1
-Abby: https://github.com/AbbyTunes
-Ryan: https://github.com/rwoods1227
+ * Raymond: https://github.com/ray-leun1
+ * Abby: https://github.com/AbbyTunes
+ * Ryan: https://github.com/rwoods1227
 
 ## Features and Technical Challenges
 
@@ -89,13 +89,13 @@ getLinks(){
 
 ```javascript
 //main_page.js
-	componentDidUpdate(prevProps) {
-		if (prevProps.location.pathname !== this.props.location.pathname) {
-			fetchQuestions().then(questions => {
-				let rand = questions.data[Math.floor(Math.random() * questions.data.length)];
-				this.setState({ rand: rand });
-			})
-		}
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      fetchQuestions().then(questions => {
+        let rand = questions.data[Math.floor(Math.random() * questions.data.length)];
+        this.setState({ rand: rand });
+      })
+    }
   }
 ```
 
