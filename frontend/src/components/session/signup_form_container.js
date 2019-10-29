@@ -10,13 +10,13 @@ const mapStateToProps = (state) => {
 };
 
 const demoUser1 = {
-	email: 'bagel@gmail.com',
+	email: 'demo@gmail.com',
 	password: '123456'
 };
 
 const demoUser2 = {
-	email: 'name_1@gmail.com',
-	password: 'name_1'
+	email: 'bagel@gmail.com',
+	password: '123456'
 };
 
 const mapDispatchToProps = (dispatch) => ({

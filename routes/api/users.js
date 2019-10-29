@@ -33,11 +33,11 @@ router.get('/', (req, res) => {
 router.get('/:user_id', (req, res) => {
 	User.findById(req.params.user_id)
 		.then(user => res.json({
-            id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            questions: user.questions
+			id: user.id,
+			firstName: user.firstName,
+			lastName: user.lastName,
+			email: user.email,
+			questions: user.questions
 		}))
 		.catch(err =>
 			res.status(404).json({ user: "No user found with that ID" })
