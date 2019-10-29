@@ -73,7 +73,6 @@ class QuestionShow extends React.Component {
 
 	render() {
 		const { question } = this.props;
-		
 
 		if (question) {
 
@@ -91,15 +90,27 @@ class QuestionShow extends React.Component {
 				lastEditorName = null;
 			}
 
-			let lastEditDate;
+			let updateDate;
+			let editor;
+
 			if (question.updateDate.length) {
 				const datesArr = question.updateDate;
-				lastEditDate = datesArr[datesArr.length - 1];
-			}
+				const lastEditDate = datesArr[datesArr.length - 1];
+				const editDate = (new Date(lastEditDate)).toLocaleDateString('en-US', {
+					year: 'numeric', month: 'short', day: 'numeric'
+				});
+				updateDate = (
+					<div>on {editDate}</div>
+				)
 
-			const updateDate = (new Date(lastEditDate)).toLocaleDateString('en-US', {
-				year: 'numeric', month: 'short', day: 'numeric'
-			});
+				editor = (
+					<div className="show-editor">Last edited {lastEditorName} {updateDate}
+					</div>
+				)
+			} else {
+				// updateDate = (null)
+				editor = null
+			}
 
 			return (
 				<div className="show-frame">
@@ -111,9 +122,7 @@ class QuestionShow extends React.Component {
 							</div>
 							
 							<div className="show-title">{question.title}</div>
-							{/* <div className="show-editor">Created by {question.authorId.firstName} {question.authorId.lastName} </div> */}
-							<div className="show-editor">Last edited {lastEditorName} on {updateDate}</div>
-
+							{editor}
 							<div className="question-icon">
 								<ul className="question-left">
 
