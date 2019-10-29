@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/koala-profile.png';
+import koalaAd1 from '../../images/koala-AD-1.jpeg';
+import koalaAd2 from '../../images/Koala-AD-2.jpeg';
 import '../../stylesheets/profile.scss';
 import '../../stylesheets/profile_questions_index.scss';
 import '../../stylesheets/profile_answers_index.scss';
 import ProfileQuestionsContainer from "../question/profile_questions_container";
 import ProfileAnswersContainer from "../question/answers/profile_answers_index_container";
+import ProfilePopUp from './profile_user_edit_popup'
 //import UserAnswersContainer from "../answer/user_answer_index_container";
 
 
@@ -72,6 +75,16 @@ class Profile extends React.Component {
         break;
     }
 
+    let ad;
+    let randomNum = Math.random();
+    if (randomNum > 0.5) {
+      ad = koalaAd1;
+    }
+    else{
+      ad = koalaAd2;
+    }
+
+
 
     return (
       <div className="profile-page-container">
@@ -91,8 +104,7 @@ class Profile extends React.Component {
                     <h1 className="profile-name">
                       <span>{this.state.currentProfile.firstName} {this.state.currentProfile.lastName}</span>
                     </h1>
-                    <span className="edit-link">Edit</span>
-{/* not implemented, come back as bonus */}
+                    <ProfilePopUp currentProfile={this.state.currentProfile}/>
                     <div className="hidden-edit-form-for-profile">
 
                     </div>
@@ -107,6 +119,7 @@ class Profile extends React.Component {
                   <div className="profile-header-description">
                     <div className="profile-description-edit-link-wrapper">
                       <span className="profile-description-edit-link"></span>
+
                     </div>
                     {/* to be implemented at later date */}
                     <div className="hidden-profile-header-description-edit-form"></div>
@@ -160,7 +173,9 @@ class Profile extends React.Component {
           </div>
 {/* also doesnt have a purpose to project currently */}
           <div className="profile-content-right">
-
+            <a id="ad-profile" href="https://www.savethekoala.com/">
+              <img className="profile-side-AD" src={ad} alt="Ad" />
+            </a>
           </div>
         </div>
       </div>
