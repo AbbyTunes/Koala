@@ -12,7 +12,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 180px;
+		width: 200px;
 		// min-height: 500px;
 		// border: 1px solid #e2e2e2;
 	}
@@ -21,7 +21,7 @@
 		display: block;
 		position: relative;
 		top: 0;
-		left: 200px;
+		left: 220px;
 		width: 600px;
 		height: auto;
 		// border: 2px solid yellow;
@@ -141,9 +141,30 @@
 					color: #666;
 					cursor: pointer;
 					display: flex;
+
+					.svg-base {
+						stroke: #329bff;
+						stroke-width: 1.5;
+						fill: none;
+						fill-rule: evenodd;
+					}
+
+					&.active {
+						cursor: default;
+						
+						.svg-base {
+								stroke: #666;
+						}
+					}
+				}
+				
+				.answer-form-btn {
+					&.hidden {
+						display: none;
+					}
 				}
 
-				.question-icon-left {
+				.question-left-icon {
 					display: flex;
 					position: relative;
 					top: 4px;

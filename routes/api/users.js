@@ -150,8 +150,15 @@ router.get('/current/questions', passport.authenticate('jwt', { session: false }
 
 // show answers by currentUser
 router.get('/current/answers', passport.authenticate('jwt', { session: false }), (req, res) => {
-	Answer.find({ authorId: req.user._id })
-		.populate("answers")
+	Answer.find({ author: req.user._id })
+		.populate({
+			path: 'question',
+			select: 'title'
+		})
+		.populate({
+			path: 'author',
+			select: 'firstName lastName'
+		})
 		.then(answers => res.json(answers))
 		.catch(err =>
 			res.status(404).json({ question: "You have no answers yet" })
@@ -180,8 +187,15 @@ router.get('/:user_id/questions', (req, res) => {
 
 // show answers by specific user
 router.get('/:user_id/answers', (req, res) => {
-	Answer.find({ authorId: req.params.user_id })
-		.populate("questionId")
+	Answer.find({ author: req.params.user_id })
+		.populate({
+			path: 'question',
+			select: 'title'
+		})
+		.populate({
+			path: 'author',
+			select: 'firstName lastName'
+		})
 		.then(answers => res.json(answers))
 		.catch(err =>
 			res.status(404).json({ question: 'This user has no answers' })

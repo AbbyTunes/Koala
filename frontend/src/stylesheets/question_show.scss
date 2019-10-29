@@ -1,17 +1,14 @@
 .show-frame {
-	position: absolute;
-    top: 90px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    overflow-y: scroll;
+	position: relative;
+    top: 0;
+    left: 90px;
 	// border: 1px solid #e2e2e2;
 
 	.show-session {
 		display: flex;
 		position: relative;
 		top: 0;
-		width: 900px;
+		width: 850px;
 		margin: auto;
 
 		.show-left {
@@ -19,7 +16,7 @@
 			position: relative;
 			top: 0;
 			left: 0;
-			width: 800px;
+			width: 700px;
 			// border: 1px solid #e2e2e2;
 
 			.show-topic {
@@ -77,29 +74,29 @@
 					font-weight: 500;
 					color: #666;
 					cursor: pointer;
-                    display: flex;
-                    
-                    .svg-base {
-                        stroke: #329bff;
-                        stroke-width: 1.5;
-                        fill: none;
-                        fill-rule: evenodd;
-                    }
+					display: flex;
+					
+					.svg-base {
+						stroke: #329bff;
+						stroke-width: 1.5;
+						fill: none;
+						fill-rule: evenodd;
+					}
 
-                    &.active {
-                        cursor: default;
-                        
-                        .svg-base {
-                            stroke: #666;
-                        }
-                    }
-                }
-                
-                .answer-form-btn {
-                    &.hidden {
-                        display: none;
-                    }
-                }
+					&.active {
+						cursor: default;
+						
+						.svg-base {
+								stroke: #666;
+						}
+					}
+				}
+				
+				.answer-form-btn {
+					&.hidden {
+						display: none;
+					}
+				}
 
 				.question-left-icon {
 					display: flex;
@@ -117,25 +114,13 @@
 						font-weight: 400;
 					}
 				}
-
-				// .question-icon-right {
-				// 	position: absolute;
-				// 	bottom: 20px;
-				// 	right: 0;
-				// 	display: flex;
-
-				// 	li {
-				// 		margin: 0 5px;
-				// 		cursor: pointer;
-				// 	}
-				// }
 			}
 		}
 
 		.show-right {
 			display: block;
-			width: 500px;
-			margin-left: 50px;
+			width: 250px;
+			margin-left: 20px;
 			// border: 1px solid #e2e2e2;
 		}
 	}

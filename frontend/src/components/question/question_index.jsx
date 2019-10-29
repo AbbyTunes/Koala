@@ -16,7 +16,7 @@ class QuestionIndex extends React.Component {
 	handleCreate() {
 		this.props.questions.forEach(question => {
 			this.props.createAnswer({
-				questionId: question._id,
+				question: question._id,
 				description: question.title
 			})
 		})
@@ -26,10 +26,10 @@ class QuestionIndex extends React.Component {
 		// const date = Date.now
 		const questions = this.props.questions.map((question, idx) => {
 			return <QuestionIndexItem 
-						key={`question-${idx}`}
-						question={question}
-						deleteQuestion={this.props.deleteQuestion}
-						/>
+				key={`question-${idx}`}
+				question={question}
+				{...this.props}
+				/>
 		});
 
 		return (

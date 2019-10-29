@@ -5,7 +5,6 @@ import AnswerForm from './question_answer_form';
 import AnswerFormStylesheet from '../../../stylesheets/question_answer_form.scss';
 
 const mapStateToProps = state => ({
-    answers: Object.values(state.entities.answers),
     currentUser: state.session.user
 });
 

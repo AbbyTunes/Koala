@@ -10,7 +10,14 @@ router.get('/test', (req, res) => res.json({ answer: 'Answers Route' }));
 // find by answer_id
 router.get('/:answer_id', (req, res) => {
 	Answer.findById(req.params.answer_id)
-		// .populate("questionId")
+        .populate({
+            path: 'question',
+            select: 'title'
+        })
+        .populate({
+            path: 'author',
+            select: 'firstName lastName'
+        })
         .then(answer => res.json(answer))
         .catch(err =>
             res.status(404).json({ answer: 'No answer found with that ID' })
@@ -38,15 +45,6 @@ router.patch('/:answer_id',
 );
 
 // delete an answer
-// router.delete('/:answer_id',
-//     passport.authenticate('jwt', { session: false }), (req, res) => {
-//         Answer.findByIdAndRemove(req.params.answer_id, err => {
-//             debugger
-//             if (err) res.send(err);
-//             else res.json({ answer: 'the answer has been deleted' });
-//         });
-//     }
-// );
 router.delete('/:answer_id',
     passport.authenticate('jwt', { session: false }), (req, res) => {
         Answer.findByIdAndRemove(req.params.answer_id)
@@ -57,6 +55,7 @@ router.delete('/:answer_id',
     }
 );
 
+// delete all answers
 router.delete('/',
     passport.authenticate('jwt', { session: false }), (req, res) => {
         Answer.collection.deleteMany({});

@@ -4,10 +4,10 @@ import AnswerIndexItem from './user_answer_index_item';
 
 class AnswerIndex extends React.Component {
     componentDidMount() {
-        if (this.props.currentUser._id === parseInt(this.props.match.params.user_id)) {
-            this.props.fetchAnswers({ currentUserId: true });
-        } else {
+        if (this.props.match.params.user_id) {
             this.props.fetchAnswers({ userId: this.props.match.params.user_id });
+        } else {
+            this.prop.fetchAnswers({ userId: this.props.currentUser._id })
         }
     }
 
@@ -23,7 +23,7 @@ class AnswerIndex extends React.Component {
             <div className='answer-count'>
                 {answers.length} {answers.length === 1 ? 'Answer' : 'Answers'}
             </div>
-            {answers}
+            {answers.reverse()}
         </div>)
     }
 }
