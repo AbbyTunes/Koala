@@ -5,7 +5,6 @@ import CreateQuestionContainer from './forms/create_question_container';
 class QuestionIndex extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.handleCreate = this.handleCreate.bind(this);
 	}
 	
@@ -35,14 +34,14 @@ class QuestionIndex extends React.Component {
 		return (
 			<div className="question-frame">
 				<div className="topic-frame">
-					<button className='answer-creation-debugger'
+					{/* <button className='answer-creation-debugger'
 						onClick={this.handleCreate}>
 						Create All Answers
 					</button>
 					<button className='answer-deletion-debugger'
 						onClick={this.props.deleteAnswers}>
 						Delete All Answers
-					</button>
+					</button> */}
 				</div>
 				<div className="question-middle">
 					<div className="new-question">New Questions</div>
@@ -50,7 +49,6 @@ class QuestionIndex extends React.Component {
 						{questions}
 					</ul> 
 				</div>
-				
 			</div>
 		)
 	}
