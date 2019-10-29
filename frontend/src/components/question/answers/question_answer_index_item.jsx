@@ -186,12 +186,12 @@ class AnswerIndexItem extends React.Component {
             <div className='content-divider'></div>
             <div className='answer-header'>
                 <Link className='answer-author-icon-link no-select'
-                    to={author ? `/profile/${author.id}` : ''}>
+                    to={author ? `/profile/${author._id}` : ''}>
                     <div className='answer-author-icon'></div>
                 </Link>
                 <div className='answer-author-date-container'>
                     <Link className='answer-author-link'
-                        to={author ? `/profile/${author.id}` : ''}>
+                        to={author ? `/profile/${author._id}` : ''}>
                         <div className='answer-author'>
                             {author ? `${author.firstName} ${author.lastName}` : ''}
                         </div>

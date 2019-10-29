@@ -32,43 +32,28 @@ class QuestionShow extends React.Component {
 		this.props.fetchQuestion()
 		this.props.fetchAnswers({ questionId: this.props.match.params.question_id })
 			.then(answers => {
-				answers.answers.forEach(answer => {
-					if (answer.author._id === this.props.currentUser.id) {
-						this.setState({ answerIcon: false });
-						this.setState({ answerForm: false });
-						return;
-					}
-				});
+				if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
+					this.setState({ answerIcon: false });
+					this.setState({ answerForm: false });
+					return;
+				}
 			});
-	}
+	};
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.answers && this.props.answers) {
 			if (prevProps.answers.length !== this.props.answers.length) {
 				this.props.fetchAnswers({ questionId: this.props.match.params.question_id })
 					.then(answers => {
-						answers.answers.forEach(answer => {
-							if (answer.author._id === this.props.currentUser.id) {
-								this.setState({ answerIcon: false });
-								this.setState({ answerForm: false });
-								return;
-							} else {
-								this.setState({ answerIcon: true });
-								this.setState({ answerForm: false });
-							}
-						});
+						if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
+							this.setState({ answerIcon: false });
+							this.setState({ answerForm: false });
+							return;
+						} else {
+							this.setState({ answerIcon: true });
+							this.setState({ answerForm: false });
+						}
 					});
-
-			// 	this.props.answers.forEach(answer => {
-			// 		if (answer.authorId === this.props.currentUser.id) {
-			// 			this.setState({ answerIcon: false });
-			// 			this.setState({ answerForm: false });
-			// 				return;
-			// 		} else {
-			// 			this.setState({ answerIcon: true });
-			// 			this.setState({ answerForm: false });
-			// 		}
-			// 	});
 			}
 		}
 	}
