@@ -83,7 +83,7 @@ class QuestionShow extends React.Component {
 				const editorArr = question.editorIds;
 				lastEditor = editorArr[editorArr.length - 1];
 				lastEditorName = (
-					<div className="question-editor">by <Link to="">{lastEditor.firstName} {lastEditor.lastName}</Link>
+					<div className="question-editor">by <Link to={`/profile/${lastEditor._id}`}>{lastEditor.firstName} {lastEditor.lastName}</Link>
 					</div>
 				)
 			} else {
