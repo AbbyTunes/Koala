@@ -16,7 +16,7 @@ class QuestionShow extends React.Component {
 		this.toggleAnswer = this.toggleAnswer.bind(this);
 		this.childDeletion = this.childDeletion.bind(this);
 		this.answerSubmitted = this.answerSubmitted.bind(this);
-		this.deleteQuestion = this.deleteQuestion.bind(this);
+		// this.deleteQuestion = this.deleteQuestion.bind(this);
 	}
 
 	toggleAnswer() {
@@ -77,12 +77,12 @@ class QuestionShow extends React.Component {
 		this.setState({ answerIcon: true });
 	}
 
-	deleteQuestion(e) {
-		e.preventDefault();
-		const questionId = this.props.question._id;
-		this.props.deleteQuestion(questionId)
-			.then(() => this.props.history.push('/questions'));
-	}
+	// deleteQuestion(e) {
+	// 	e.preventDefault();
+	// 	const questionId = this.props.question._id;
+	// 	this.props.deleteQuestion(questionId)
+	// 		.then(() => this.props.history.push('/questions'));
+	// }
 
 	render() {
 		const { question } = this.props;
@@ -118,18 +118,6 @@ class QuestionShow extends React.Component {
 										</div>
 									</li>
 									<QuestionEditPopUp />
-									<li onClick={this.deleteQuestion}>
-										<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-											<g id="small_close" className="icon_svg-stroke" fill="none" fillRule="evenodd" strokeLinecap="round" stroke="#666666" strokeWidth="1.5">
-												<path d="M12,6 L12,18" transform="translate(12.000000, 12.000000) rotate(45.000000) translate(-12.000000, -12.000000) "></path>
-												<path d="M18,12 L6,12" transform="translate(12.000000, 12.000000) rotate(45.000000) translate(-12.000000, -12.000000) "></path>
-											</g>
-										</svg>
-										<div className="question-left-icon">
-											Delete
-										</div>
-									</li>
-									
 								</ul>
 								{/* <MoreDropdown deleteQuestion={deleteQuestion} /> */}								
 							</div>
@@ -137,7 +125,6 @@ class QuestionShow extends React.Component {
 							<AnswerIndexContainer childDeletion={this.childDeletion} />
 						</div>
 						<div className="show-right">
-							{/* <div className="top-questions"></div> */}
 						</div>
 
 					</div>					
