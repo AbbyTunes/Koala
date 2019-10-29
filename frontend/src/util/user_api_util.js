@@ -9,9 +9,9 @@ export const fetchUser = id => (
 );
 
 export const updateUser = user => (
-    axios.patch(`/api/items/${user._id}`, user)
+    axios.patch(`/api/users/${user._id}`, user)
 );
 
 export const deleteUser = id => (
-    axios.delete(`/api/items/${id}`)
+    axios.delete(`/api/users/${id}`)
 );
