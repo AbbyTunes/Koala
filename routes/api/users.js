@@ -12,7 +12,7 @@ const User = require('../../models/User');
 const Question = require('../../models/Question');
 const Answer = require('../../models/Answer');
 
-router.get("/test", (req, res) => res.json({ msg: "User Route"}));
+router.get("/test", (req, res) => res.json({ msg: "User Route" }));
 
 // show all users
 router.get('/', (req, res) => {
@@ -55,45 +55,45 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 })
 
 router.post('/register', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
+	const { errors, isValid } = validateRegisterInput(req.body);
 
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
+	if (!isValid) {
+		return res.status(400).json(errors);
+	}
 
-    User.findOne({ email: req.body.email })
-        .then(user => {
-            if (user) {
+	User.findOne({ email: req.body.email })
+		.then(user => {
+			if (user) {
 				return res.status(400).json({ email: 'An account with these credentials already exists.' });
-            } else {
-                const newUser = new User({
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
-                    email: req.body.email,
-                    password: req.body.password
-                })
+			} else {
+				const newUser = new User({
+					firstName: req.body.firstName,
+					lastName: req.body.lastName,
+					email: req.body.email,
+					password: req.body.password
+				})
 
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        newUser.password = hash;
-                        newUser.save()
-                            // .then(user => res.json(user))
-                            .then(user => {
-                                const payload = { id: user.id, firstName: user.firstName, lastName: user.lastName };
-                                
-                                jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
-                                    res.json({
-                                        success: true,
-                                        token: 'Bearer ' + token
-                                    });
-                                });
-                            })
-                            .catch(err => console.log(err));
-                    });
-                });
-            }
-        });
+				bcrypt.genSalt(10, (err, salt) => {
+					bcrypt.hash(newUser.password, salt, (err, hash) => {
+						if (err) throw err;
+						newUser.password = hash;
+						newUser.save()
+							// .then(user => res.json(user))
+							.then(user => {
+								const payload = { id: user.id, firstName: user.firstName, lastName: user.lastName };
+								
+								jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+									res.json({
+										success: true,
+										token: 'Bearer ' + token
+									});
+								});
+							})
+							.catch(err => console.log(err));
+					});
+				});
+			}
+		});
 });
 
 router.post('/login', (req, res) => {
@@ -164,16 +164,6 @@ router.get('/current/answers', passport.authenticate('jwt', { session: false }),
 			res.status(404).json({ question: "You have no answers yet" })
 		);
 });
-
-// not correct
-// router.get('/current/questions', passport.authenticate('jwt', { session: false }), (req, res) => {
-// 	User.findById( req.user._id )
-// 		.populate("questions")
-// 		.then(questions => res.json(questions))
-// 		.catch(err =>
-// 			res.status(404).json({ question: "You have no questions yet" })
-// 		);
-// });
 
 // show questions by a specific user
 

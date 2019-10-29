@@ -43,7 +43,7 @@ class SignupForm extends React.Component {
 			password: this.state.password
 		};
 
-		this.props.signup(user, this.props.history);
+        this.props.signup(user)
 	}
 
 	renderErrors() {
@@ -92,7 +92,6 @@ class SignupForm extends React.Component {
                 </div>
             </div>
             <form className='signup-form'
-                onSubmit={this.handleSubmit}
                 hidden={this.state.form}>
                 <div className='form-title'>
                     Sign Up
@@ -129,7 +128,8 @@ class SignupForm extends React.Component {
                         Cancel
                     </div>
                     <input className='input-submit'
-                        type='submit'
+                        onClick={this.handleSubmit}
+                        type='button'
                         value='Sign Up' />
                 </div>
                 {this.renderErrors()}

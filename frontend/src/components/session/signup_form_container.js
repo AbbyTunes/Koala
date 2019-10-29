@@ -10,22 +10,21 @@ const mapStateToProps = (state) => {
 };
 
 const demoUser1 = {
-    email: 'bagel@gmail.com',
-    password: '123456'
+	email: 'bagel@gmail.com',
+	password: '123456'
 };
 
 const demoUser2 = {
-    email: 'name_1@gmail.com',
-    password: 'name_1'
+	email: 'name_1@gmail.com',
+	password: 'name_1'
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		signup: user => dispatch(signup(user)),
-        demoLogin1: () => dispatch(login(demoUser1)),
-        demoLogin2: () => dispatch(login(demoUser2))
-	}
-}
+const mapDispatchToProps = (dispatch) => ({
+	login: user => dispatch(login(user)),
+	signup: user => dispatch(signup(user)),
+	demoLogin1: () => dispatch(login(demoUser1)),
+	demoLogin2: () => dispatch(login(demoUser2))
+})
 
 export default connect(
 	mapStateToProps,
