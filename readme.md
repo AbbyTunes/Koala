@@ -1,4 +1,5 @@
-# [Koala.com](https://koaalaa.herokuapp.com)
+# Koala
+# [Koala Demo](https://koaalaa.herokuapp.com)
 ![Koala Logo](https://github.com/AbbyTunes/Koala/blob/master/frontend/src/images/Koala-logo-final.png)
 
 ## Background and Overview
