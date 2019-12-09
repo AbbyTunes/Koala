@@ -21,10 +21,6 @@ class ProfileQuestionIndex extends React.Component {
     return (
       <div className="profile-question-frame question-frame">
         <div className="profile-question-middle question-middle">
-          {/* <div className="add-question">
-						<QuestionCreateContainer />
-					</div> */}
-
           <ul>
             {questions}
           </ul>
