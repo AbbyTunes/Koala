@@ -10,13 +10,14 @@ const mapStateToProps = state => ({
   currentUser: state.session.user
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+  return {
   fetchUser: id => dispatch(fetchUser(id)),
   fetchQuestion: id => dispatch(fetchQuestion(id)),
   fetchAnswers: optionId => dispatch(fetchAnswers(optionId)),
   updateAnswer: answer => dispatch(updateAnswer(answer)),
   deleteAnswer: id => dispatch(deleteAnswer(id))
-});
+}};
 
 export default connect(
   mapStateToProps,

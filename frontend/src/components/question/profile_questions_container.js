@@ -11,13 +11,15 @@ const mapStateToProps = state => ({
   questions: Object.values(state.entities.questions)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+  debugger;
+  return {
   fetchQuestions: () => dispatch(fetchQuestions()),
   createQuestion: (data) => dispatch(createQuestion(data)),
   deleteQuestion: (id) => dispatch(deleteQuestion(id)),
   fetchAnswers: answers => dispatch(fetchAnswers(answers)),
   createAnswer: answer => dispatch(createAnswer(answer)),
   deleteAnswers: () => dispatch(deleteAnswers())
-});
+}};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileQuestionIndex);

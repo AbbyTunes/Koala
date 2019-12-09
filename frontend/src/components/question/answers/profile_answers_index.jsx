@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import AnswerIndexItem from './profile_answer_index_item';
+// this is broken do not useimport AnswerIndexItem from './profile_answer_index_item';
+import AnswerIndexItem from './question_answer_index_item';
 import ProfileAnswerIndexStylesheet from '../../../stylesheets/profile_answers_index.scss';
 
 class AnswerIndex extends React.Component {
