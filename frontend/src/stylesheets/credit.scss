@@ -1,6 +1,27 @@
 .show-credit {
 	display: block;
-	font-size: 20px;
-	font-weight: 600;
-	z-index: 500;
+    position: relative;
+    top: 0;
+    left: 220px;
+    width: 600px;
+	height: auto;
+	border: solid 1px grey;
+
+	.credit-header {
+		margin-bottom: 16px;
+		padding-bottom: 8px;
+		border-bottom: 1px solid #e2e2e2;
+		font-weight: 500;
+		font-size: 15px;
+		text-align: left;
+		direction: ltr;
+	}
+
+	ul {
+		display: block;
+	}
+
+	.question-item {
+		border: 1px solid #efefef;
+	}
 }
