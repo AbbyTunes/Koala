@@ -9,10 +9,10 @@ const Credit = () => {
 			<div className="credit-header">Contributors</div>
 			<ul>
 				<li>
-					<script src="https://www.linkedin.com/autofill/js/autofill.js" type="text/javascript" async></script><script type="IN/Form2"></script>
+					
 				</li>
 			</ul>
-		</div> 
+		</div>
 	)
 
 }

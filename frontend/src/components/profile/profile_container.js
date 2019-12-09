@@ -13,13 +13,14 @@ const mapStateToProps = state => ({
   
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => {
+  return{
   fetchAnswers: optionId => dispatch(fetchAnswers(optionId)),
   updateAnswer: answer => dispatch(updateAnswer(answer)),
   deleteAnswer: id => dispatch(deleteAnswer(id)),
   fetchUser: id => dispatch(fetchUser(id)),
   fetchQuestions: () => dispatch(fetchQuestions())
-});
+}};
 
 
 export default connect(
