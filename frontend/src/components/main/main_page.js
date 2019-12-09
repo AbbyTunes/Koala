@@ -10,6 +10,7 @@ import QuestionIndexContainer from "../question/question_index_container";
 import QuestionShowContainer from "../question/question_show_container";
 import AnswerIndexContainer from '../answer/user_answer_index_container';
 import QuestionRandContainer from '../question/question_rand_container';
+import Credit from '../nav/credit';
 
 class MainPage extends React.Component {
 // props to pass down pathname
@@ -47,6 +48,7 @@ class MainPage extends React.Component {
 						<Route exact path="/questions/:question_id" component={QuestionShowContainer} />
 						<Route exact path='/users/:user_id/answers' component={AnswerIndexContainer} />
 						<Route path="/profile/:user_id" component={ProfileShowContainer} />
+						<Route exact path="/credit" component={Credit} />
 						<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
 					</Switch>
 					{this.state.rand ? <Route exact path='/' render={() => <QuestionRandContainer rand={this.state.rand} />} /> : ''}
