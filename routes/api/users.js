@@ -105,11 +105,13 @@ router.post('/login', (req, res) => {
 
 	const email = req.body.email;
 	const password = req.body.password;
+	const loginError = 'The email or password is incorrect.';
 
 	User.findOne({email})
 		.then(user => {
 			if (!user) {
-				return res.status(404).json({ email: "this user doesn't exist "});
+				errors.loginError = loginError;
+				return res.status(404).json(errors);
 			}
 
 			bcrypt.compare(password, user.password)
@@ -130,7 +132,8 @@ router.post('/login', (req, res) => {
 							}
 						);
 					} else {
-						return res.status(400).json({ password: 'Incorrect password'});
+						errors.loginError = loginError;
+						return res.status(400).json(errors);
 					}
 				})
 		})
