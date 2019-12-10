@@ -147,20 +147,6 @@ class NavBar extends React.Component {
 										</Link>
 									</div>
 								</span>
-
-								{/* <span id="nav-item-span">
-									<div className="header-nav-item">
-										<a className="nav-item-link github" href={"https://github.com/AbbyTunes/Koala"}>
-											<div className="nav-item-link-inner">
-												<span className="nav-item-link-icon">
-													<img className="profile-photo-img" src={githubIcon} alt="Github logo" />
-												</span>
-											</div>
-											<span>Github</span>
-										</a>
-									</div>
-								</span> */}
-
 							</div>
 
 							<div className="navbar-right-contents">
@@ -294,13 +280,6 @@ class NavBar extends React.Component {
 																		Koala 4
 																		<span className="bullet"> · </span>
 																	</a>
-																	{/* <Link className="nav-profile-dropdown-official-links-link" to={"/acceptable_use"}>
-																		Koala 5
-																		<span className="bullet"> · </span>
-																	</Link>
-																	<Link className="nav-profile-dropdown-official-links-link" to={"/businesses"}>
-																	 Koala 6
-																	</Link> */}
 																</div>
 															</div>
 														</div>
@@ -324,7 +303,6 @@ class NavBar extends React.Component {
 								</div>
 								{/* link triggers modal */}
 								<div className="navbar-add-question">
-									{/* <Link id="ask-question-modal-button" to={'/new_koala'}>Write a Koala</Link> */}
 									<QuestionPopUp />
 								</div>
 							</div>

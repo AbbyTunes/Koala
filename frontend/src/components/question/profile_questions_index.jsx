@@ -1,6 +1,5 @@
 import React from 'react';
 import QuestionIndexItem from './question_index_item';
-// import QuestionCreateContainer from './question_create_container';
 
 class ProfileQuestionIndex extends React.Component {
 

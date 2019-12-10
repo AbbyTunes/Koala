@@ -1,8 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import QuestionEditPopUp from "./question_edit_pop_up";
-// import MoreDropdownStylesheet from "../../../stylesheets/more_dropdown.scss";
-// import QuestionPopUpStylesheet from "../../../stylesheets/question_pop_up.scss";
 
 class MoreDropdown extends React.Component {
 

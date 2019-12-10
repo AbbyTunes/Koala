@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import '../../stylesheets/credit.scss'
+import {} from '../../stylesheets/credit.scss';
 
 const Credit = () => {
 	return ( 
@@ -30,7 +30,6 @@ const Credit = () => {
 						<a href="https://www.linkedin.com/in/abby-jun-xu/" className="credit-a-linkedin">
 							<div className="credit-icon-linkedin"></div>
 						</a>
-					
 						<a href="https://angel.co/abby-jun-xu" className="credit-a-angellist">
 							<div className="credit-icon-angellist"></div>	
 						</a>
@@ -40,36 +39,20 @@ const Credit = () => {
 					</div>
 				</div>
 
-				<div className="contributor-2 ">
-					<div className="credit-name-2">Name</div>
-					<div className="credit-links-2">
-						<a href="" className="credit-a-linkedin">
-							<div className="credit-icon-linkedin"></div>
-						</a>
-						<a href="" className="credit-a-angellist">
-							<div className="credit-icon-angellist"></div>
-						</a>
-						<a href="" className="credit-a-github">
-							<div className="credit-icon-github"></div>
-						</a>
-					</div>
-				</div>
-
 				<div className="contributor-3 ">
-					<div className="credit-name-3">Name</div>
+					<div className="credit-name-3">Raymond Leung</div>
 					<div className="credit-links-3">
-						<a href="" className="credit-a-linkedin">
+						<a href="https://www.linkedin.com/in/raymond-leung-b0874b198/" className="credit-a-linkedin">
 							<div className="credit-icon-linkedin"></div>
 						</a>
 						<a href="" className="credit-a-angellist">
 							<div className="credit-icon-angellist"></div>
 						</a>
-						<a href="" className="credit-a-github">
+						<a href="https://github.com/ray-leun1" className="credit-a-github">
 							<div className="credit-icon-github"></div>
 						</a>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	)
