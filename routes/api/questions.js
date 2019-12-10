@@ -43,7 +43,11 @@ router.get("/:question_id", (req, res) => {
 		})
 		.populate({
 			path: 'answerIds',
-			select: 'author'
+			select: 'upvote downvote voters description date',
+			populate: {
+				path: 'author',
+				select: '_id firstName lastName'
+			}
 		})
 		.then(question => res.json(question))
 		.catch(err =>

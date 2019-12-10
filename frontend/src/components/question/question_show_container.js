@@ -2,14 +2,13 @@ import { connect } from 'react-redux';
 import { fetchQuestion, updateQuestion, deleteQuestion } from '../../actions/question_actions';
 import { fetchAnswers } from '../../actions/answer_actions';
 import QuestionShow from './question_show';
-import QuestionShowStylesheet from '../../stylesheets/question_show.scss';
+import {} from '../../stylesheets/question_show.scss';
 
 const mapStateToProps = (state, ownProps) => {
 	const questionId = ownProps.match.params.question_id;
 	return {
 		currentUser: state.session.user,
-		question: state.entities.questions[questionId],
-		answers: Object.values(state.entities.answers)
+		question: state.entities.questions[questionId]
 	}
 };
 
