@@ -39,9 +39,9 @@ const Credit = () => {
 					</div>
 				</div>
 
-				<div className="contributor-3 ">
-					<div className="credit-name-3">Raymond Leung</div>
-					<div className="credit-links-3">
+				<div className="contributor-2">
+					<div className="credit-name-2">Raymond Leung</div>
+					<div className="credit-links-2">
 						<a href="https://www.linkedin.com/in/raymond-leung-b0874b198/" className="credit-a-linkedin">
 							<div className="credit-icon-linkedin"></div>
 						</a>
@@ -49,6 +49,21 @@ const Credit = () => {
 							<div className="credit-icon-angellist"></div>
 						</a>
 						<a href="https://github.com/ray-leun1" className="credit-a-github">
+							<div className="credit-icon-github"></div>
+						</a>
+					</div>
+				</div>
+
+				<div className="contributor-3 ">
+					<div className="credit-name-3">Ryan Woods</div>
+					<div className="credit-links-3">
+						<a href="https://www.linkedin.com/in/ryan-woods-530679b4/" className="credit-a-linkedin">
+							<div className="credit-icon-linkedin"></div>
+						</a>
+						<a href="https://angel.co/ryan-woods-17" className="credit-a-angellist">
+							<div className="credit-icon-angellist"></div>
+						</a>
+						<a href="https://github.com/rwoods1227" className="credit-a-github">
 							<div className="credit-icon-github"></div>
 						</a>
 					</div>
