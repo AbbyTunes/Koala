@@ -9,7 +9,9 @@ export default props => {
 
   let voterIdx;
 
-  if (!answer.voters.some((voter, idx) => {
+
+
+  if (answer.voters && !answer.voters.some((voter, idx) => {
     return props.currentUser.id === voter.id ? voterIdx = idx : false;
   })) {
     let answering = Object.assign({}, answer);
@@ -57,16 +59,19 @@ export default props => {
 
   const toggleMore = () => moreActive ? setMoreActive(false) : setMoreActive(true);
 
-  let author, description, upvoteCount, upvoted, downvoted, date
+  let author, description, upvoteCount, upvoted, downvoted, date;
 
-  author = answer.author;
-  description = answer.description;
-  upvoteCount = answer.upvote;
-  upvoted = answer.voters[voterIdx].upvote;
-  downvoted = answer.voters[voterIdx].downvote;
-  date = (new Date(answer.date)).toLocaleDateString('en-US', {
-    year: 'numeric', month: 'short', day: 'numeric'
-  });
+  if (answer.voters) {
+  
+    author = answer.author;
+    description = answer.description;
+    upvoteCount = answer.upvote;
+    upvoted = answer.voters[voterIdx].upvote;
+    downvoted = answer.voters[voterIdx].downvote;
+    date = (new Date(answer.date)).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'short', day: 'numeric'
+    });
+  }
 
   const upvoteClass = 'answer-upvote'
     + (upvoted ? ' active' : '');

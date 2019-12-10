@@ -34,7 +34,7 @@ class QuestionShow extends React.Component {
 					this.setState({ answerIcon: false });
 					this.setState({ answerForm: false });
 				}
-			})
+			});
 	};
 
 	componentDidUpdate(prevProps) {
@@ -149,7 +149,7 @@ class QuestionShow extends React.Component {
 								{/* <MoreDropdown deleteQuestion={deleteQuestion} /> */}								
 							</div>
 							{this.state.answerForm ? <AnswerFormContainer question={question} answerSubmitted={this.answerSubmitted} /> : ''}
-							<AnswerIndexContainer question={question} childDeletion={this.childDeletion} />
+							<AnswerIndex currentUser={this.props.currentUser} question={question} childDeletion={this.childDeletion} fetchQuestion={this.props.fetchQuestion} />
 						</div>
 						<div className="show-right">
 						</div>
