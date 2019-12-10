@@ -30,10 +30,3 @@ const AnswerSchema = new Schema({
 })
 
 module.exports = Answer = mongoose.model('Answer', AnswerSchema);
-
-	// comments: [{
-	// 	type: Schema.Types.ObjectId,
-	// 	ref: 'Comment'
-	// }]
-
-	// votes, authorId

@@ -64,13 +64,6 @@ class QuestionShow extends React.Component {
 		this.setState({ answerIcon: true });
 	}
 
-	// deleteQuestion(e) {
-	// 	e.preventDefault();
-	// 	const questionId = this.props.question._id;
-	// 	this.props.deleteQuestion(questionId)
-	// 		.then(() => this.props.history.push('/questions'));
-	// }
-
 	render() {
 		const { question } = this.props;
 
