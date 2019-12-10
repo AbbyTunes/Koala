@@ -42,6 +42,7 @@ class QuestionIndexItem extends React.Component {
 
 		const { question } = this.props;
 
+		// debugger;
 		const createDate =  (new Date(question.createDate)).toLocaleDateString('en-US', {
 			year: 'numeric', month: 'short', day: 'numeric'
 		});
@@ -50,14 +51,16 @@ class QuestionIndexItem extends React.Component {
 					{question.authorId.firstName} {question.authorId.lastName}
 				</Link>
 			</div>
-		)
+		);
 
 		let AnswerInfo;
 		
 		if (this.state.answers.length) {
-			const answerArr = this.state.answers;
-			const lastAnswer = answerArr[answerArr.length - 1];
-			const lastAnswerAuthor = (
+
+			let answerArr = this.state.answers; 
+			let sortedAnswerArr = answerArr.sort((a, b) => b.date - a.date);
+			let lastAnswer = sortedAnswerArr[0];
+			let lastAnswerAuthor = (
 				<div className="question-author">
 					<Link to={`/profile/${lastAnswer.author._id}`}>
 						{lastAnswer.author.firstName} {lastAnswer.author.lastName}
@@ -65,14 +68,14 @@ class QuestionIndexItem extends React.Component {
 				</div>
 			)
 
-			const answerDate = (new Date(lastAnswer.date)).toLocaleDateString('en-US', {
+			let answerDate = (new Date(lastAnswer.date)).toLocaleDateString('en-US', {
 				year: 'numeric', month: 'short', day: 'numeric'
 			});
 
 			AnswerInfo = (
 				<div className="question-1">
 					<div className="question-dot">·</div>
-					Last answered by {lastAnswerAuthor} on {answerDate} 
+					Last answered by {lastAnswerAuthor} {" "} on {" "} {answerDate} 
 				</div>
 			)
 		} else {
@@ -84,14 +87,14 @@ class QuestionIndexItem extends React.Component {
 				<div className="question-left">
 
 					<div className="question-1">
-						Question added {questionAuthor} on {createDate}
+						Question added {questionAuthor} {" "} on {" "} {createDate}
 					</div>
 					<div className="question-2"><Link to={`/questions/${question._id}`}>{question.title}</Link></div>
 					<div className="question-3">
 						<div className="question-answer">
 							<Link to={`/questions/${question._id}`}>{this.state.answers.length} answers</Link>
 						</div>
-						{AnswerInfo}
+						{ AnswerInfo }
 					</div>
 					<div className="question-icon">
 						<ul>
