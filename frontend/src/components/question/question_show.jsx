@@ -11,18 +11,12 @@ class QuestionShow extends React.Component {
 
 		this.state = {
 			answerIcon: true,
-			answerForm: false,
-			lastEditor: ""
+			answerForm: false
 		};
 
 		this.toggleAnswer = this.toggleAnswer.bind(this);
 		this.childDeletion = this.childDeletion.bind(this);
 		this.answerSubmitted = this.answerSubmitted.bind(this);
-		this.setEditor = this.setEditor.bind(this);
-	}
-
-	setEditor(firstName, lastName) {
-		this.setState({ lastEditor: firstName + lastName })
 	}
 
 	toggleAnswer() {
@@ -68,7 +62,6 @@ class QuestionShow extends React.Component {
 						let editorArray = question.editorIds;
 						let lastEdit = editorArray[editorArray.length - 1];
 						this.setEditor(lastEdit.firstName, lastEdit.lastName);
-						debugger;
 						return;
 					}
 					
@@ -83,7 +76,6 @@ class QuestionShow extends React.Component {
 
 	render() {
 		const { question } = this.props;
-		// debugger;
 
 		if (question) {
 
@@ -111,11 +103,11 @@ class QuestionShow extends React.Component {
 					year: 'numeric', month: 'short', day: 'numeric'
 				});
 				updateDate = (
-					<div>on {editDate}</div>
+					<div>{editDate}</div>
 				)
 
 				editor = (
-					<div className="show-editor">Last edited {lastEditorName} {updateDate}
+					<div className="show-editor">Last edited {lastEditorName} {" "} on {" "} {updateDate}
 					</div>
 				)
 			} else {
