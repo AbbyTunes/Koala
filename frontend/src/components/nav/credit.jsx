@@ -5,6 +5,21 @@ import '../../stylesheets/credit.scss'
 const Credit = () => {
 	return ( 
 		<div className="show-credit">
+
+			<div className="credit-header">About Koala</div>
+
+			<div className="credit-body">
+				<div className="contributor-1 ">
+					<div className="credit-name-1">Project Github Repository</div>
+
+					<div className="credit-links-1">
+						<a href="https://github.com/AbbyTunes/Koala" id="project-link">
+							<div id="project-icon"></div>
+						</a>
+					</div>
+				</div>
+			</div>
+			
 			<div className="credit-header">Contributors</div>
 
 			<div className="credit-body">

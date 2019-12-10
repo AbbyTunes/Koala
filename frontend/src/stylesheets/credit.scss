@@ -1,13 +1,15 @@
 .show-credit {
 	display: block;
     position: relative;
-    top: 0;
+    top: -20px;
     left: 220px;
     width: 600px;
 	height: auto;
-	// border: solid 1px grey;
 
-	.credit-header {
+	div[class^=credit-header] {
+		position: relative;
+		top: 15px;
+		left: 0;
 		margin-bottom: 16px;
 		padding-bottom: 8px;
 		border-bottom: 1px solid #cacaca;
@@ -17,45 +19,83 @@
 		direction: ltr;
 	}
 
-	.credit-body {
+	.credit-body-project {
 		position: relative;
-		top: 30px;
+		top: 15px;
 		left: 0;
 		display: block;
 		width: 100%;
 		height: auto;
-		// border: 1px solid #19ec58;
+		border: 1px solid #19ec58;
+
+		a.credit-a-project {
+			width: 40px;
+			height: 40px;
+			margin: auto;
+			border-radius: 5px;
+			overflow: hidden;
+			div.credit-icon-github {
+				width: 100%;
+				height: 100%;
+				background: url("../images/github.png");
+				background-size: contain;
+			}
+		}
+	}
+
+	.credit-body {
+		position: relative;
+		top: 15px;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: auto;
 
 		div[class^=contributor-] {
-			display: flex;
-			margin-bottom: 30px;
-			// border: 1px solid #dddddd;
-			// background-color: #fff;
-			// border-radius: 4px;
-			// // border-bottom: 1px solid #cacaca;
-			// padding: 16px;
-			// margin-top: 0;
-
+			display: block;
+			margin-bottom: 20px;
+			padding-left: 40px;
+			padding-right: 200px;
 
 			div[class^=credit-name-] {
 				position: relative;
 				top: 0;
 				left: 0;
-				width: 150px;
-				// margin: auto 0;
+				padding-bottom: 10px;
+				border-bottom: 1px solid #cacaca;
+				width: 100%;
 				font-size: 17px;
 				color: grey;
 				font-weight: 500;
-				// border: 1px solid #d31c1c;
 			}
 
 			div[class^=credit-links-] {
 				position: relative;
 				top: 0;
-				left: 0;
+				left: 200px;
 				display: flex;
 				width: 150px;
+				margin-top: 10px;
 				cursor: pointer;
+
+				a#project-link {
+					position: relative;
+					top: 0;
+					right: -50px;
+					width: 40px;
+					height: 40px;
+					margin: auto;
+					border-radius: 5px;
+					overflow: hidden;
+
+					div#project-icon {
+						width: 100%;
+						height: 100%;
+
+						background: url("../images/github.png");
+						background-size: contain;
+					}
+				}
 
 				a[class^=credit-a-] {
 					width: 40px;
