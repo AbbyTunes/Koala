@@ -14,7 +14,7 @@
 		left: 0;
 		width: 200px;
 		// min-height: 500px;
-		// border: 1px solid #e2e2e2;
+		// border: 1px solid #cacaca;
 	}
 
 	.question-middle {
@@ -29,7 +29,7 @@
 		.new-question {
 			margin-bottom: 16px;
 			padding-bottom: 8px;
-			border-bottom: 1px solid #e2e2e2;
+			border-bottom: 1px solid #cacaca;
 			font-weight: 500;
 			font-size: 15px;
 			text-align: left;
@@ -41,13 +41,13 @@
 		}
 
 		.question-item {
-			border: 1px solid #efefef;
+			border: 1px solid #dddddd;
 			background-color: #fff;
 			border-radius: 4px;
-			border-bottom: 1px solid #e2e2e2;
+			border-bottom: 1px solid #cacaca;
 			padding: 16px;
 			margin-top: 0;
-			margin-bottom: 8px;
+			margin-bottom: 15px;
 			display: block;
 
 			.question-dot {
