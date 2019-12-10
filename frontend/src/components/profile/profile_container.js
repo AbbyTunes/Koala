@@ -9,8 +9,6 @@ const mapStateToProps = state => ({
   answers: Object.values(state.entities.answers),
   questions: Object.values(state.entities.questions),
   currentUser: state.session.user
-  
-  
 });
 
 const mapDispatchToProps = dispatch => {

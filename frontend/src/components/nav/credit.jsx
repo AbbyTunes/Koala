@@ -56,15 +56,15 @@ const Credit = () => {
 				</div>
 
 				<div className="contributor-3 ">
-					<div className="credit-name-3">Name</div>
+					<div className="credit-name-3">Ryan Woods</div>
 					<div className="credit-links-3">
-						<a href="" className="credit-a-linkedin">
+						<a href="https://www.linkedin.com/in/ryan-woods-530679b4/" className="credit-a-linkedin">
 							<div className="credit-icon-linkedin"></div>
 						</a>
-						<a href="" className="credit-a-angellist">
+						<a href="https://angel.co/ryan-woods-17" className="credit-a-angellist">
 							<div className="credit-icon-angellist"></div>
 						</a>
-						<a href="" className="credit-a-github">
+						<a href="https://github.com/rwoods1227" className="credit-a-github">
 							<div className="credit-icon-github"></div>
 						</a>
 					</div>

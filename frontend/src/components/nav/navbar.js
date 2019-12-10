@@ -6,6 +6,7 @@ import githubIcon from '../../images/github-logo.png'
 import '../../stylesheets/reset.css' // this will probably get moved
 import '../../stylesheets/navbar.css'
 import QuestionPopUp from '../question/forms/question_pop_up'
+import Search from '../search/search_container'
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -13,7 +14,8 @@ class NavBar extends React.Component {
 		this.logoutUser = this.logoutUser.bind(this);
 		this.getLinks = this.getLinks.bind(this);
 		this.toggleClass = this.toggleClass.bind(this);
-		this.state = {active: false};
+		this.toggleSearch = this.toggleSearch.bind(this);
+		this.state = {active: false, activeSearch: false};
 	}
 
 	logoutUser(e) {
@@ -24,6 +26,11 @@ class NavBar extends React.Component {
 	toggleClass() {
 		const currentState = this.state.active;
 		this.setState({ active: !currentState });
+	};
+
+	toggleSearch() {
+		const currentState = this.state.activeSearch;
+		this.setState({ activeSearch: !currentState });
 	};
 
 
@@ -49,9 +56,11 @@ class NavBar extends React.Component {
 			case "/questions":
 				questionsClass +=" red";
 				gQuestionsClass +=" red-fill";
+				break;
 			case "/credit":
 				creditClass += " red";
 				gCreditClass += " red-fill";
+				break;
 			default:
 				break;
 		}
@@ -167,8 +176,8 @@ class NavBar extends React.Component {
 								{/* does search stuff, bonus implementation */}
 								<div className="navbar-search-container">
 									<div className="navbar-search">
-										<div className="navbar-search-input-container">
-											<input 
+										<div className="navbar-search-input-container" onClick={this.toggleSearch}>
+											{/* <input 
 											className="navbar-search-input" 
 											type="text" 
 											data-lpignore="true" 
@@ -177,7 +186,8 @@ class NavBar extends React.Component {
 											placeholder="Search Koala" 
 											w2cid="wS9ZF19Z12" 
 											// id="__w2_wS9ZF19Z12_input"
-											/>
+											/> */}
+											<Search className={this.state.activeSearch ? " nav-profile-dropdown" : "hidden"}/>
 										</div>
 									</div>
 								</div>
@@ -204,7 +214,7 @@ class NavBar extends React.Component {
 																</div>
 																<Link className="dropdown-link-to-profile" to={`/profile/${this.props.currentUser.id}`}>
 																	<div className="dropdown-link-to-profile-flex-center">
-	{/* for now will be profile, maybe add currentUser to state and do it that way in span */}
+																			{/* for now will be profile, maybe add currentUser to state and do it that way in span */}
 																		<div className="dropdown-link-to-profile-username-container">
 																			<span>{this.props.currentUser.firstName}</span>
 																		</div>
