@@ -14,7 +14,8 @@ class NavBar extends React.Component {
 		this.logoutUser = this.logoutUser.bind(this);
 		this.getLinks = this.getLinks.bind(this);
 		this.toggleClass = this.toggleClass.bind(this);
-		this.state = {active: false};
+		this.toggleSearch = this.toggleSearch.bind(this);
+		this.state = {active: false, activeSearch: false};
 	}
 
 	logoutUser(e) {
@@ -25,6 +26,11 @@ class NavBar extends React.Component {
 	toggleClass() {
 		const currentState = this.state.active;
 		this.setState({ active: !currentState });
+	};
+
+	toggleSearch() {
+		const currentState = this.state.activeSearch;
+		this.setState({ activeSearch: !currentState });
 	};
 
 
@@ -170,7 +176,7 @@ class NavBar extends React.Component {
 								{/* does search stuff, bonus implementation */}
 								<div className="navbar-search-container">
 									<div className="navbar-search">
-										<div className="navbar-search-input-container">
+										<div className="navbar-search-input-container" onClick={this.toggleSearch}>
 											{/* <input 
 											className="navbar-search-input" 
 											type="text" 
@@ -181,7 +187,7 @@ class NavBar extends React.Component {
 											w2cid="wS9ZF19Z12" 
 											// id="__w2_wS9ZF19Z12_input"
 											/> */}
-											<Search />
+											<Search className={this.state.activeSearch ? " nav-profile-dropdown" : "hidden"}/>
 										</div>
 									</div>
 								</div>
@@ -208,7 +214,7 @@ class NavBar extends React.Component {
 																</div>
 																<Link className="dropdown-link-to-profile" to={`/profile/${this.props.currentUser.id}`}>
 																	<div className="dropdown-link-to-profile-flex-center">
-	{/* for now will be profile, maybe add currentUser to state and do it that way in span */}
+																			{/* for now will be profile, maybe add currentUser to state and do it that way in span */}
 																		<div className="dropdown-link-to-profile-username-container">
 																			<span>{this.props.currentUser.firstName}</span>
 																		</div>

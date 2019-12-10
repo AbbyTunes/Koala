@@ -17,13 +17,15 @@ class Search extends Component {
     let userNames = [];
     this.props.questions.map((question)=>{
       if (question.title.startsWith(this.state.query)) {
-        questionTitles.push(question.title);
+        let titleAndId = [question.title, question._id, "/questions"]
+        questionTitles.push(titleAndId);
       }
     });
     this.props.users.map((user) => {
       let fullname = user.firstName + user.lastName;
       if (fullname.startsWith(this.state.query)){
-        userNames.push(fullname);
+        let nameAndId = [fullname, user.id, "/profile"];
+        userNames.push(nameAndId);
       }
     });
     let data = questionTitles.concat(userNames);
@@ -49,14 +51,23 @@ class Search extends Component {
  // suggestions has shitty css that breaks navbar
   render() {
     return (
-      <form>
+      <div className="header-nav-item">
         <input
           placeholder="Search for..."
           ref={input => this.search = input}
           onChange={this.handleInputChange}
+          className="navbar-search-input"
         />
-        <Suggestions results={this.state.results} />
-      </form>
+        <div className={this.props.className}>
+          <div className="nav-profile-dropdown-contents">
+            <div className="nav-profile-dropdown-overflow">
+              <div className="nav-profile-dropdown-inner-style">
+                <Suggestions results={this.state.results} />
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
     )
   }
 }
