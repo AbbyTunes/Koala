@@ -11,13 +11,18 @@ class QuestionShow extends React.Component {
 
 		this.state = {
 			answerIcon: true,
-			answerForm: false
+			answerForm: false,
+			lastEditor: ""
 		};
 
 		this.toggleAnswer = this.toggleAnswer.bind(this);
 		this.childDeletion = this.childDeletion.bind(this);
 		this.answerSubmitted = this.answerSubmitted.bind(this);
-		// this.deleteQuestion = this.deleteQuestion.bind(this);
+		this.setEditor = this.setEditor.bind(this);
+	}
+
+	setEditor(firstName, lastName) {
+		this.setState({ lastEditor: firstName + lastName })
 	}
 
 	toggleAnswer() {
@@ -58,6 +63,21 @@ class QuestionShow extends React.Component {
 					});
 			}
 		}
+
+		if (prevProps.question && this.props.question) {
+			if (prevProps.question.title !== this.props.question.title) {
+				this.props.fetchQuestion().then(question => {
+					if (question.editorIds) {
+						let editorArray = question.editorIds;
+						let lastEdit = editorArray[editorArray.length - 1];
+						this.setEditor(lastEdit.firstName, lastEdit.lastName);
+						debugger;
+						return;
+					}
+					
+				})
+			}
+		}
 	}
 
 	childDeletion() {
@@ -66,6 +86,7 @@ class QuestionShow extends React.Component {
 
 	render() {
 		const { question } = this.props;
+		// debugger;
 
 		if (question) {
 
@@ -109,10 +130,10 @@ class QuestionShow extends React.Component {
 				<div className="show-frame">
 					<div className="show-session">
 						<div className="show-left">
-							<div className="show-topic">
+							{/* <div className="show-topic">
 								<li>hardcode</li>
 								<li>topics</li>
-							</div>
+							</div> */}
 							
 							<div className="show-title">{question.title}</div>
 							{editor}

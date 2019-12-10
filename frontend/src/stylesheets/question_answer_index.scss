@@ -10,7 +10,7 @@
     .content-divider {
         width: 100%;
         height: 1px;
-        background: #cacaca;
+        background: #e2e2e2;
         margin: 8px 0px 12px 0px;
     }
 
@@ -253,7 +253,7 @@
                 }
     
                 :not(:last-child) {
-                    border-bottom: 1px solid #cacaca;
+                    border-bottom: 1px solid #e2e2e2;
                 }
             }
         }
