@@ -27,10 +27,11 @@ const Credit = () => {
 				<div className="contributor-1 ">
 					<div className="credit-name-1">Jun Xu (Abby)</div>
 					<div className="credit-links-1">
-						<a href="https://www.linkedin.com/in/jun-xu-6a204466/" className="credit-a-linkedin">
+						<a href="https://www.linkedin.com/in/abby-jun-xu/" className="credit-a-linkedin">
 							<div className="credit-icon-linkedin"></div>
 						</a>
-						<a href="https://github.com/AbbyTunes" className="credit-a-angellist">
+					
+						<a href="https://angel.co/abby-jun-xu" className="credit-a-angellist">
 							<div className="credit-icon-angellist"></div>	
 						</a>
 						<a href="https://github.com/AbbyTunes" className="credit-a-github">
