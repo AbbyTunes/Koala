@@ -11,13 +11,18 @@ class QuestionShow extends React.Component {
 
 		this.state = {
 			answerIcon: true,
-			answerForm: false
+			answerForm: false,
+			lastEditor: ""
 		};
 
 		this.toggleAnswer = this.toggleAnswer.bind(this);
 		this.childDeletion = this.childDeletion.bind(this);
 		this.answerSubmitted = this.answerSubmitted.bind(this);
-		// this.deleteQuestion = this.deleteQuestion.bind(this);
+		this.setEditor = this.setEditor.bind(this);
+	}
+
+	setEditor(firstName, lastName) {
+		this.setState({ lastEditor: firstName + lastName })
 	}
 
 	toggleAnswer() {
@@ -31,23 +36,20 @@ class QuestionShow extends React.Component {
 
 	componentDidMount() {
 		this.props.fetchQuestion()
-
-		this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-			.then(answers => {
-				if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
+			.then(() => {
+				if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
 					this.setState({ answerIcon: false });
 					this.setState({ answerForm: false });
-					return;
 				}
-			});
+			})
 	};
 
 	componentDidUpdate(prevProps) {
-		if (prevProps.answers && this.props.answers) {
-			if (prevProps.answers.length !== this.props.answers.length) {
-				this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-					.then(answers => {
-						if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
+		if (prevProps.question && this.props.question) {
+			if (prevProps.question.answerIds.length !== this.props.question.answerIds.length) {
+				this.props.fetchQuestion()
+					.then(() => {
+						if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
 							this.setState({ answerIcon: false });
 							this.setState({ answerForm: false });
 							return;
@@ -58,21 +60,30 @@ class QuestionShow extends React.Component {
 					});
 			}
 		}
+
+		if (prevProps.question && this.props.question) {
+			if (prevProps.question.title !== this.props.question.title) {
+				this.props.fetchQuestion().then(question => {
+					if (question.editorIds) {
+						let editorArray = question.editorIds;
+						let lastEdit = editorArray[editorArray.length - 1];
+						this.setEditor(lastEdit.firstName, lastEdit.lastName);
+						debugger;
+						return;
+					}
+					
+				})
+			}
+		}
 	}
 
 	childDeletion() {
 		this.setState({ answerIcon: true });
 	}
 
-	// deleteQuestion(e) {
-	// 	e.preventDefault();
-	// 	const questionId = this.props.question._id;
-	// 	this.props.deleteQuestion(questionId)
-	// 		.then(() => this.props.history.push('/questions'));
-	// }
-
 	render() {
 		const { question } = this.props;
+		// debugger;
 
 		if (question) {
 
@@ -116,10 +127,10 @@ class QuestionShow extends React.Component {
 				<div className="show-frame">
 					<div className="show-session">
 						<div className="show-left">
-							<div className="show-topic">
+							{/* <div className="show-topic">
 								<li>hardcode</li>
 								<li>topics</li>
-							</div>
+							</div> */}
 							
 							<div className="show-title">{question.title}</div>
 							{editor}
@@ -139,7 +150,7 @@ class QuestionShow extends React.Component {
 										<div className="question-left-icon">
 											Answer
 											<div className="question-dot">·</div>
-											<div className="question-number">{this.props.answers.length}</div>
+											<div className="question-number">{this.props.question.answerIds.length}</div>
 										</div>
 									</li>
 									<QuestionEditPopUp />
