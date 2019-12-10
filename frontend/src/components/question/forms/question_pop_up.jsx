@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import CreateQuestionContainer from "./create_question_container";
-import QuestionPopUpStylesheet from "../../../stylesheets/question_pop_up.scss";
+import {} from "../../../stylesheets/question_pop_up.scss";
 
 class QuestionPopUp extends React.Component {
 
