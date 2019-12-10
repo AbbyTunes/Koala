@@ -148,7 +148,7 @@ class NavBar extends React.Component {
 									</div>
 								</span>
 
-								<span id="nav-item-span">
+								{/* <span id="nav-item-span">
 									<div className="header-nav-item">
 										<a className="nav-item-link github" href={"https://github.com/AbbyTunes/Koala"}>
 											<div className="nav-item-link-inner">
@@ -159,8 +159,7 @@ class NavBar extends React.Component {
 											<span>Github</span>
 										</a>
 									</div>
-								</span>
-
+								</span> */}
 
 							</div>
 

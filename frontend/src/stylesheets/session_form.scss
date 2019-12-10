@@ -1,255 +1,263 @@
 .landing-splash-container-container {
-    height: 100vh;
-    width: 100%;
-    // background-image: linear-gradient(0.4turn, #94b892, #aac399);
-    background-image: url('../images/light-green-background.jpg');
-    background-size: cover;
-    background-position: center center;
+  height: 100vh;
+  width: 100%;
+  // background-image: linear-gradient(0.4turn, #94b892, #aac399);
+  background-image: url('../images/light-green-background.jpg');
+  background-size: cover;
+  background-position: center center;
 }
 
 
 .landing-splash-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100vh;
-    width: 100%;
-    box-sizing: content-box;
-    background-image: url('../images/BeFunky-collage-expanded.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    overflow: none;
-    scrollbar-width: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  box-sizing: content-box;
+  background-image: url('../images/BeFunky-collage-expanded.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: none;
+  scrollbar-width: none;
 }
 
 .session-form-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 15%;
-    bottom: initial;
-    display: flex;
-    flex-direction: column;
-    width: 650px;
-    background: white;
-    padding-top: 24px;
-    border: 1px solid #e2e2e2;
-    border-radius: 4px;
-    box-shadow: 0 0 5px #888;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 15%;
+  bottom: initial;
+  display: flex;
+  flex-direction: column;
+  width: 650px;
+  background: white;
+  padding-top: 24px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  box-shadow: 0 0 5px #888;
+  margin: auto;
+
+  .network-logo {
+    width: 289px;
+    min-width: 289px;
+    height: 82px;
+    background-image: url('../images/Koala-logo-final.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
     margin: auto;
+  }
 
-    .network-logo {
-        width: 289px;
-        min-width: 289px;
-        height: 82px;
-        background-image: url('../images/Koala-logo-final.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        margin: auto;
+  .network-logo-tag {
+    color: #949494;
+    font-size: 19px;
+    text-align: center;
+    margin: 8px 0 32px;
+  }
+
+  .form-area-container {
+    display: flex;
+    padding: 32px;
+
+    .form-title {
+      font-weight: bold;
+      margin-bottom: 8px;
     }
 
-    .network-logo-tag {
-        color: #949494;
-        font-size: 19px;
-        text-align: center;
-        margin: 8px 0 32px;
+    .form-divider {
+      box-sizing: content-box;
+      width: 1.5px;
+      padding: 32px 0px;
+      background: #e6e6e6;
+      margin: 0px 32px;
+    }
+  }
+
+  .input-column {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .demo-btn {
+    box-sizing: border-box;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+    outline: 0;
+    margin-bottom: 16px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
     }
 
-    .form-area-container {
-        display: flex;
-        padding: 32px;
-
-        .form-title {
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .form-divider {
-            box-sizing: content-box;
-            width: 1.5px;
-            padding: 32px 0px;
-            background: #e6e6e6;
-            margin: 0px 32px;
-        }
+    &.one {
+      background: #df4930;
     }
 
-    .input-column {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 8px;
+    &.two {
+      background: #507cc0;
     }
+  }
 
-    .demo-btn {
-        box-sizing: border-box;
-        color: white;
-        font-size: 16px;
-        font-weight: 500;
-        text-decoration: none;
-        text-align: center;
-        width: 100%;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 3px;
-        box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
-        outline: 0;
-        margin-bottom: 16px;
-        cursor: pointer;
+  .sign-up-txt {
+    color: #2b6dad;
+    cursor: pointer;
 
-        &:hover {
-            opacity: 0.7;
-        }
-
-        &.one {
-            background: #df4930;
-        }
-    
-        &.two {
-            background: #507cc0;
-        }
+    &:hover {
+      text-decoration: underline;
     }
+  }
 
-    .sign-up-txt {
-        color: #2b6dad;
-        cursor: pointer;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+  .errors {
+    color: #b92b27;
+    padding: 8px;
+    border: 1px solid #b92b27;
+    border-radius: 4px;
+    margin: 8px 0px;
+  }
 }
 
 .signup-form-container {
-    width: 50%;
+  width: 50%;
 
-    .input-label {
-        color: #666;
-        font-size: 11px;
-        font-weight: bold;
-        line-height: 27px;
-        letter-spacing: 0.5px;
+  .input-label {
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 27px;
+    letter-spacing: 0.5px;
+  }
+
+  .input-name-container {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      width: 49%;
     }
+  }
 
-    .input-name-container {
-        display: flex;
-        justify-content: space-between;
+  input[type=text], input[type=password] {
+    box-sizing: border-box;
+    color: #333;
+    font-size: 13px;
+    font-weight: 400;
+    width: 100%;
+    height: 27px;
+    min-height: 27px;
+    padding: 3px 5px;
+    background: #fafafa;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+    outline: none;
 
-        label {
-            width: 49%;
-        }
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: #ccc;
     }
+  }
 
-    input[type=text], input[type=password] {
-        box-sizing: border-box;
-        color: #333;
-        font-size: 13px;
-        font-weight: 400;
-        width: 100%;
-        height: 27px;
-        min-height: 27px;
-        padding: 3px 5px;
-        background: #fafafa;
-        border: 1px solid #e2e2e2;
-        border-radius: 3px;
-        box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
-        outline: none;
+  .cancel {
+    color: #2b6dad;
+    line-height: 27px;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-        transition: border-color 0.2s;
+  .input-submit {
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    height: 27px;
+    min-height: 27px;
+    padding: 3px 7px 4px 7px;
+    background: #3e78ad;
+    border: 1px solid #3a66ad;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
+    outline: none;
+    margin-left: 8px;
+    cursor: pointer;
 
-        &:focus {
-            border-color: #ccc;
-        }
+    &:active {
+      opacity: 0.6;
+      box-shadow: none;
     }
-
-    .cancel {
-        color: #2b6dad;
-        line-height: 27px;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .input-submit {
-        color: white;
-        font-size: 13px;
-        font-weight: 500;
-        text-align: center;
-        text-decoration: none;
-        height: 27px;
-        min-height: 27px;
-        padding: 3px 7px 4px 7px;
-        background: #3e78ad;
-        border: 1px solid #3a66ad;
-        border-radius: 3px;
-        box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
-        outline: none;
-        margin-left: 8px;
-        cursor: pointer;
-
-        &:active {
-            opacity: 0.6;
-            box-shadow: none;
-        }
-    }
+  }
 }
 
 .login-form-container {
-    width: 50%;
+  width: 50%;
 
-    input[type=text], input[type=password] {
-        box-sizing: border-box;
-        color: #333;
-        font-size: 15px;
-        width: 100%;
-        height: 32px;
-        min-height: 32px;
-        padding: 0px 8px;
-        background: #eee;
-        border: 1px solid #e2e2e2;
-        border-radius: 3px;
-        box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
-        outline: none;
+  input[type=text], input[type=password] {
+    box-sizing: border-box;
+    color: #333;
+    font-size: 15px;
+    width: 100%;
+    height: 32px;
+    min-height: 32px;
+    padding: 0px 8px;
+    background: #eee;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+    outline: none;
 
-        transition: border-color 0.2s;
+    transition: border-color 0.2s;
 
-        &:focus {
-            border-color: #ccc;
-        }
-
-        &::placeholder {
-            color: #bebebe;
-        }
+    &:focus {
+      border-color: #ccc;
     }
 
-    .input-email {
-        margin-bottom: 24px;
+    &::placeholder {
+      color: #bebebe;
     }
+  }
 
-    .input-password {
-        
+  .input-email {
+    margin-bottom: 24px;
+  }
+
+  .input-password {
+      
+  }
+
+  .input-submit {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    height: 28px;
+    min-height: 28px;
+    padding: 3px 7px 4px 7px;
+    background: #3e78ad;
+    border: 1px solid #3a66ad;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
+    outline: none;
+    cursor: pointer;
+
+    &:active {
+      opacity: 0.6;
+      box-shadow: none;
     }
-
-    .input-submit {
-        color: white;
-        font-size: 15px;
-        font-weight: 500;
-        text-align: center;
-        text-decoration: none;
-        height: 28px;
-        min-height: 28px;
-        padding: 3px 7px 4px 7px;
-        background: #3e78ad;
-        border: 1px solid #3a66ad;
-        border-radius: 3px;
-        box-shadow: 0 1px 1px 0 rgba(200,200,200,0.6);
-        outline: none;
-        cursor: pointer;
-
-        &:active {
-            opacity: 0.6;
-            box-shadow: none;
-        }
-    }
+  }
 }

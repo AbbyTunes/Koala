@@ -10,7 +10,7 @@ import QuestionIndexContainer from "../question/question_index_container";
 import QuestionShowContainer from "../question/question_show_container";
 import AnswerIndexContainer from '../answer/user_answer_index_container';
 import QuestionRandContainer from '../question/question_rand_container';
-import Credit from '../nav/credit';
+import Credit from '../nav/credit.jsx';
 
 class MainPage extends React.Component {
 // props to pass down pathname
