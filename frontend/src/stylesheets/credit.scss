@@ -1,0 +1,86 @@
+.show-credit {
+	display: block;
+    position: relative;
+    top: 0;
+    left: 220px;
+    width: 600px;
+	height: auto;
+	// border: solid 1px grey;
+
+	.credit-header {
+		margin-bottom: 16px;
+		padding-bottom: 8px;
+		border-bottom: 1px solid #cacaca;
+		font-weight: 500;
+		font-size: 15px;
+		text-align: left;
+		direction: ltr;
+	}
+
+	.credit-body {
+		position: relative;
+		top: 30px;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: auto;
+		// border: 1px solid #19ec58;
+
+		div[class^=contributor-] {
+			display: flex;
+			margin-bottom: 30px;;
+
+			div[class^=credit-name-] {
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 150px;
+				margin: auto 0;
+				font-size: 17px;
+				color: grey;
+				font-weight: 500;
+				// border: 1px solid #d31c1c;
+			}
+
+			div[class^=credit-links-] {
+				position: relative;
+				top: 0;
+				left: 0;
+				display: flex;
+				width: 250px;
+				cursor: pointer;
+				// border: 1px solid #7b13cf;
+
+				div[class^=credit-icon-] {
+					width: 40px;
+					height: 40px;
+					margin: auto;
+					border-radius: 5px;
+					overflow: hidden;
+				}
+
+				div.credit-icon-linkedin {
+					background: url("../images/linkedin.png");
+					background-size: contain;
+				}
+
+				div.credit-icon-github {
+					background: url("../images/github.png");
+					background-size: contain;
+				}
+
+				div.credit-icon-angellist {
+					background: url("../images/angellist.png");
+					background-size: contain;
+				}
+
+				div.credit-icon-facebook {
+					background: url("../images/facebook.png");
+					background-size: contain;
+				}
+			}
+		}
+
+		
+	}
+}

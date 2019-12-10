@@ -12,7 +12,7 @@ const App = (props) => {
 		<div>
 			<Switch>
 				<AuthRoute exact path="/login" component={SessionFormContainer} />
-				<ProtectedRoute path="/" component={MainPage}/>
+				<ProtectedRoute path="/" component={MainPage} />
 				<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
 			</Switch>
 		</div>
