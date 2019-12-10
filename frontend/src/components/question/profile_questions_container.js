@@ -12,7 +12,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  debugger;
   return {
   fetchQuestions: () => dispatch(fetchQuestions()),
   createQuestion: (data) => dispatch(createQuestion(data)),

@@ -36,23 +36,20 @@ class QuestionShow extends React.Component {
 
 	componentDidMount() {
 		this.props.fetchQuestion()
-
-		this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-			.then(answers => {
-				if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
+			.then(() => {
+				if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
 					this.setState({ answerIcon: false });
 					this.setState({ answerForm: false });
-					return;
 				}
-			});
+			})
 	};
 
 	componentDidUpdate(prevProps) {
-		if (prevProps.answers && this.props.answers) {
-			if (prevProps.answers.length !== this.props.answers.length) {
-				this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-					.then(answers => {
-						if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
+		if (prevProps.question && this.props.question) {
+			if (prevProps.question.answerIds.length !== this.props.question.answerIds.length) {
+				this.props.fetchQuestion()
+					.then(() => {
+						if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
 							this.setState({ answerIcon: false });
 							this.setState({ answerForm: false });
 							return;
@@ -153,7 +150,7 @@ class QuestionShow extends React.Component {
 										<div className="question-left-icon">
 											Answer
 											<div className="question-dot">·</div>
-											<div className="question-number">{this.props.answers.length}</div>
+											<div className="question-number">{this.props.question.answerIds.length}</div>
 										</div>
 									</li>
 									<QuestionEditPopUp />

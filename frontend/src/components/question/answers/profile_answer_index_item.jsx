@@ -112,7 +112,7 @@ class AnswerIndexItem extends React.Component {
       this.state.upvoted ? ' active' : ''
     ) + (
         this.state.upvoteHover ? ' tooltip' : ''
-      );
+    );
 
     const moreClass = 'answer-more' + (
       this.state.moreHover ? ' tooltip' : ''
@@ -175,10 +175,10 @@ class AnswerIndexItem extends React.Component {
             <div className='option-container'
               onClick={this.toggleDownvote}>
               {this.state.downvoted ? 'Undo' : ''} Downvote
-                        </div>
+            </div>
             <div className='option-container'>
               Downvote Question
-                        </div>
+            </div>
           </div>
         </div>
       </div>
