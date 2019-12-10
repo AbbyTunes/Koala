@@ -2,7 +2,6 @@ import React from "react";
 import { Link, withRouter } from 'react-router-dom';
 import AnswerFormContainer from './answers/question_answer_form_container';
 import AnswerIndexContainer from './answers/question_answer_index_container';
-// import MoreDropdown from './forms/more_dropdown';
 import QuestionEditPopUp from "./forms/question_edit_pop_up";
 
 class QuestionShow extends React.Component {
@@ -103,11 +102,11 @@ class QuestionShow extends React.Component {
 					year: 'numeric', month: 'short', day: 'numeric'
 				});
 				updateDate = (
-					<div>{editDate}</div>
+					<div> on {editDate}</div>
 				)
 
 				editor = (
-					<div className="show-editor">Last edited {lastEditorName} {" "} on {" "} {updateDate}
+					<div className="show-editor">Last edited {lastEditorName} {" "} {updateDate}
 					</div>
 				)
 			} else {

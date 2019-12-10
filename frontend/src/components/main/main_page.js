@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import { fetchQuestions } from '../../util/question_api_util';
-import MainPageStylesheet from '../../stylesheets/main_page.scss';
+import {} from '../../stylesheets/main_page.scss';
 // import { BrowserRouter, Route, Switch, Link, Redirect } from "react-router-dom";
 
 import NavBarContainer from "../nav/navbar_container";

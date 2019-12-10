@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { fetchQuestion, updateQuestion, deleteQuestion } from '../../actions/question_actions';
 import { fetchAnswers } from '../../actions/answer_actions';
 import QuestionShow from './question_show';
-import QuestionShowStylesheet from '../../stylesheets/question_show.scss';
+import {} from '../../stylesheets/question_show.scss';
 
 const mapStateToProps = (state, ownProps) => {
   const question = ownProps.rand ? ownProps.rand : '';

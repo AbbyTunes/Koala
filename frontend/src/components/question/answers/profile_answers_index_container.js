@@ -3,7 +3,7 @@ import { fetchUser } from '../../../actions/user_actions';
 import { fetchQuestion } from '../../../actions/question_actions';
 import { fetchAnswers, updateAnswer, deleteAnswer } from '../../../actions/answer_actions';
 import ProfileAnswerIndex from './profile_answers_index';
-import AnswerIndexStylesheet from '../../../stylesheets/user_answer_index.scss';
+import {} from '../../../stylesheets/user_answer_index.scss';
 
 const mapStateToProps = state => ({
   answers: Object.values(state.entities.answers),
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps)
-  (ProfileAnswerIndex);
+(ProfileAnswerIndex);

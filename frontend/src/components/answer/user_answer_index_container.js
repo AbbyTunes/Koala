@@ -3,7 +3,7 @@ import { fetchUser } from '../../actions/user_actions';
 import { fetchQuestion } from '../../actions/question_actions';
 import { fetchAnswers, updateAnswer, deleteAnswer } from '../../actions/answer_actions';
 import AnswerIndex from './user_answer_index';
-import AnswerIndexStylesheet from '../../stylesheets/user_answer_index.scss';
+import {} from '../../stylesheets/user_answer_index.scss';
 
 const mapStateToProps = state => ({
     answers: Object.values(state.entities.answers),
