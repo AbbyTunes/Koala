@@ -6,6 +6,7 @@ import githubIcon from '../../images/github-logo.png'
 import '../../stylesheets/reset.css' // this will probably get moved
 import '../../stylesheets/navbar.css'
 import QuestionPopUp from '../question/forms/question_pop_up'
+import Search from '../search/search_container'
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -144,7 +145,7 @@ class NavBar extends React.Component {
 								<div className="navbar-search-container">
 									<div className="navbar-search">
 										<div className="navbar-search-input-container">
-											<input 
+											{/* <input 
 											className="navbar-search-input" 
 											type="text" 
 											data-lpignore="true" 
@@ -153,7 +154,8 @@ class NavBar extends React.Component {
 											placeholder="Search Koala" 
 											w2cid="wS9ZF19Z12" 
 											// id="__w2_wS9ZF19Z12_input"
-											/>
+											/> */}
+											<Search />
 										</div>
 									</div>
 								</div>
