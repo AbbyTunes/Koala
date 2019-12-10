@@ -50,9 +50,11 @@ class NavBar extends React.Component {
 			case "/questions":
 				questionsClass +=" red";
 				gQuestionsClass +=" red-fill";
+				break;
 			case "/credit":
 				creditClass += " red";
 				gCreditClass += " red-fill";
+				break;
 			default:
 				break;
 		}
