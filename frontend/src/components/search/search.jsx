@@ -46,7 +46,7 @@ class Search extends Component {
     })
   }
 
- 
+ // suggestions has shitty css that breaks navbar
   render() {
     return (
       <form>
