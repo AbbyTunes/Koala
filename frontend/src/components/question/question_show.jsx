@@ -114,11 +114,11 @@ class QuestionShow extends React.Component {
 					year: 'numeric', month: 'short', day: 'numeric'
 				});
 				updateDate = (
-					<div>on {editDate}</div>
+					<div>{editDate}</div>
 				)
 
 				editor = (
-					<div className="show-editor">Last edited {lastEditorName} {updateDate}
+					<div className="show-editor">Last edited {lastEditorName} {" "} on {" "} {updateDate}
 					</div>
 				)
 			} else {
