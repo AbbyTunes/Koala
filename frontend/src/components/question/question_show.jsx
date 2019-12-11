@@ -149,7 +149,7 @@ class QuestionShow extends React.Component {
 								{/* <MoreDropdown deleteQuestion={deleteQuestion} /> */}								
 							</div>
 							{this.state.answerForm ? <AnswerFormContainer question={question} answerSubmitted={this.answerSubmitted} /> : ''}
-							<AnswerIndex currentUser={this.props.currentUser} question={question} childDeletion={this.childDeletion} fetchQuestion={this.props.fetchQuestion} />
+							<AnswerIndexContainer currentUser={this.props.currentUser} question={question} childDeletion={this.childDeletion} fetchQuestion={this.props.fetchQuestion} />
 						</div>
 						<div className="show-right">
 						</div>
