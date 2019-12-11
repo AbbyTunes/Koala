@@ -45,7 +45,7 @@ class QuestionIndex extends React.Component {
 				<div className="question-middle">
 					<div className="new-question">New Questions</div>
 					<ul>
-						{questions}
+						{questions.reverse()}
 					</ul> 
 				</div>
 			</div>

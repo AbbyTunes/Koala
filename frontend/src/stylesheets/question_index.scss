@@ -49,6 +49,11 @@
 			margin-top: 0;
 			margin-bottom: 15px;
 			display: block;
+			background: rgba(255, 231, 227, 0.5);
+
+			&:hover {
+				background: rgba(255, 231, 227, 1.0);
+			}
 
 			.question-dot {
 				padding: 0 5px;
