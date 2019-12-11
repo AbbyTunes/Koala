@@ -32,7 +32,7 @@ class Home extends React.Component {
 		return (
 			<div className="question-frame">
 				<div className="question-middle">
-					<div className="new-question">New Questions</div>
+					<div className="new-question">Recommended questions for you</div>
 					<ul>
 						{questions}
 					</ul>
