@@ -79,7 +79,6 @@ export default props => {
     + (downvoted ? ' active' : '')
     + (downvoteHover ? ' tooltip' : '');
   const moreClass = 'answer-more'
-    + (props.currentUser.id !== author._id ? ' hidden' : '')
     + (moreHover ? ' tooltip' : '');
 
   return (<div className='answer-index-item-container'>
@@ -137,7 +136,7 @@ export default props => {
             </svg>
           </span>
         </div>
-        <div className={moreClass}>
+        {props.currentUser.id === author._id ? <div className={moreClass}>
           <span className='svg-icon'
             onMouseEnter={() => setMoreHover(true)}
             onMouseLeave={() => setMoreHover(false)}
@@ -155,7 +154,7 @@ export default props => {
               Delete Answer
             </div>
           </div>
-        </div>
+        </div> : ''}
       </div>
     </div>
   </div>);
