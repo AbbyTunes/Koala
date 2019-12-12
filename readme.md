@@ -3,15 +3,15 @@
 <!-- ![Koala Logo](https://github.com/AbbyTunes/Koala/blob/master/frontend/src/images/Koala-logo-final.png) -->
 
 
-![Check out our home page!](https://imgur.com/kSK37Ls.png)
+![Check out our home page!](https://i.imgur.com/kSK37Ls.png)
 
 ## Group Members and Contributions
 
-Abby [Linkedin](https://www.linkedin.com/in/abby-jun-xu/) [Github](https://www.linkedin.com/in/abby-jun-xu/)
+Abby - [Linkedin](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.linkedin.com/in/abby-jun-xu/)
 
-Raymond Leung [Linkedin](https://www.linkedin.com/in/raymond-leung-b0874b198/) [Github](https://github.com/ray-leun1)
+Raymond Leung - [Linkedin](https://www.linkedin.com/in/raymond-leung-b0874b198/) - [Github](https://github.com/ray-leun1)
 
-Ryan Woods [Linkedin](https://www.linkedin.com/in/ryan-woods-530679b4/)  [Github](https://github.com/rwoods1227)
+Ryan Woods - [Linkedin](https://www.linkedin.com/in/ryan-woods-530679b4/) - [Github](https://github.com/rwoods1227)
 
 
 ## Technologies
@@ -36,16 +36,16 @@ Koalas are undeniably one of the most adorable creatures this world has to offer
 ## Design
 
 User profile
-![alt text](https://imgur.com/xrUVXJA.png)
+[Imgur](https://i.imgur.com/xrUVXJA.png)
 
 The question board
-![alt text](https://imgur.com/kSK37Ls.png)
+![Imgur](https://i.imgur.com/V19wmgv.png)
 
 Question detail and Answers
-![alt text](https://imgur.com/kSK37Ls.png)
+![Imgur](https://i.imgur.com/cW60cwc.png)
 
 Search functionality
-![alt text](https://imgur.com/OoFia2G.png)
+![Imgur](https://i.imgur.com/OoFia2G.png)
 
 
 ## Features and Technical Challenges
