@@ -79,6 +79,7 @@ export default props => {
     + (downvoted ? ' active' : '')
     + (downvoteHover ? ' tooltip' : '');
   const moreClass = 'answer-more'
+    + (props.currentUser.id !== author._id ? ' hidden' : '')
     + (moreHover ? ' tooltip' : '');
 
   return (<div className='answer-index-item-container'>
