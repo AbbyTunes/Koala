@@ -1,28 +1,52 @@
 # Koala
 # [Koala Demo](https://koaalaa.herokuapp.com)
-![Koala Logo](https://github.com/AbbyTunes/Koala/blob/master/frontend/src/images/Koala-logo-final.png)
+<!-- ![Koala Logo](https://github.com/AbbyTunes/Koala/blob/master/frontend/src/images/Koala-logo-final.png) -->
+
+
+![Check out our home page!](https://imgur.com/kSK37Ls)
+
+## Group Members and Contributions
+
+Abby [Linkedin](https://www.linkedin.com/in/abby-jun-xu/) [Github](https://www.linkedin.com/in/abby-jun-xu/)
+
+Raymond Leung [Linkedin](https://www.linkedin.com/in/raymond-leung-b0874b198/) [Github](https://github.com/ray-leun1)
+
+Ryan Woods [Linkedin](https://www.linkedin.com/in/ryan-woods-530679b4/)  [Github](https://github.com/rwoods1227)
+
+
+## Technologies
+ * Backend: MongoDB, Express, React, and Node.js (MERN)
+ * Frontend: JavaScript, React, Redux
 
 ## Background and Overview
-Koalas are undeniably one of the most adorable creatures this world has to offer, and their amount of fans grows day by day. In order to satiate the ravenous hunger for knowledge on koalas, we present Koala.com! 
+Koala is your ultimate Q&A site about Koalas! 
+Inspired by Quora, users can post questions and answers, as well as upvote and downvote answers to let other koala-enthusiasts know how helpful and relevant the provided answers are to the koala mission.
 
-Koala is an app for asking questions and posting answers about Koalas, based on Quora. Users can upvote and downvote answers to let other koala-enthusiasts know how helpful and relevant the provided answers are to the koala mission.
+<!-- Koala is an app for asking questions and posting answers about Koalas, based on Quora. Users can upvote and downvote answers to let other koala-enthusiasts know how helpful and relevant the provided answers are to the koala mission.
+
+Koalas are undeniably one of the most adorable creatures this world has to offer, and their amount of fans grows day by day. In order to satiate the ravenous hunger for knowledge on koalas, we present Koala.com!  -->
 
 ## Functionality and MVP
-- [ ] User Auth
+- [ ] User Authentication
 - [ ] User Profile
 - [ ] Questions
 - [ ] Answers
 - [ ] Upvotes and Downvotes
 
-## Technologies
- * Database: MongoDB/Express
- * Backend: MERN (MongoDB, Express, React, and Node)
- * Frontend: React-Redux
+## Design
 
-## Group Members and Contributions
- * Raymond: https://github.com/ray-leun1
- * Abby: https://github.com/AbbyTunes
- * Ryan: https://github.com/rwoods1227
+User profile
+![alt text](https://imgur.com/xrUVXJA)
+
+The question board
+![alt text](https://imgur.com/kSK37Ls)
+
+Question detail and Answers
+![alt text](https://imgur.com/kSK37Ls)
+
+Search functionality
+![alt text](https://imgur.com/OoFia2G)
+
 
 ## Features and Technical Challenges
 
