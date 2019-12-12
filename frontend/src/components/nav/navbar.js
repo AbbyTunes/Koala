@@ -38,8 +38,8 @@ class NavBar extends React.Component {
 	getLinks() {
 		let homeClass = "nav-item-link";
 		let gHomeClass = "nav-item-link-icon-svg-g";
-		let answerClass = "nav-item-link";
-		let gAnswerClass = "nav-item-link-icon-svg-g";
+		// let answerClass = "nav-item-link";
+		// let gAnswerClass = "nav-item-link-icon-svg-g";
 		let questionsClass = "nav-item-link";
 		let gQuestionsClass = "nav-item-link-icon-svg-g";
 		let creditClass = "nav-item-link";
@@ -49,10 +49,10 @@ class NavBar extends React.Component {
 				homeClass += " red";
 				gHomeClass += " red-fill";
 				break;
-			case "/answer":
-				answerClass += " red";
-				gAnswerClass += " red-fill";
-				break;
+			// case "/answer":
+			// 	answerClass += " red";
+			// 	gAnswerClass += " red-fill";
+			// 	break;
 			case "/questions":
 				questionsClass +=" red";
 				gQuestionsClass +=" red-fill";

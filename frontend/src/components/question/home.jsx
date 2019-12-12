@@ -1,12 +1,12 @@
 import React from 'react';
 import QuestionIndexItem from './question_index_item';
 
-class QuestionIndex extends React.Component {
+class Home extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleCreate = this.handleCreate.bind(this);
 	}
-	
+
 	componentDidMount() {
 		this.props.fetchQuestions();
 	}
@@ -21,26 +21,25 @@ class QuestionIndex extends React.Component {
 	}
 
 	render() {
-		// const date = Date.now
-		const questions = this.props.questions.map((question, idx) => {
-			return <QuestionIndexItem 
+		const questions = this.props.questions.reverse().slice(1, 6).map((question, idx) => {
+			return <QuestionIndexItem
 				key={`question-${idx}`}
 				question={question}
 				{...this.props}
-				/>
+			/>
 		});
 
 		return (
 			<div className="question-frame">
 				<div className="question-middle">
-					<div className="new-question">New Questions</div>
+					<div className="new-question">Recommended questions for you</div>
 					<ul>
-						{questions.reverse()}
-					</ul> 
+						{questions}
+					</ul>
 				</div>
 			</div>
 		)
 	}
 }
 
-export default QuestionIndex;
+export default Home;
