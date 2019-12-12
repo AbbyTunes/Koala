@@ -403,8 +403,10 @@
 }
 
 .nav-profile-dropdown-links-link:hover, .nav-profile-dropdown-settings-link:hover{
-  background-color: #fafafa;
+  background-color: #f0f0f0;
 }
+
+ /* background-color: #fafafa; */
 
 .nav-profile-dropdown-links-link-content{
   color: #333!important;

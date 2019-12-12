@@ -15,8 +15,13 @@ class QuestionForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-
-		this.props.action(this.state);
+		
+		// if title is empty, catch err, show error : title at least 1 charactor
+		this.props.action(this.state).then(err => {
+			return (
+				<div>error</div>
+			)
+		})
 		this.props.hideForm()
 		if (this.props.formType === 'Add Question') {
 			this.props.history.push("/questions");
