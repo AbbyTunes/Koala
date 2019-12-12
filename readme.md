@@ -3,7 +3,7 @@
 <!-- ![Koala Logo](https://github.com/AbbyTunes/Koala/blob/master/frontend/src/images/Koala-logo-final.png) -->
 
 
-![Check out our home page!](https://imgur.com/kSK37Ls)
+![Check out our home page!](https://imgur.com/kSK37Ls.png)
 
 ## Group Members and Contributions
 
@@ -36,16 +36,16 @@ Koalas are undeniably one of the most adorable creatures this world has to offer
 ## Design
 
 User profile
-![alt text](https://imgur.com/xrUVXJA)
+![alt text](https://imgur.com/xrUVXJA.png)
 
 The question board
-![alt text](https://imgur.com/kSK37Ls)
+![alt text](https://imgur.com/kSK37Ls.png)
 
 Question detail and Answers
-![alt text](https://imgur.com/kSK37Ls)
+![alt text](https://imgur.com/kSK37Ls.png)
 
 Search functionality
-![alt text](https://imgur.com/OoFia2G)
+![alt text](https://imgur.com/OoFia2G.png)
 
 
 ## Features and Technical Challenges
