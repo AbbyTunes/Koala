@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { createAnswer } from '../../../actions/answer_actions';
-import { } from '../../../stylesheets/question_answer_form.scss';
+import {} from '../../../stylesheets/question_answer_form.scss';
 
 export default props => {
   const dispatch = useDispatch();
@@ -26,14 +26,20 @@ export default props => {
   }
 
   const handleSubmit = () => {
-    dispatch(createAnswer({
-      question: props.questionId,
-      description: body
-    }));
-
-    setBody('');
-    props.answerSubmitted();
+    if (body.length > 0) {
+      dispatch(createAnswer({
+        question: props.questionId,
+        description: body
+      }))
+        .then(() => {
+          setBody('');
+          props.answerSubmitted();
+        });
+    }
   }
+
+  const submitClass = 'answer-input-submit'
+    + (body.length === 0 ? ' disabled' : '');
 
   return (<div className='question-answer-form-container'>
     <div className='answer-header'>
@@ -56,7 +62,7 @@ export default props => {
       onChange={e => handleChange(e)}
       placeholder='Write your answer' />
     <div className='answer-footer'>
-      <button className='answer-input-submit'
+      <button className={submitClass}
         type='button'
         onClick={handleSubmit}>
         Submit
