@@ -8,8 +8,8 @@ export default props => {
   const [moreActive, setMoreActive] = useState(false);
 
   let voterIdx;
-
-  if (!answer.voters.some((voter, idx) => {
+  
+  if (answer.voters && !answer.voters.some((voter, idx) => {
     return props.currentUser.id === voter.id ? voterIdx = idx : false;
   })) {
     let answering = Object.assign({}, answer);
@@ -52,21 +52,24 @@ export default props => {
   const handleDelete = () => {
     toggleMore();
     props.deleteAnswer(answer._id);
-    props.childDeletion();
+    props.updateQuestionShow();
   }
 
   const toggleMore = () => moreActive ? setMoreActive(false) : setMoreActive(true);
 
-  let author, description, upvoteCount, upvoted, downvoted, date
+  let author, description, upvoteCount, upvoted, downvoted, date;
 
-  author = answer.author;
-  description = answer.description;
-  upvoteCount = answer.upvote;
-  upvoted = answer.voters[voterIdx].upvote;
-  downvoted = answer.voters[voterIdx].downvote;
-  date = (new Date(answer.date)).toLocaleDateString('en-US', {
-    year: 'numeric', month: 'short', day: 'numeric'
-  });
+  if (answer.voters) {
+  
+    author = answer.author;
+    description = answer.description;
+    upvoteCount = answer.upvote;
+    upvoted = answer.voters[voterIdx].upvote;
+    downvoted = answer.voters[voterIdx].downvote;
+    date = (new Date(answer.date)).toLocaleDateString('en-US', {
+      year: 'numeric', month: 'short', day: 'numeric'
+    });
+  }
 
   const upvoteClass = 'answer-upvote'
     + (upvoted ? ' active' : '');
@@ -102,7 +105,7 @@ export default props => {
       <div className={upvoteClass}
         onClick={toggleUpvote}>
         <span className='svg-icon'>
-          <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+          <svg width='24px' height='24px' viewBox='0 0 24 24'>
             <g className='svg-base'>
               <polygon points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
             </g>
@@ -124,21 +127,21 @@ export default props => {
           <span className='svg-icon'
             onMouseEnter={() => setDownvoteHover(true)}
             onMouseLeave={() => setDownvoteHover(false)}>
-            <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+            <svg width='24px' height='24px' viewBox='0 0 24 24'>
               <g className='svg-base'>
-                <polygon transform='translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000)' points='12 4 3 15 9 15 9 20 15 20 15 15 21 15'></polygon>
+                <polygon transform='translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000)' points='12 4 3 15 9 15 9 20 15 20 15 15 21 15' />
               </g>
             </svg>
           </span>
         </div>
-        <div className={moreClass}>
+        {props.currentUser.id === author._id ? <div className={moreClass}>
           <span className='svg-icon'
             onMouseEnter={() => setMoreHover(true)}
             onMouseLeave={() => setMoreHover(false)}
             onClick={toggleMore}>
-            <svg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+            <svg width='24px' height='24px' viewBox='0 0 24 24'>
               <g className='svg-base'>
-                <path d='M5,14 C3.8954305,14 3,13.1045695 3,12 C3,10.8954305 3.8954305,10 5,10 C6.1045695,10 7,10.8954305 7,12 C7,13.1045695 6.1045695,14 5,14 Z M12,14 C10.8954305,14 10,13.1045695 10,12 C10,10.8954305 10.8954305,10 12,10 C13.1045695,10 14,10.8954305 14,12 C14,13.1045695 13.1045695,14 12,14 Z M19,14 C17.8954305,14 17,13.1045695 17,12 C17,10.8954305 17.8954305,10 19,10 C20.1045695,10 21,10.8954305 21,12 C21,13.1045695 20.1045695,14 19,14 Z'></path>
+                <path d='M5,14 C3.8954305,14 3,13.1045695 3,12 C3,10.8954305 3.8954305,10 5,10 C6.1045695,10 7,10.8954305 7,12 C7,13.1045695 6.1045695,14 5,14 Z M12,14 C10.8954305,14 10,13.1045695 10,12 C10,10.8954305 10.8954305,10 12,10 C13.1045695,10 14,10.8954305 14,12 C14,13.1045695 13.1045695,14 12,14 Z M19,14 C17.8954305,14 17,13.1045695 17,12 C17,10.8954305 17.8954305,10 19,10 C20.1045695,10 21,10.8954305 21,12 C21,13.1045695 20.1045695,14 19,14 Z' />
               </g>
             </svg>
           </span>
@@ -149,7 +152,7 @@ export default props => {
               Delete Answer
             </div>
           </div>
-        </div>
+        </div> : ''}
       </div>
     </div>
   </div>);

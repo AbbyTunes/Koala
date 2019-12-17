@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchQuestions, createQuestion, deleteQuestion } from '../../actions/question_actions';
-import { fetchAnswers, createAnswer, deleteAnswers } from '../../actions/answer_actions';
+import { fetchQuestion, fetchQuestions } from '../../actions/question_actions';
+import { createAnswer } from '../../actions/answer_actions';
 import Home from './home';
 import { } from '../../stylesheets/question_index.scss';
 
@@ -10,12 +10,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+	fetchQuestion: id => dispatch(fetchQuestion(id)),
 	fetchQuestions: () => dispatch(fetchQuestions()),
-	createQuestion: (data) => dispatch(createQuestion(data)),
-	deleteQuestion: (id) => dispatch(deleteQuestion(id)),
-	fetchAnswers: answers => dispatch(fetchAnswers(answers)),
 	createAnswer: answer => dispatch(createAnswer(answer)),
-	deleteAnswers: () => dispatch(deleteAnswers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

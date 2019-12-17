@@ -1,55 +1,37 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import AnswerIndexItem from './question_answer_index_item';
+import { updateAnswer, deleteAnswer } from '../../../actions/answer_actions';
+import {} from '../../../stylesheets/question_answer_index.scss';
 
-class AnswerIndex extends React.Component {
-  constructor(props) {
-    super(props);
+export default props => {
+  const dispatch = useDispatch();
+  const [answers, setAnswers] = useState(null);
 
-    this.state = {
-      answers: null
-    }
+  useEffect(() => setAnswers(props.answers), [props.answers]);
+
+  let answersIndex;
+
+  if (answers) {
+    answersIndex = answers.map((answer, idx) =>
+      <AnswerIndexItem
+        key={`answer-${idx}`}
+        answer={answer}
+        currentUser={props.currentUser}
+        updateQuestionShow={props.updateQuestionShow}
+        updateAnswer={answer => dispatch(updateAnswer(answer))}
+        deleteAnswer={id => dispatch(deleteAnswer(id))} />
+    );
+  } else {
+    answersIndex = [];
   }
 
-  componentDidMount() {
-    this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-      .then(answers => this.setState({ answers: answers.answers }));
-  }
+  answersIndex = answersIndex.reverse();
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.answers.length !== this.props.answers.length) {
-      this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-        .then(answers => this.setState({ answers: answers.answers }));
-    }
-    if (this.state.answers && this.state.answers[0]) {
-      if (this.props.question._id !== this.state.answers[0].question._id) {
-        this.props.fetchAnswers({ questionId: this.props.question ? this.props.question._id : this.props.match.params.question_id })
-          .then(answers => this.setState({ answers: answers.answers }));
-      }
-    }
-  }
-
-  render() {
-    let answers;
-
-    if (this.state.answers) {
-      answers = this.state.answers.map((answer, idx) =>
-        <AnswerIndexItem
-          key={`answer-${idx}`}
-          answer={answer}
-          {...this.props} />
-      );
-    } else {
-      answers = [];
-    }
-
-    return (<div className='question-answer-index-container'>
-      <div className='answer-count'>
-        {answers.length} {answers.length === 1 ? 'Answer' : 'Answers'}
-      </div>
-      {answers.reverse()}
-    </div>)
-  }
+  return (<div className='question-answer-index-container'>
+    <div className='answer-count'>
+      {answersIndex.length} {answersIndex.length === 1 ? 'Answer' : 'Answers'}
+    </div>
+    {answersIndex}
+  </div>)
 }
-
-export default withRouter(AnswerIndex);
