@@ -12,8 +12,9 @@ class ProfileQuestionIndex extends React.Component {
     const questions = newQuestions.map((question, idx) => {
       return <QuestionIndexItem
         key={`question-${idx}`}
+        currentUser={this.props.currentUser}
         question={question}
-        {...this.props}
+        fetchQuestion={this.props.fetchQuestion}
       />
     });
 
@@ -24,7 +25,6 @@ class ProfileQuestionIndex extends React.Component {
             {questions}
           </ul>
         </div>
-
       </div>
     )
   }

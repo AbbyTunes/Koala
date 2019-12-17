@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { fetchQuestions, createQuestion, deleteQuestion } from '../../actions/question_actions';
+import { fetchQuestion, fetchQuestions } from '../../actions/question_actions';
 import ProfileQuestionIndex from './profile_questions_index';
-import { fetchAnswers, createAnswer, deleteAnswers } from '../../actions/answer_actions';
+import { createAnswer } from '../../actions/answer_actions';
 import {} from '../../stylesheets/question_index.scss';
 import {} from '../../stylesheets/profile_questions_index.scss';
 
@@ -13,12 +13,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-  fetchQuestions: () => dispatch(fetchQuestions()),
-  createQuestion: (data) => dispatch(createQuestion(data)),
-  deleteQuestion: (id) => dispatch(deleteQuestion(id)),
-  fetchAnswers: answers => dispatch(fetchAnswers(answers)),
-  createAnswer: answer => dispatch(createAnswer(answer)),
-  deleteAnswers: () => dispatch(deleteAnswers())
+    fetchQuestion: id => dispatch(fetchQuestion(id)),
+    fetchQuestions: () => dispatch(fetchQuestions()),
+    createAnswer: answer => dispatch(createAnswer(answer))
 }};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileQuestionIndex);

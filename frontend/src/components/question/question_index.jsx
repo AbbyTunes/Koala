@@ -28,7 +28,7 @@ class QuestionIndex extends React.Component {
 				currentUser={this.props.currentUser}
 				question={question}
 				fetchQuestion={this.props.fetchQuestion}
-				/>
+			/>
 		});
 
 		return (
