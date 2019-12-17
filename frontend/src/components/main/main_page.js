@@ -1,8 +1,6 @@
 import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
-import { fetchQuestions } from '../../util/question_api_util';
 import {} from '../../stylesheets/main_page.scss';
-// import { BrowserRouter, Route, Switch, Link, Redirect } from "react-router-dom";
 
 import NavBarContainer from "../nav/navbar_container";
 import ProfileShowContainer from "../profile/profile_container"
@@ -17,22 +15,6 @@ class MainPage extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-
-	// componentDidMount() {
-	// 	fetchQuestions().then(questions => {
-	// 		let rand = questions.data[Math.floor(Math.random() * questions.data.length)];
-	// 		this.setState({ rand: rand });
-	// 	})
-	// }
-
-	// componentDidUpdate(prevProps) {
-	// 	if (prevProps.location.pathname !== this.props.location.pathname) {
-	// 		fetchQuestions().then(questions => {
-	// 			let rand = questions.data[Math.floor(Math.random() * questions.data.length)];
-	// 			this.setState({ rand: rand });
-	// 		})
-	// 	}
-	// }
 
 	render() {
 		return (
@@ -49,8 +31,6 @@ class MainPage extends React.Component {
 						<Route exact path='/*' render={() => <Redirect to={{ pathname: "/" }} />} />
 					</Switch>
 				</div>
-
-				
 			</div>
 		);
 	}

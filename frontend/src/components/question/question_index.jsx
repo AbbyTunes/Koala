@@ -25,8 +25,9 @@ class QuestionIndex extends React.Component {
 		const questions = this.props.questions.map((question, idx) => {
 			return <QuestionIndexItem 
 				key={`question-${idx}`}
+				currentUser={this.props.currentUser}
 				question={question}
-				{...this.props}
+				fetchQuestion={this.props.fetchQuestion}
 				/>
 		});
 

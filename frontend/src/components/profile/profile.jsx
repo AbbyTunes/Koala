@@ -78,10 +78,10 @@ class Profile extends React.Component {
     let ad;
     let randomNum = Math.random();
     if (randomNum > 0.5) {
-      ad = koalaAd1;
+      ad = 'profile-side-AD-A';
     }
     else{
-      ad = koalaAd2;
+      ad = 'profile-side-AD-B';
     }
 
 
@@ -174,7 +174,8 @@ class Profile extends React.Component {
 {/* also doesnt have a purpose to project currently */}
           <div className="profile-content-right">
             <a id="ad-profile" href="https://www.savethekoala.com/">
-              <img className="profile-side-AD" src={ad} alt="Ad" />
+              {/* <img className="profile-side-AD" src={ad} alt="Ad" /> */}
+              <div className={ad}></div>
             </a>
           </div>
         </div>

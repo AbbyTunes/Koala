@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../../actions/user_actions';
 import { createAnswer } from '../../../actions/answer_actions';
-import AnswerForm from './question_answer_form';
+import AnswerForm from './deprecated_question_answer_form';
 import {} from '../../../stylesheets/question_answer_form.scss';
 
 const mapStateToProps = state => ({

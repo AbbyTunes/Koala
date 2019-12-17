@@ -1,42 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AnswerFormContainer from './answers/question_answer_form_container';
+import AnswerForm from './answers/answer_form';
 
 class QuestionIndexItem extends React.Component {
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			answers: [],
 			answerIcon: true,
-			answerForm: false
+			answerForm: false,
+			answers: []
 		};
 
 		this.toggleAnswer = this.toggleAnswer.bind(this);
+		this.updateQuestionShow = this.updateQuestionShow.bind(this);
 		this.answerSubmitted = this.answerSubmitted.bind(this);
 	}
 
-	toggleAnswer() {
-		if (!this.state.answerForm) this.setState({ answerForm: true });
-	}
+	componentDidMount() { this.updateQuestionShow(); }
 
-	componentDidMount() {
-		this.props.fetchAnswers({ questionId: this.props.question._id })
-			.then(answers => {
-				this.setState({ answers: answers.answers });
-
-				if (answers.answers.some(answer => answer.author._id === this.props.currentUser.id)) {
+	updateQuestionShow() {
+		this.props.fetchQuestion(this.props.question._id)
+			.then(data => {
+				if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
 					this.setState({ answerIcon: false });
-					return;
+					this.setState({ answerForm: false });
+					this.setState({ answers: data.question.answerIds });
+				} else {
+					this.setState({ answerIcon: true });
+					this.setState({ answerForm: false });
+					this.setState({ answers: data.question.answerIds });
 				}
 			});
 	}
 
 	answerSubmitted() {
-		this.setState({ answerIcon: false });
-		this.setState({ answerForm: false });
+		this.props.fetchQuestion(this.props.question._id)
+			.then(data => {
+				this.setState({ answerIcon: false });
+				this.setState({ answerForm: false });
+				this.setState({ answers: data.question.answerIds });
+			});
 	}
+
+	toggleAnswer() { if (!this.state.answerForm) this.setState({ answerForm: true }); }
 
 	render() {
 
@@ -118,7 +125,10 @@ class QuestionIndexItem extends React.Component {
 						<div className="question-icon-right">
 						</div>
 					</div>
-					{this.state.answerForm ? <AnswerFormContainer question={question} answerSubmitted={this.answerSubmitted} /> : ''}
+					{this.state.answerForm ? <AnswerForm
+						questionId={question._id}
+						updateQuestionShow={this.updateQuestionShow}
+						answerSubmitted={this.answerSubmitted} /> : ''}
 				</div>
 			</li>
 		)

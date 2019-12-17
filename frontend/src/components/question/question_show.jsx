@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from 'react-router-dom';
-import AnswerFormContainer from './answers/question_answer_form_container';
-import AnswerIndexContainer from './answers/question_answer_index_container';
+import AnswerForm from './answers/answer_form';
+import AnswerIndex from './answers/question_answer_index';
 import QuestionEditPopUp from "./forms/question_edit_pop_up";
 
 class QuestionShow extends React.Component {
@@ -10,47 +10,21 @@ class QuestionShow extends React.Component {
 
 		this.state = {
 			answerIcon: true,
-			answerForm: false
+			answerForm: false,
+			answers: []
 		};
 
 		this.toggleAnswer = this.toggleAnswer.bind(this);
-		this.childDeletion = this.childDeletion.bind(this);
+		this.updateQuestionShow = this.updateQuestionShow.bind(this);
 		this.answerSubmitted = this.answerSubmitted.bind(this);
 	}
 
-	toggleAnswer() {
-		if (!this.state.answerForm) this.setState({ answerForm: true });
-	}
-
-	answerSubmitted() {
-		this.setState({ answerIcon: false });
-		this.setState({ answerForm: false });
-	}
-
-	componentDidMount() {
-		this.props.fetchQuestion()
-			.then(() => {
-				if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
-					this.setState({ answerIcon: false });
-					this.setState({ answerForm: false });
-				}
-			});
-	};
+	componentDidMount() { this.updateQuestionShow(); };
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.question && this.props.question) {
 			if (prevProps.question.answerIds.length !== this.props.question.answerIds.length) {
-				this.props.fetchQuestion()
-					.then(() => {
-						if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
-							this.setState({ answerIcon: false });
-							this.setState({ answerForm: false });
-							return;
-						} else {
-							this.setState({ answerIcon: true });
-							this.setState({ answerForm: false });
-						}
-					});
+				this.updateQuestionShow();
 			}
 		}
 
@@ -69,9 +43,31 @@ class QuestionShow extends React.Component {
 		}
 	}
 
-	childDeletion() {
-		this.setState({ answerIcon: true });
+	updateQuestionShow() {
+		this.props.fetchQuestion()
+			.then(data => {
+				if (this.props.question.answerIds.some(answer => answer.author._id === this.props.currentUser.id)) {
+					this.setState({ answerIcon: false });
+					this.setState({ answerForm: false });
+					this.setState({ answers: data.question.answerIds });
+				} else {
+					this.setState({ answerIcon: true });
+					this.setState({ answerForm: false });
+					this.setState({ answers: data.question.answerIds });
+				}
+			});
 	}
+
+	answerSubmitted() {
+		this.props.fetchQuestion()
+			.then(data => {
+				this.setState({ answerIcon: false });
+				this.setState({ answerForm: false });
+				this.setState({ answers: data.question.answerIds });
+			});
+	}
+
+	toggleAnswer() { if (!this.state.answerForm) this.setState({ answerForm: true }); }
 
 	render() {
 		const { question } = this.props;
@@ -130,7 +126,7 @@ class QuestionShow extends React.Component {
 
 									<li className={`answer-form-btn${this.state.answerForm ? ' active' : ''}${this.state.answerIcon ? '' : ' hidden'}`}
 										onClick={this.toggleAnswer}>
-										<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" >
+										<svg width="24px" height="24px" viewBox="0 0 24 24" >
 											<g transform="translate(2.500000, 3.500000)">
 												<g transform="translate(9.000000, 9.000000) rotate(-315.000000) translate(-9.000000, -9.000000) translate(7.000000, -1.000000)">
 													<path className='svg-base pen-body' d="M2,8.8817842e-16 L2,8.8817842e-16 L2,8.8817842e-16 C3.1045695,6.85269983e-16 4,0.8954305 4,2 L4,16 L2.00256278,20 L0,16 L0,2 L0,2 C-1.35267774e-16,0.8954305 0.8954305,1.09108686e-15 2,8.8817842e-16 Z" strokeLinecap="round" strokeLinejoin="round"></path>
@@ -148,8 +144,14 @@ class QuestionShow extends React.Component {
 								</ul>
 								{/* <MoreDropdown deleteQuestion={deleteQuestion} /> */}								
 							</div>
-							{this.state.answerForm ? <AnswerFormContainer question={question} answerSubmitted={this.answerSubmitted} /> : ''}
-							<AnswerIndexContainer currentUser={this.props.currentUser} question={question} childDeletion={this.childDeletion} fetchQuestion={this.props.fetchQuestion} />
+							{this.state.answerForm ? <AnswerForm
+								questionId={question._id}
+								updateQuestionShow={this.updateQuestionShow}
+								answerSubmitted={this.answerSubmitted} /> : ''}
+							<AnswerIndex currentUser={this.props.currentUser}
+								question={question}
+								answers={this.state.answers}
+								updateQuestionShow={this.updateQuestionShow} />
 						</div>
 						<div className="show-right">
 						</div>

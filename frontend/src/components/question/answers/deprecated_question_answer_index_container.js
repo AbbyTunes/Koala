@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../../actions/user_actions';
 import { fetchAnswers, updateAnswer, deleteAnswer } from '../../../actions/answer_actions';
-import AnswerIndex from './question_answer_index';
+import AnswerIndex from './deprecated_question_answer_index';
 import {} from '../../../stylesheets/question_answer_index.scss';
 
 const mapStateToProps = (state, ownProps) => ({
