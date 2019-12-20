@@ -16,14 +16,14 @@ class Search extends Component {
     let questionTitles = [];
     let userNames = [];
     this.props.questions.map((question)=>{
-      if (question.title.startsWith(this.state.query)) {
+      if (question.title.toLowerCase().includes(this.state.query.toLowerCase())) {
         let titleAndId = [question.title, question._id, "/questions"]
         questionTitles.push(titleAndId);
       }
     });
     this.props.users.map((user) => {
       let fullname = user.firstName + user.lastName;
-      if (fullname.startsWith(this.state.query)){
+      if (fullname.toLowerCase().includes(this.state.query.toLowerCase())){
         let nameAndId = [fullname, user.id, "/profile"];
         userNames.push(nameAndId);
       }
