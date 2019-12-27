@@ -40,15 +40,18 @@ class Search extends Component {
       query: this.search.value
     }, () => {
       if (this.state.query && this.state.query.length > 1) {
-        if (this.state.query.length % 2 === 0) {
+        if (this.state.query.length % 1 === 0) {
           this.getInfo()
         }
       } else if (!this.state.query) {
+        this.setState({
+          results: []
+        })
       }
     })
   }
 
- // suggestions has shitty css that breaks navbar
+ 
   render() {
     return (
       <div className="header-nav-item">

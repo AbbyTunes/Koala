@@ -13,7 +13,8 @@ class NavBar extends React.Component {
 		super(props);
 		this.logoutUser = this.logoutUser.bind(this);
 		this.getLinks = this.getLinks.bind(this);
-		this.toggleClass = this.toggleClass.bind(this);
+		this.toggleClassTrue = this.toggleClassTrue.bind(this);
+		this.toggleClassFalse = this.toggleClassFalse.bind(this);
 		this.toggleSearch = this.toggleSearch.bind(this);
 		this.state = {active: false, activeSearch: false};
 	}
@@ -23,9 +24,13 @@ class NavBar extends React.Component {
 		this.props.logout();
 	}
 
-	toggleClass() {
+	toggleClassTrue() {
 		const currentState = this.state.active;
-		this.setState({ active: !currentState });
+		this.setState({ active: true});
+	};
+
+	toggleClassFalse() {
+		this.setState({ active: false });
 	};
 
 	toggleSearch() {
@@ -162,7 +167,7 @@ class NavBar extends React.Component {
 								{/* does search stuff, bonus implementation */}
 								<div className="navbar-search-container">
 									<div className="navbar-search">
-										<div className="navbar-search-input-container" onClick={this.toggleSearch}>
+										<div className="navbar-search-input-container" onFocus={this.toggleSearch} onBlur={this.toggleSearch}>
 											{/* <input 
 											className="navbar-search-input" 
 											type="text" 
@@ -178,7 +183,7 @@ class NavBar extends React.Component {
 									</div>
 								</div>
 {/* link triggers dropdown here */}
-								<div className="navbar-user-icon-container" onClick={this.toggleClass}>
+								<div className="navbar-user-icon-container" onMouseOver={this.toggleClassTrue} onMouseLeave={this.toggleClassFalse}>
 									<span>
 										<div className="header-nav-item">
 
