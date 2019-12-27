@@ -43,8 +43,8 @@ class Search extends Component {
       }
     });
     let data = questionTitles.concat(userNames);
-    console.log(data)
-    console.log(this)
+    // console.log(data)
+    // console.log(this)
     this.setState({
       results: data
     })
