@@ -15,7 +15,8 @@ class NavBar extends React.Component {
 		this.getLinks = this.getLinks.bind(this);
 		this.toggleClassTrue = this.toggleClassTrue.bind(this);
 		this.toggleClassFalse = this.toggleClassFalse.bind(this);
-		this.toggleSearch = this.toggleSearch.bind(this);
+		this.toggleSearchTrue = this.toggleSearchTrue.bind(this);
+		this.toggleSearchFalse = this.toggleSearchFalse.bind(this);
 		this.state = {active: false, activeSearch: false};
 	}
 
@@ -25,7 +26,6 @@ class NavBar extends React.Component {
 	}
 
 	toggleClassTrue() {
-		const currentState = this.state.active;
 		this.setState({ active: true});
 	};
 
@@ -33,9 +33,17 @@ class NavBar extends React.Component {
 		this.setState({ active: false });
 	};
 
-	toggleSearch() {
-		const currentState = this.state.activeSearch;
-		this.setState({ activeSearch: !currentState });
+	toggleSearchTrue() {
+		this.setState({ activeSearch: true});
+	};
+
+	// toggleSearch() {
+	// 	const currentState = this.state.activeSearch;
+	// 	this.setState({ activeSearch: !currentState });
+	// };
+
+	toggleSearchFalse() {
+		this.setState({ activeSearch: false });
 	};
 
 
@@ -167,7 +175,7 @@ class NavBar extends React.Component {
 								{/* does search stuff, bonus implementation */}
 								<div className="navbar-search-container">
 									<div className="navbar-search">
-										<div className="navbar-search-input-container" onFocus={this.toggleSearch} onBlur={this.toggleSearch}>
+										<div className="navbar-search-input-container" onFocus={this.toggleSearchTrue} onBlur={this.toggleSearchFalse}>
 											{/* <input 
 											className="navbar-search-input" 
 											type="text" 
@@ -324,6 +332,7 @@ class NavBar extends React.Component {
 						</div>
 					</div>
 				</div>
+
 			);
 		} else {
 			return (

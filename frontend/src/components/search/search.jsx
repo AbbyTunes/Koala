@@ -1,15 +1,29 @@
 import React, { Component } from 'react'
 import Suggestions from './suggestions'
+import FocusWithin from "react-focus-within"; 
 
 class Search extends Component {
+ 
   state = {
     query: '',
-    results: []
+    results: [],
+    activeSearch: false
   }
+
+
 
   componentDidMount() {
     this.props.fetchUsers();
     this.props.fetchQuestions();
+  }
+
+  toggleClassNameTrue = () => {
+    console.log(this)
+    this.setState({ activeSearch: true })
+  }
+
+  toggleClassNameFalse = () => {
+    this.setState({ activeSearch: false })
   }
 
   getInfo(){
@@ -30,6 +44,7 @@ class Search extends Component {
     });
     let data = questionTitles.concat(userNames);
     console.log(data)
+    console.log(this)
     this.setState({
       results: data
     })
@@ -54,25 +69,39 @@ class Search extends Component {
  
   render() {
     return (
-      <div className="header-nav-item">
-        <input
-          placeholder="Search for..."
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}
-          className="navbar-search-input"
-        />
-        <div className={this.props.className}>
-          <div className="nav-profile-dropdown-contents">
-            <div className="nav-profile-dropdown-overflow">
-              <div className="nav-profile-dropdown-inner-style">
-                <Suggestions results={this.state.results} />
+      <FocusWithin>
+        {({ focusProps, isFocused }) => (
+          <div
+            {...focusProps}
+            className="header-nav-item"
+            id={isFocused ? "focused" : "unfocused"}
+          >
+            <input
+              placeholder="Search for..."
+              ref={input => (this.search = input)}
+              onChange={this.handleInputChange}
+              className="navbar-search-input"
+            />
+            <div
+              // onClick={this.toggleClassNameFalse}
+              className="nav-profile-dropdown"
+              // className={
+              //   this.state.activeSearch ? " nav-profile-dropdown" : "hidden"
+              // }
+            >
+              <div className="nav-profile-dropdown-contents">
+                <div className="nav-profile-dropdown-overflow">
+                  <div className="nav-profile-dropdown-inner-style">
+                    <Suggestions results={this.state.results} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div> 
-      </div>
-    )
+        )}
+      </FocusWithin>
+    );
   }
 }
-
+//onClick={this.toggleClassNameFalse}
 export default Search
