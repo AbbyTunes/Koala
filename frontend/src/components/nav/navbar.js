@@ -13,8 +13,10 @@ class NavBar extends React.Component {
 		super(props);
 		this.logoutUser = this.logoutUser.bind(this);
 		this.getLinks = this.getLinks.bind(this);
-		this.toggleClass = this.toggleClass.bind(this);
-		this.toggleSearch = this.toggleSearch.bind(this);
+		this.toggleClassTrue = this.toggleClassTrue.bind(this);
+		this.toggleClassFalse = this.toggleClassFalse.bind(this);
+		this.toggleSearchTrue = this.toggleSearchTrue.bind(this);
+		this.toggleSearchFalse = this.toggleSearchFalse.bind(this);
 		this.state = {active: false, activeSearch: false};
 	}
 
@@ -23,14 +25,25 @@ class NavBar extends React.Component {
 		this.props.logout();
 	}
 
-	toggleClass() {
-		const currentState = this.state.active;
-		this.setState({ active: !currentState });
+	toggleClassTrue() {
+		this.setState({ active: true});
 	};
 
-	toggleSearch() {
-		const currentState = this.state.activeSearch;
-		this.setState({ activeSearch: !currentState });
+	toggleClassFalse() {
+		this.setState({ active: false });
+	};
+
+	toggleSearchTrue() {
+		this.setState({ activeSearch: true});
+	};
+
+	// toggleSearch() {
+	// 	const currentState = this.state.activeSearch;
+	// 	this.setState({ activeSearch: !currentState });
+	// };
+
+	toggleSearchFalse() {
+		this.setState({ activeSearch: false });
 	};
 
 
@@ -162,7 +175,7 @@ class NavBar extends React.Component {
 								{/* does search stuff, bonus implementation */}
 								<div className="navbar-search-container">
 									<div className="navbar-search">
-										<div className="navbar-search-input-container" onClick={this.toggleSearch}>
+										<div className="navbar-search-input-container" onFocus={this.toggleSearchTrue} onBlur={this.toggleSearchFalse}>
 											{/* <input 
 											className="navbar-search-input" 
 											type="text" 
@@ -178,7 +191,7 @@ class NavBar extends React.Component {
 									</div>
 								</div>
 {/* link triggers dropdown here */}
-								<div className="navbar-user-icon-container" onClick={this.toggleClass}>
+								<div className="navbar-user-icon-container" onMouseOver={this.toggleClassTrue} onMouseLeave={this.toggleClassFalse}>
 									<span>
 										<div className="header-nav-item">
 
@@ -319,6 +332,7 @@ class NavBar extends React.Component {
 						</div>
 					</div>
 				</div>
+
 			);
 		} else {
 			return (

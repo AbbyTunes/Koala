@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Suggestions = (props) => {
  
-  const options = props.results.map(r => (
+  let options = props.results.map(r => (
     <li key={r[1]}>
       <Link className="nav-profile-dropdown-links-link" to={`${r[2]}/${r[1]}`}>
         <div className="nav-profile-dropdown-links-link-content">
@@ -13,6 +13,11 @@ const Suggestions = (props) => {
       
     </li>
   ))
+
+    if(options.length === 0){
+      options = ["No Users or Questions Found :("]
+    }
+
   return(
     <div className="nav-profile-dropdown-links-container">
       <ul>{options}</ul>

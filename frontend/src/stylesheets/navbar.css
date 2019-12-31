@@ -440,3 +440,15 @@
 .github:hover{
   color: #1a59a1da
 }
+/* 
+.hidden-full-modal{
+  display: none;
+  width:100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+} */
+
+#unfocused > div {
+  display: none;
+}
