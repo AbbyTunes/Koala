@@ -26,13 +26,6 @@ Inspired by Quora, users can post questions and answers, as well as upvote and d
 
 Koalas are undeniably one of the most adorable creatures this world has to offer, and their amount of fans grows day by day. In order to satiate the ravenous hunger for knowledge on koalas, we present Koala.com!  -->
 
-## Functionality and MVP
-- [ ] User Authentication
-- [ ] User Profile
-- [ ] Questions
-- [ ] Answers
-- [ ] Upvotes and Downvotes
-
 ## Design
 
 User profile
