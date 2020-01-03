@@ -18,7 +18,7 @@ class Search extends Component {
   }
 
   toggleClassNameTrue = () => {
-    console.log(this)
+    // console.log(this)
     this.setState({ activeSearch: true })
   }
 
