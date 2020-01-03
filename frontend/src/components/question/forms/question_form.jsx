@@ -21,12 +21,12 @@ class QuestionForm extends React.Component {
 		e.preventDefault();
 		
 		// if title is empty, catch err, show error : title at least 1 charactor
-		// this.props.action(this.state).then(err => {
-		// 	// return (
-		// 	// 	<div>error</div>
-		// 	// )
-		// 	console.log(err);
-		// })
+		this.props.action(this.state).then(err => {
+			return (
+				<div>error</div>
+			)
+			// console.log(err);
+		})
 		this.props.hideForm();
 
 		if (
@@ -35,6 +35,7 @@ class QuestionForm extends React.Component {
 			) {
 			this.props.history.push("/questions");
 		}
+		// we might need to wait for the saved response, then push to history
 	}
 
 	render() {
