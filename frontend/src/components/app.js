@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { Switch, withRouter } from "react-router-dom";
 
 import MainPage from './main/main_page';
 import SessionFormContainer from './session/session_form_container';

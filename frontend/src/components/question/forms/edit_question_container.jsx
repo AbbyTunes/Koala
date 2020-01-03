@@ -7,7 +7,11 @@ import { fetchQuestion, updateQuestion } from '../../../actions/question_actions
 const mapStateToProps = (state, ownProps) => {
 
 	const currentUser = state.session.user;
-	const defaultQuestion = { title: '' };
+	const defaultQuestion = {
+		title: "",
+		description: "",
+		image_url: ""
+	};
 	const questionId = ownProps.match.params.question_id;
 	
 	const question = state.entities.questions[questionId] || defaultQuestion;
