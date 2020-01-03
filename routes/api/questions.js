@@ -59,9 +59,11 @@ router.get("/:question_id", (req, res) => {
 router.post('/',
 	passport.authenticate('jwt', { session: false }), (req, res) => {
 		const newQuestion = new Question({
-			authorId: req.user.id,
-			title: req.body.title
-		});
+      authorId: req.user.id,
+      title: req.body.title,
+      description: req.body.description,
+      image_url: req.body.image_url
+    });
 		newQuestion
 			.save()
 			.then(question => res.json(question))
@@ -73,22 +75,27 @@ router.post('/',
 // edit a question
 
 router.patch("/:question_id", passport.authenticate('jwt', { session: false }), (req, res) => {
-	Question.findOneAndUpdate({ _id: req.params.question_id },
-		{
-			$set: {
-				title: req.body.title
-			},
-			$push: {
-				editorIds: req.user._id,
-				updateDate: Date.now()
-			}
-		},
-        { new: true }
-        ).then(question => {
-			res.json(question)})
-		.catch(err => {
-			res.status(400).json({ question: "updating question failed" })
-		});
+	Question.findOneAndUpdate(
+    { _id: req.params.question_id },
+    {
+      $set: {
+        title: req.body.title,
+        description: req.body.description,
+        image_url: req.body.image_url
+      },
+      $push: {
+        editorIds: req.user._id,
+        updateDate: Date.now()
+      }
+    },
+    { new: true }
+  )
+    .then(question => {
+      res.json(question);
+    })
+    .catch(err => {
+      res.status(400).json({ question: "updating question failed" });
+    });
 });
 
 

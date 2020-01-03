@@ -5,7 +5,11 @@ import { createQuestion } from '../../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
 	const currentUser = state.session.user;
-	const question = { title: '' };
+	const question = {
+		title: "",
+		description: "",
+		image_url: ""
+	};
 	const formType = 'Add Question';
 	const hideForm = ownProps.hideForm;
 

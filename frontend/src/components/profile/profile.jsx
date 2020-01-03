@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/koala-profile.png';
-import koalaAd1 from '../../images/koala-AD-1.jpeg';
-import koalaAd2 from '../../images/Koala-AD-2.jpeg';
+// import koalaAd1 from '../../images/koala-AD-1.jpeg';
+// import koalaAd2 from '../../images/Koala-AD-2.jpeg';
 import '../../stylesheets/profile.scss';
 import '../../stylesheets/profile_questions_index.scss';
 import '../../stylesheets/profile_answers_index.scss';

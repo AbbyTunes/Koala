@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import headerLogo from '../../images/Koala-logo-final.png'
 import profileIcon from '../../images/koala-profile.png'
-import githubIcon from '../../images/github-logo.png'
+// import githubIcon from '../../images/github-logo.png'
 import '../../stylesheets/reset.css' // this will probably get moved
 import '../../stylesheets/navbar.css'
 import QuestionPopUp from '../question/forms/question_pop_up'
