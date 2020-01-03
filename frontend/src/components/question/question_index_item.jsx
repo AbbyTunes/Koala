@@ -88,6 +88,19 @@ class QuestionIndexItem extends React.Component {
 			AnswerInfo = null;
 		}
 
+		let questionImage;
+		if (question.image_url) {
+			questionImage = (
+				<div className="question-4">
+					<Link to={`/questions/${question._id}`}>
+						<img src={question.image_url} alt="" />
+					</Link>
+				</div>
+			)
+		} else {
+			questionImage = null;
+		}
+
 		return (
       <li className="question-item">
         <div className="question-left">
@@ -97,11 +110,9 @@ class QuestionIndexItem extends React.Component {
           <div className="question-2">
             <Link to={`/questions/${question._id}`}>{question.title}</Link>
           </div>
-          <div className="question-4">
-            <Link to={`/questions/${question._id}`}>
-				<img src={question.image_url} alt=""/>
-			</Link>
-          </div>
+
+          {questionImage}
+
           <div className="question-3">
             <div className="question-answer">
               <Link to={`/questions/${question._id}`}>
