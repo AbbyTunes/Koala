@@ -205,7 +205,7 @@ class QuestionShow extends React.Component {
                 updateQuestionShow={this.updateQuestionShow}
               />
             </div>
-            <div className="show-right"></div>
+            {/* <div className="show-right"></div> */}
           </div>
         </div>
       );

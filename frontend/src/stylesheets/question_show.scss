@@ -1,22 +1,29 @@
 .show-frame {
 	position: relative;
     top: 0;
-    left: 90px;
+    left: 0;
+    right: 0;
+    width: 600px;
+    display: flex;
+    margin: auto;
+    padding-right: 400px;
 	// border: 1px solid #e2e2e2;
 
 	.show-session {
-		display: flex;
+		display: block;
 		position: relative;
-		top: 5px;
-		width: 850px;
-		margin: auto;
+		top: 0;
+		left: 220px;
+		width: 600px;
+		height: auto;
 
 		.show-left {
 			display: block;
 			position: relative;
 			top: 0;
 			left: 0;
-			width: 700px;
+			width: 600px;
+			padding: 16px;
 			// border: 1px solid #e2e2e2;
 
 			.show-topic {
@@ -57,10 +64,10 @@
 			}
 
 			.show-image {
-				max-width: 700px;
+				max-width: 600px;
 				min-width: 300px;
 				height: auto;
-				max-height: 1000px;
+				max-height: 450px;
 				object-fit: contain;
 
 				img {
