@@ -1,7 +1,9 @@
 # Koala
 # [Live Demo](https://koaalaa.herokuapp.com)
 
-![main page](https://i.imgur.com/0fq4fHm.png)
+## Technologies
+ * Backend: MongoDB, Express, React, and Node.js (MERN)
+ * Frontend: JavaScript, React, Redux
 
 ## Group Members and Contributions
 
@@ -11,10 +13,7 @@ Raymond Leung - [Linkedin](https://www.linkedin.com/in/raymond-leung-b0874b198/)
 
 Ryan Woods - [Linkedin](https://www.linkedin.com/in/ryan-woods-530679b4/) - [Github](https://github.com/rwoods1227)
 
-
-## Technologies
- * Backend: MongoDB, Express, React, and Node.js (MERN)
- * Frontend: JavaScript, React, Redux
+![Imgur](https://i.imgur.com/0fq4fHm.png)
 
 ## Background and Overview
 Koala is your ultimate Q&A site about Koalas! 
@@ -24,29 +23,14 @@ Inspired by Quora, users can post questions and answers, as well as upvote and d
 
 Koalas are undeniably one of the most adorable creatures this world has to offer, and their amount of fans grows day by day. In order to satiate the ravenous hunger for knowledge on koalas, we present Koala.com!  -->
 
-## Design
-
-Question board
-![Imgur](https://i.imgur.com/nx73QWt.png)
-
-Q&A Details (upvotes, downvote, edit)
-![Imgur](https://i.imgur.com/L9eTRVX.png)
-
-User profile
-![Imgur](https://i.imgur.com/e5znt3y.png)
-
-Search functionality
-![Imgur](https://i.imgur.com/OoFia2G.png)
-
-Post forms
-![Imgur](https://i.imgur.com/Rqv41ci.png)
-
 ## Features and Technical Challenges
 
 ### Integration of User, Question, Answer associations
 * Highly customized backend routes and configurations
 * All answers tied to parent question
 * User Profile shows answers and questions specific to User on switchable feed
+
+![Imgur](https://i.imgur.com/e5znt3y.png)
 
 ```javascript 
 //profile.jsx
@@ -71,6 +55,8 @@ getLinks(){
 * Vote persistence for each individual user updated across different pages
 * Answer items with a large amount of nested functionality
 
+![Imgur](https://i.imgur.com/L9eTRVX.png)
+
 ```javascript
 //question_answer_index_item.jsx
   this.toggleUpvote = this.toggleUpvote.bind(this);
@@ -84,6 +70,8 @@ getLinks(){
 ### Create and Edit Forms
 * Highly interactive UI for create and edit functionality
 * Responsive interaction through modals, dropdowns, and hideable forms
+
+![Imgur](https://i.imgur.com/Rqv41ci.png)
 
 ```javascript
 //question_edit_pop_up.jsx
@@ -101,9 +89,15 @@ getLinks(){
   </div>
 ```
 
-### Random Home Page
+### Search Functionality
+
+![Imgur](https://i.imgur.com/wM8pTMK.png)
+
+### Home Page
 * Loads a random question with associated answers on home page
 * Randomizes on each return to the home page
+
+![Imgur](https://i.imgur.com/nx73QWt.png)
 
 ```javascript
 //main_page.js
@@ -117,8 +111,6 @@ getLinks(){
   }
 ```
 
-
 ### Upcoming Features
-* Search
 * following & followed
 * Topics
