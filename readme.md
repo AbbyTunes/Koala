@@ -13,11 +13,11 @@ Raymond Leung - [Linkedin](https://www.linkedin.com/in/raymond-leung-b0874b198/)
 
 Ryan Woods - [Linkedin](https://www.linkedin.com/in/ryan-woods-530679b4/) - [Github](https://github.com/rwoods1227)
 
-![Imgur](https://i.imgur.com/0fq4fHm.png)
-
 ## Background and Overview
 Koala is your ultimate Q&A site about Koalas! 
 Inspired by Quora, users can post questions and answers, as well as upvote and downvote answers to let other koala-enthusiasts know how helpful and relevant the provided answers are to the koala mission.
+
+![Imgur](https://i.imgur.com/0fq4fHm.png)
 
 <!-- Koala is an app for asking questions and posting answers about Koalas, based on Quora. Users can upvote and downvote answers to let other koala-enthusiasts know how helpful and relevant the provided answers are to the koala mission.
 
