@@ -7,7 +7,7 @@
 
 ## Group Members and Contributions
 
-Abby - [Linkedin](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.linkedin.com/in/abby-jun-xu/)
+Abby Xu - [Linkedin](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.github.com/AbbyTunes)
 
 Raymond Leung - [Linkedin](https://www.linkedin.com/in/raymond-leung-b0874b198/) - [Github](https://github.com/ray-leun1)
 
