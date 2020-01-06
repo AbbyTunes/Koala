@@ -45,7 +45,7 @@ const Credit = () => {
 						<a target="_blank" href="https://www.linkedin.com/in/raymond-leung-b0874b198/" className="credit-a-linkedin">
 							<div className="credit-icon-linkedin"></div>
 						</a>
-						<a target="_blank" href="" className="credit-a-angellist">
+						<a target="_blank" href="https://angel.co/raymond-leung-7" className="credit-a-angellist">
 							<div className="credit-icon-angellist"></div>
 						</a>
 						<a target="_blank" href="https://github.com/ray-leun1" className="credit-a-github">
