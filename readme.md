@@ -36,7 +36,7 @@ User profile
 ![Imgur](https://i.imgur.com/e5znt3y.png)
 
 Search functionality
-![Imgur](https://i.imgur.com/OoFia2G.png)
+![Imgur](https://i.imgur.com/wM8pTMK.png)
 
 Post forms
 ![Imgur](https://i.imgur.com/Rqv41ci.png)
