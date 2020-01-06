@@ -119,6 +119,5 @@ getLinks(){
 
 
 ### Upcoming Features
-* Search
 * following & followed
 * Topics
