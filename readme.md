@@ -1,9 +1,7 @@
 # Koala
-# [Koala Demo](https://koaalaa.herokuapp.com)
-<!-- ![Koala Logo](https://github.com/AbbyTunes/Koala/blob/master/frontend/src/images/Koala-logo-final.png) -->
+# [Live Demo](https://koaalaa.herokuapp.com)
 
-
-![Check out our home page!](https://i.imgur.com/kSK37Ls.png)
+![main page](https://i.imgur.com/0fq4fHm.png)
 
 ## Group Members and Contributions
 
@@ -28,18 +26,20 @@ Koalas are undeniably one of the most adorable creatures this world has to offer
 
 ## Design
 
+Question board
+![Imgur](https://i.imgur.com/nx73QWt.png)
+
+Q&A Details (upvotes, downvote, edit)
+![Imgur](https://i.imgur.com/L9eTRVX.png)
+
 User profile
-[Imgur](https://i.imgur.com/xrUVXJA.png)
-
-The question board
-![Imgur](https://i.imgur.com/V19wmgv.png)
-
-Question detail and Answers
-![Imgur](https://i.imgur.com/cW60cwc.png)
+![Imgur](https://i.imgur.com/e5znt3y.png)
 
 Search functionality
 ![Imgur](https://i.imgur.com/OoFia2G.png)
 
+Post forms
+![Imgur](https://i.imgur.com/Rqv41ci.png)
 
 ## Features and Technical Challenges
 
