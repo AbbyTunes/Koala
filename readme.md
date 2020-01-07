@@ -5,23 +5,15 @@
  * Backend: MongoDB, Express, React, and Node.js (MERN)
  * Frontend: JavaScript, React, Redux
 
-## Group Members and Contributions
-
-Abby Xu - [Linkedin](https://www.linkedin.com/in/abby-jun-xu/) - [Github](https://www.github.com/AbbyTunes)
-
-Raymond Leung - [Linkedin](https://www.linkedin.com/in/raymond-leung-b0874b198/) - [Github](https://github.com/ray-leun1)
-
-Ryan Woods - [Linkedin](https://www.linkedin.com/in/ryan-woods-530679b4/) - [Github](https://github.com/rwoods1227)
-
 ## Background and Overview
 Koala is your ultimate Q&A site about Koalas! 
 Inspired by Quora, users can post questions and answers, as well as upvote and downvote answers to let other koala-enthusiasts know how helpful and relevant the provided answers are to the koala mission.
 
-![Imgur](https://i.imgur.com/0fq4fHm.png)
-
 <!-- Koala is an app for asking questions and posting answers about Koalas, based on Quora. Users can upvote and downvote answers to let other koala-enthusiasts know how helpful and relevant the provided answers are to the koala mission.
 
 Koalas are undeniably one of the most adorable creatures this world has to offer, and their amount of fans grows day by day. In order to satiate the ravenous hunger for knowledge on koalas, we present Koala.com!  -->
+
+![Imgur](https://i.imgur.com/eFvEKXe.png)
 
 ## Features and Technical Challenges
 
@@ -30,7 +22,7 @@ Koalas are undeniably one of the most adorable creatures this world has to offer
 * All answers tied to parent question
 * User Profile shows answers and questions specific to User on switchable feed
 
-![Imgur](https://i.imgur.com/e5znt3y.png)
+![Imgur](https://i.imgur.com/IToPGHY.png)
 
 ```javascript 
 //profile.jsx
@@ -55,7 +47,7 @@ getLinks(){
 * Vote persistence for each individual user updated across different pages
 * Answer items with a large amount of nested functionality
 
-![Imgur](https://i.imgur.com/L9eTRVX.png)
+![Imgur](https://i.imgur.com/i7BdoeS.png)
 
 ```javascript
 //question_answer_index_item.jsx
@@ -71,7 +63,7 @@ getLinks(){
 * Highly interactive UI for create and edit functionality
 * Responsive interaction through modals, dropdowns, and hideable forms
 
-![Imgur](https://i.imgur.com/Rqv41ci.png)
+![Imgur](https://i.imgur.com/R7LezXr.png)
 
 ```javascript
 //question_edit_pop_up.jsx
@@ -91,13 +83,13 @@ getLinks(){
 
 ### Search Functionality
 
-![Imgur](https://i.imgur.com/wM8pTMK.png)
+![Imgur](https://i.imgur.com/fYHY6WU.png)
 
 ### Home Page
 * Loads a random question with associated answers on home page
 * Randomizes on each return to the home page
 
-![Imgur](https://i.imgur.com/nx73QWt.png)
+![Imgur](https://i.imgur.com/lcTbLHW.png)
 
 ```javascript
 //main_page.js
